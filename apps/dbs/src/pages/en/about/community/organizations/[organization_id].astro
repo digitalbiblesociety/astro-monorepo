@@ -1,0 +1,23 @@
+---
+import Layout from "~/layouts/BaseLayout.astro";
+import { SITE } from "~/config.mjs";
+import OrganizationShow from "~/components/partials/pages/OrganizationShow.svelte";
+
+export async function getStaticPaths() {
+  let data = await fetch(`${SITE.apiUrl}/organizations.json`).then((response) => response.json())
+  let organizations = []
+  return organizations.map((org) => {
+    return {
+      params: { id: org.id },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const organizationresponse = await fetch(`${SITE.apiUrl}/organizations/${id}.json`);
+const organization = await organizationresponse.json();
+---
+
+<Layout>
+  <OrganizationShow organization={organization} client:visible />
+</Layout>

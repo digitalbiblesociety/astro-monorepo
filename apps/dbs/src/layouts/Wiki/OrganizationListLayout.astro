@@ -1,0 +1,41 @@
+---
+import Layout from "~/layouts/BaseLayout.astro";
+import { SITE, getLanguageFromPath } from "~/config.mjs";
+import {i18n} from "~/translations/i18n.mjs";
+
+import Banner from "~/components/partials/Banner.astro";
+import Datatable from "~/components/datatable/Datatable.svelte";
+import Cell from "~/components/datatable/partials/Cell.svelte"
+import { createRender } from "svelte-headless-table";
+
+
+const organizationsResponse = await fetch(`${SITE.apiUrl}/organizations.json`);
+let organizations = await organizationsResponse.json();
+
+
+const locale = getLanguageFromPath(Astro.url)
+const t = i18n[locale]
+
+const { meta } = Astro.props;
+---
+
+<Layout {meta}>
+  <Banner
+    background="banner_organizations"
+    translations={{
+      title: t['Organizations'],
+      subtitle: "",
+      breadcrumbs: [
+        {
+          title: "Home",
+          link: `/`,
+        },
+      ],
+    }}
+  />
+
+  <slot />
+	<div class="max-w-5xl mx-auto">
+  <Datatable inputData={organizations} locale={locale} tableType="organizations" client:visible />
+	</div>
+</Layout>

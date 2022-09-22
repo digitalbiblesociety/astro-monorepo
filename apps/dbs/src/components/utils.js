@@ -35,5 +35,6 @@ export const t = () => {
 }
 
 export const locale = () => {
-	return getLanguageFromPath(Astro.url);
+	const locale = getLanguageFromPath(Astro.url);
+	return locale
 }
