@@ -1,7 +1,6 @@
 <script>
 	import {Menu,MenuButton,MenuItems,MenuItem } from "@rgossiaux/svelte-headlessui"
 
-
 	export let page
 	export let nav_class
 </script>
@@ -11,7 +10,6 @@
 		<span
 			class="flex items-center px-2 pt-1 pb-1.5 text-sm md:text-base xl:text-lg">
 			{page.title}
-			
 		</span>
 	</MenuButton>
 	<MenuItems>
@@ -31,11 +29,12 @@
 								target="{link.target}"
 								class=" flex items-start rounded-lg border border-gray-300 bg-white px-5 py-3 transition duration-150
 										ease-in-out dark:border-gray-900 dark:bg-gray-500">
-								
+								{#if link.icon}
 									<div
 										class="{link.class} mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-md ">
 										{@html link.icon}
 									</div>
+								{/if}
 								
 								<div class="ml-4">
 									<p

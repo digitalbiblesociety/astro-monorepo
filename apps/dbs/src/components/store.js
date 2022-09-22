@@ -6,4 +6,4 @@ export const selected = writable([])
 export const locale = writable("en")
 export const cartQuantity = localStore("cartQuantity", 0)
 
-export const mobileMenuOpen = writable(0)
+export const mobileMenuOpen = writable(false)
