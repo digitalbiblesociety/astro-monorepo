@@ -1,0 +1,140 @@
+---
+	import Layout from '~/layouts/BaseLayout.astro'
+	import Banner from "~/components/partials/Banner.astro"
+	import { t, locale } from '~/components/utils.js'
+
+	const libraries = await fetch('https://cdn.jsdelivr.net/gh/digitalbiblesociety/data/libraries.json')
+		.then(response => response.json())
+---
+<Layout>
+<Banner
+		title={t["common.Treasures Libraries"]}
+		subtitle=""
+		caption={t["libraries.treasures_caption"]}
+		breadcrumbs={[
+			{ link: `/libraries`, title: t['common.Libraries'] },
+			{ link: '#', title: t['common.Treasures Libraries'] },
+		]}
+		subnav={[
+			{
+				title:t["common.Overview"],
+				url:`/${locale}/libraries/`
+			},
+			{
+				title:t["common.Treasures Libraries"],
+				url:`/${locale}/libraries/treasure`,
+				selected:true
+			},
+			{
+				title:t["common.Bible"] + " " + t["common.Libraries"],
+				url:`/${locale}/libraries/bible`
+			},
+			{
+				title:t["common.FAQs"],
+				url:`/${locale}/libraries/faqs`
+			},
+		]} />
+
+
+<section id="container" class="mx-auto max-w-5xl">
+
+	<div class="max-w-4xl px-6 md:px-12 pt-4 md:pt-6 italic mx-auto text-sm text-center sm:hide md:block mb-2">
+		<slot />
+	</div>
+
+	<ul class="mx-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+		{libraries.map(library => 
+			<li
+				class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow dark:divide-gray-500 dark:bg-gray-800">
+				<a href="/libraries/treasures/{library.id}">
+					<div
+						class="flex w-full items-center justify-between space-x-6 drop-shadow-xl">
+						<div
+							class="flex-1 truncate rounded-t-lg p-6"
+							style={`background-image:url(https://images.bible.cloud/treasures/banners/${library.id}.jpg);background-size:cover;`}>
+							<div class="flex items-center space-x-3">
+								<h3
+									class="text-shadow block w-full truncate text-center text-xl text-gray-100">
+									{library.title_vernacular}
+								</h3>
+							</div>
+							<p
+								class="text-shadow mt-1 block w-full truncate text-center text-xl text-gray-200">
+								{library.title}
+							</p>
+						</div>
+					</div>
+					<div>
+						<div
+							class="-mt-px flex divide-x divide-gray-200 dark:divide-gray-500">
+							<div class="flex w-0 flex-1">
+								<a
+									target="_blank"
+									href={`http://downloads.dbs.org/treasures/${library.iso.toUpperCase()}/index.html`}
+									class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-white">
+									<svg
+										class="h-5 w-5 text-gray-400"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+										</path>
+									</svg>
+									<span class="ml-1">{t["common.Demo"]}</span>
+								</a>
+							</div>
+							<div class="-ml-px flex w-0 flex-1">
+								<a
+									href={`https://dbs-web.s3.us-west-2.amazonaws.com/downloads/treasureslibraries/${library.iso.toUpperCase()}.zip`}
+									class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-white">
+									<svg
+										class="h-5 w-5 text-gray-400"
+										xmlns="http://www.w3.org/2000/svg"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+										</path>
+									</svg>
+									<span class="ml-1">{t["common.Download"]}</span>
+								</a>
+							</div>
+							<div class="-ml-px flex w-0 flex-1">
+								<a
+									href={`/${locale}/libraries/treasures/${library.id}`}
+									class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-white">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										class="h-5 w-5 text-gray-400"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor">
+										<path
+											stroke-linecap="round"
+											stroke-linejoin="round"
+											stroke-width="2"
+											d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+										</path>
+									</svg>
+									<span class="ml-1">{t["common.Overview"]}</span>
+								</a>
+							</div>
+						</div>
+					</div>
+				</a>
+			</li>
+		)}
+
+
+	</ul>
+</section>
+</Layout>

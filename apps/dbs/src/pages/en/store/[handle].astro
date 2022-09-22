@@ -1,0 +1,23 @@
+---
+	import BaseLayout from '~/layouts/BaseLayout.astro';
+	import { t, locale } from '../../../components/utils.js'
+	import {client} from "~/components/store/shopifyClient.js"
+	import Product from '~/components/store/product.svelte'
+
+	export async function getStaticPaths() {
+
+  		let products = await client.product.fetchAll()
+
+  		return products.map((product) => {
+  		  return {
+  		    params: { handle: product.handle },
+  		  };
+  		});
+	}
+
+	const { handle } = Astro.params;
+---
+
+<BaseLayout>
+	<Product handle={handle} client:load />
+</BaseLayout>

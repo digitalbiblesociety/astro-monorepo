@@ -1,0 +1,31 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE } from "~/config.mjs";
+import BibleShow from "~/components/partials/pages/BibleShow.svelte";
+
+export async function getStaticPaths() {
+	let data = await fetch(`${SITE.apiUrl}/bibles.json`).then((response) =>
+		response.json()
+	)
+	let bibles = []
+	data.forEach(bible => {
+		if(bible.ci === import.meta.env.COUNTRY_ID) {
+			bibles.push(bible)
+		}
+	});
+
+	return bibles.map((bible) => {
+		return {
+			params: { id: bible.id },
+		};
+	});
+}
+
+const { id } = Astro.params;
+const bibleResponse = await fetch(`${SITE.apiUrl}/bibles/${id}.json`);
+const bible = await bibleResponse.json();
+---
+
+<Layout>
+  <BibleShow bible={bible} client:only />
+</Layout>

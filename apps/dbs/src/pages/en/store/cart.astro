@@ -1,0 +1,9 @@
+---
+	import BaseLayout from '~/layouts/BaseLayout.astro';
+	import Cart from "~/components/store/Cart.svelte"
+---
+
+<BaseLayout>
+	<h1>Cart</h1>
+	<Cart client:load  />
+</BaseLayout>

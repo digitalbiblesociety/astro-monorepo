@@ -1,0 +1,30 @@
+---
+import MenuItem from './MenuItem.astro';
+import Dropdown from './Dropdown.svelte'
+
+export interface Props {
+  page: {
+	title: string,
+	href: string,
+	nested: object|undefined,
+  };
+}
+
+import { Icon } from 'astro-icon'
+
+let nav_class = `
+	inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium 
+	text-gray-200 dark:text-gray-300 hover:border-gray-900 hover:text-white dark:hover:text-white
+	active:bg-gray-50 active:text-black
+`
+
+const { page } = Astro.props;
+const menu_id = page.title.replaceAll(' ', '-')
+---
+
+<div class={nav_class}>
+	{ (page.nested) ? 
+		<Dropdown page={page} nav_class={nav_class} client:visible /> : 
+		<a href={page.href} class={nav_class}>{ page.title }</a>
+	}
+</div>

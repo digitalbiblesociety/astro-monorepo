@@ -1,0 +1,36 @@
+---
+export interface Props {
+	link: {
+		href: string,
+		target: string,
+		icon: string|undefined,
+		title: string,
+		long: string
+	};
+}
+
+import { Icon } from 'astro-icon'
+const { link } = Astro.props;
+
+---
+
+<a
+	href={link.href}
+	target={link.target}
+	class="flex items-start rounded-lg border border-gray-300 bg-white text-black px-5 py-3 transition duration-150 ease-in-out dark:border-gray-900 dark:bg-gray-500">
+		{
+			(link.icon) ? 
+				<div class="mt-1 flex h-9 w-9 shrink-0 items-center justify-center rounded-md">
+					<Icon pack="heroicons-outline" name={link.icon} />
+				</div>
+			: ''
+		}
+		<div class="ml-4">
+			<p class="text-sm text-gray-700 dark:text-gray-200 dark:hover:text-white lg:text-base">
+				{link.title}
+			</p>
+			<p class="-mt-0.5 text-xs leading-4 text-gray-600 dark:text-gray-200 dark:hover:text-white">
+				{link.long}
+			</p>
+		</div>
+</a>

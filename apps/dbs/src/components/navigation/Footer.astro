@@ -1,0 +1,223 @@
+---
+import Logo from './Logo.astro'
+import { Icon } from 'astro-icon'
+import { getLanguageFromPath } from "~/config.mjs";
+import {i18n} from "~/translations/i18n.mjs";
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+const link_groups = [
+	{
+		type: "project",
+		name: t["Projects"],
+		links: [
+			{
+				title: t["Downloads"],
+				href: `/bibles`,
+				type: `_self`,
+				rel: `none`,
+			},
+			{
+				title: t["Libraries"],
+				href: `/libraries`,
+			},
+			{
+				title: t["Audio Bibles"],
+				href: `/about/work/audio-bibles`,
+			},
+			{
+				title: t["Print Bibles"],
+				href: `/about/work/print`,
+			},
+		],
+	},
+	{
+		type: "about",
+		name: t["About"],
+		links: [
+			{
+				title: t["Ministry"],
+				href: `/about/overview`,
+			},
+			{
+				title: t["Projects"],
+				href: `/about/projects`,
+			},
+			{
+				title: t["Stories"],
+				href: `/about/projects/stories`,
+			},
+			{
+				title: t["Contact"],
+				href: `/about/contact`,
+			},
+		],
+	},
+	{
+		type: "links",
+		name: t["Links"],
+		links: [
+			{
+				title: "find.bible",
+				external: true,
+				href: "https://find.bible",
+			},
+			{
+				title: "inscript.org",
+				external: true,
+				href: "https://inscript.org",
+			},
+			{
+				title: "archive.org",
+				external: true,
+				href: "https://archive.org/details/@dbs",
+			},
+			{
+				title: "github.org",
+				external: true,
+				href: "https://github.com",
+			},
+		],
+	},
+]
+---
+
+<footer class="">
+	<div
+		class="border-t-none mx-auto max-w-7xl border border-gray-300 bg-gray-50
+			pt-5 pb-3 dark:border-gray-500 dark:bg-gray-800 xl:rounded-b-2xl">
+		<section class="block justify-around sm:flex">
+			<div class="flex-col items-center justify-around px-8 sm:w-6/12">
+
+				<Logo />
+
+
+				<div
+					class=" mt-2 flex justify-center text-gray-700 dark:text-gray-200 dark:hover:text-gray-300">
+					
+					<a
+						href="https://vimeo.com/digitalbiblesociety"
+						class="hover:text-blue-500"
+						aria-label="Vimeo"
+						target="_blank"
+						rel="noopener noreferrer">
+							<Icon name="logos:vimeo-icon" class="mr-2 h-7 w-7" />	
+					</a>
+					<a
+						href="https://www.facebook.com/digitalbiblesociety/"
+						class="mx-0.5 hover:text-blue-600"
+						target="_blank"
+						rel="noopener noreferrer">
+						<Icon name="logos:facebook" class="mr-2 h-7 w-7" />
+					</a>
+					<a
+						href="https://twitter.com/dbsorg/"
+						class="mx-0.5 hover:text-blue-600"
+						aria-label="Twitter"
+						target="_blank"
+						rel="noopener noreferrer">
+						<Icon name="logos:twitter" class="mr-2 h-7 w-7" />
+					</a>
+					<a
+						href="https://github.com/digitalbiblesociety"
+						class="mx-0.5 hover:text-blue-600"
+						aria-label="Github"
+						target="_blank"
+						rel="noopener noreferrer">
+						<Icon name="logos:github-icon" class="mr-2 h-7 w-7" />
+					</a>
+				</div>
+
+				<div
+					class="my-3 flex justify-center space-x-6 text-2xl text-gray-400 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-300">
+					<a
+						href={`/${locale}/about/donate#endorsement`}
+						class="opacity-80 hover:underline hover:opacity-100">
+						<img
+							src="/img/logo/end-ecfa.svg"
+							class="filter dark:invert dark:grayscale"
+							width="56px"
+							height="56px"
+							alt="ECFA Financial Accountability" />
+					</a>
+
+					<a
+						href={`/${locale}/about/donate#endorsement`}
+						class="opacity-80 hover:underline hover:opacity-100">
+						<img
+							src="/img/logo/end-guidestar.svg"
+							class="filter dark:grayscale"
+							width="56px"
+							height="56px"
+							alt="Guidestar Platinum" />
+					</a>
+
+					<a
+						href={`/${locale}/about/donate#endorsement`}
+						class="opacity-80 dark:opacity-100 hover:underline hover:opacity-100">
+						<img
+							src="/img/logo/end-charity-navigator.svg"
+							class="filter dark:invert dark:grayscale"
+							width="56px"
+							height="56px"
+							alt="Charity Navigator" />
+					</a>
+				</div>
+			</div>
+
+			<div
+				class="mt-10 flex items-center justify-around px-6 text-xs sm:mt-0 sm:w-6/12 xl:text-sm">
+
+				{link_groups.map(link_group => 
+					<div class="pb-2">
+
+						<h3
+							class="mb-2 text-center font-semibold uppercase tracking-wider
+								text-gray-600 underline dark:text-gray-200">
+							{link_group.name}
+						</h3>
+
+
+						<ul class="mt-2">
+							{link_group.links.map(link => 
+								<li class="mb-1 text-gray-600 hover:text-primary-600 dark:text-gray-200 dark:hover:text-gray-200">
+									<a
+										href={link.href}
+										target={link.external ? '_blank' : ''}
+										rel={link.external ? 'noopener noreferrer' : ''}
+										class="block hover:underline hover:opacity-100">
+										{link.title}
+									</a>
+								</li>)}
+							
+						</ul>
+					</div>
+				)}
+			</div>
+		</section>
+	</div>
+
+	<div
+		class="mx-auto flex w-10/12  max-w-7xl p-2 text-sm text-gray-600 dark:text-gray-300 mb-2">
+		<span class="m-auto w-full text-center md:w-7/12 md:text-right">
+			<a
+				href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+				target="_blank"
+				rel="noopener noreferrer"
+				class="ml-16 inline-flex items-center text-right  hover:text-primary-600  hover:underline hover:dark:text-gray-100">
+				{t["org_title"]}
+				<img
+					class="mx-2 h-5 w-5"
+					alt="Creative Commons"
+					src="/img/icons/creative-commons.svg" />
+				{new Date().getFullYear()}
+			</a>
+		</span>
+		<span class="mr-2 hidden text-right md:block md:w-5/12 ">
+			<a
+				href={`/${locale}/about/overview/privacy`}
+				class="ml-4 hover:text-primary-500 hover:underline hover:dark:text-gray-100">
+				{t["Privacy"]}
+			</a>
+		</span>
+	</div>
+</footer>

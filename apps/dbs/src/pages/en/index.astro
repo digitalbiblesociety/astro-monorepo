@@ -1,0 +1,72 @@
+---
+
+import Layout from '~/layouts/BaseLayout.astro'
+import Card from '~/components/partials/Card.astro'
+import Hero from '~/components/partials/Hero.astro';
+import Newsletter from '~/components/partials/Newsletter.astro';
+import { getLanguageFromPath } from "~/config.mjs";
+import {i18n} from "~/translations/i18n.mjs";
+
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+
+---
+<Layout>
+
+
+<section class="relative z-10 mx-auto max-w-6xl pb-12 sm:px-8 lg:px-12">
+	<Hero />
+	<div class="grid grid-flow-row auto-rows-max grid-cols-1 gap-6 md:grid-cols-2 lg:gap-8">
+<Card 
+	title={t["Bibles"]}
+	description={t["work_bibles_description"]}
+	action={t["work_bibles_action"]}
+	picture="/img/about/projects_biblecloud_thumb.webp"
+	className="bg-gradient-to-r from-sky-300 to-blue-600 dark:from-sky-700 dark:to-blue-800"
+	iconName="bookmark"
+	url={'/' + locale + "/bibles"} />
+<Card 
+	title={t["Libraries"]}
+	description={t["work_libraries_description"]}
+	action={t["work_libraries_action"]}
+	picture="/img/about/projects_libraries_thumb.webp"
+	className="bg-gradient-to-r from-tahiti-400 to-tahiti-800  dark:from-tahiti-700 dark:to-tahiti-800"
+	iconName="library"
+	url={'/' + locale + "/libraries/treasures"} />
+<Card 
+	title={t["Audio Bibles"]}
+	description={t["work_audio_description"]}
+	action={t["work_audio_action"]}
+	picture="/img/about/projects_players_thumb.webp"
+	className="bg-gradient-to-r from-cyan-400 to-cyan-700 dark:from-cyan-600 dark:to-cyan-800"
+	iconName="volume-up"
+	url={'/' + locale + "/audio/pearls"} />
+<Card 
+	title={t["Print on Demand"]}
+	description={t["work_print_description"]}
+	action={t["work_print_action"]}
+	picture="/img/about/projects_print_thumb.webp"
+	className="bg-gradient-to-r from-blue-400 to-slate-800 dark:from-slate-500 dark:to-slate-800"
+	iconName="book-open"
+	url={'/' + locale + "/bibles/print"} />
+<Card 
+	title={t["Bible Research"]}
+	description={t["work_research_description"]}
+	action={t["work_research_action"]}
+	picture="/img/about/projects_fab_thumb.webp"
+	className="bg-gradient-to-r from-teal-400 to-teal-700  dark:from-gray-600 dark:to-teal-800"
+	iconName="search"
+	url={'/' + locale + "/about/work/research"} />
+<Card 
+	title={t["Project Proposals"]}
+	description={t["work_proposals_description"]}
+	action={t["work_proposals_action"]}
+	picture="/img/about/projects_proposals_thumb.webp"
+	className="bg-gradient-to-r from-indigo-300 to-indigo-600  dark:from-gray-600 dark:to-indigo-800"
+	iconName="heart"
+	url={'/' + locale + "/about/projects/proposals"} />
+	</div>
+	<Newsletter />
+</section>
+
+</Layout>

@@ -1,0 +1,19 @@
+---
+import Layout from "./BaseLayout.astro";
+
+//import Header from "~/components/navigation/Header.astro";
+//import Footer from "~/components/navigation/Footer.astro";
+
+const { meta } = Astro.props;
+---
+
+<Layout meta={meta}>
+
+  <main class="prose max-w-prose mx-auto">
+
+    <nav class="hidden sm:flex border-b dark:border-gray-500 w-full mx-8 md:mx-24 lg:mx-36 space-x-8 justify-center" aria-label="Tabs"><a href="/about/work/biblecloud" class="whitespace-nowrap pb-1 px-1 border-b-2  font-medium text-sm md:text-base border-blue-500 text-blue-600 dark:text-blue-400 dark:border-blue-400">Bibles </a><a href="/about/work/libraries" class="whitespace-nowrap pb-1 px-1 border-b-2  font-medium text-sm md:text-base border-transparent text-gray-700 dark:text-gray-200 hover:text-gray-700 hover:border-gray-400">Libraries </a><a href="/about/work/audio-bibles" class="whitespace-nowrap pb-1 px-1 border-b-2  font-medium text-sm md:text-base border-transparent text-gray-700 dark:text-gray-200 hover:text-gray-700 hover:border-gray-400">Audio </a><a href="/about/work/print" class="whitespace-nowrap pb-1 px-1 border-b-2  font-medium text-sm md:text-base border-transparent text-gray-700 dark:text-gray-200 hover:text-gray-700 hover:border-gray-400">Print </a><a href="/about/work/sophia" class="whitespace-nowrap pb-1 px-1 border-b-2  font-medium text-sm md:text-base border-transparent text-gray-700 dark:text-gray-200 hover:text-gray-700 hover:border-gray-400">Study Bible </a><a href="/about/work/research" class="whitespace-nowrap pb-1 px-1 border-b-2  font-medium text-sm md:text-base border-transparent text-gray-700 dark:text-gray-200 hover:text-gray-700 hover:border-gray-400">Research </a><a href="/about/work/proposals" class="whitespace-nowrap pb-1 px-1 border-b-2  font-medium text-sm md:text-base border-transparent text-gray-700 dark:text-gray-200 hover:text-gray-700 hover:border-gray-400">Proposals </a></nav>
+
+    <slot />
+  </main>
+
+</Layout>
