@@ -1,11 +1,12 @@
 ---
 import Layout from "~/layouts/BaseLayout.astro";
-import { SITE } from "~/config.mjs";
+import { SITE, getLanguageFromPath } from "~/config.mjs";
 import OrganizationShow from "~/components/partials/pages/OrganizationShow.svelte";
 
+const locale = getLanguageFromPath(Astro.url)
+
 export async function getStaticPaths() {
-  let data = await fetch(`${SITE.apiUrl}/organizations.json`).then((response) => response.json())
-  let organizations = []
+  let organizations = await fetch(`${SITE.apiUrl}/organizations.json`).then((response) => response.json())
   return organizations.map((org) => {
     return {
       params: { id: org.id },
@@ -19,5 +20,5 @@ const organization = await organizationresponse.json();
 ---
 
 <Layout>
-  <OrganizationShow organization={organization} client:visible />
+  <OrganizationShow organization={organization} locale={locale} client:visible />
 </Layout>

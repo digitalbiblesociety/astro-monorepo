@@ -1,0 +1,12 @@
+{
+  "name": "@dbs/datatables",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": "./index.js"
+  },
+  "dependencies": {
+    "svelte-headless-table": "^0.13.3"
+  }
+}

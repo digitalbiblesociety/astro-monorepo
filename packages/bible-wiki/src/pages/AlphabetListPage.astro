@@ -1,0 +1,38 @@
+---
+import {Datatable, Cell, createRender} from "@dbs/datatables"
+
+const { alphabets, locale, translation } = Astro.props;
+
+const columnSet = function alphabetsColumns(table) {
+	return [
+		table.column({
+			header: "Title",
+			id: "name",
+			accessor: (item) => item,
+			cell: ({ value }) => createRender(Cell, {
+				title: value.name,
+				subtitle: value.family,
+				href: '/' + locale + "/alphabets/" + value.script,
+			}),
+			plugins: {
+				sort: {
+					getSortValue: (i) => i.name + i.family,
+				},
+				tableFilter: {
+					getFilterValue: (i) => i.name + i.family,
+				},
+			},
+		}),
+		table.column({
+			header: "Type",
+			accessor: 'type',
+		}),
+];
+}
+---
+
+<div class="max-w-3xl mx-auto">
+	
+	<h1 class="text-center text-3xl pt-12">{translation["Alphabets"]}</h1>
+	<Datatable inputData={alphabets} locale={locale} columnSet={columnSet} client:visible />
+</div>

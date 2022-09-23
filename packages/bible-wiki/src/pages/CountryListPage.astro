@@ -1,0 +1,9 @@
+---
+import {Datatable, Cell, createRender} from "@dbs/datatables"
+const { countries, locale, translation } = Astro.props;
+---
+
+<div class="max-w-3xl mx-auto">
+	<h1 class="text-center text-3xl pt-12">{translation["countries"]}</h1>
+	<Datatable inputData={countries} locale={locale} tableType="countries" client:visible />
+</div>

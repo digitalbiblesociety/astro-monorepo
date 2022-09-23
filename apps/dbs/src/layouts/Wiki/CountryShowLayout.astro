@@ -1,0 +1,29 @@
+---
+import Layout from "~/layouts/BaseLayout.astro";
+import { SITE } from "~/config.mjs";
+import {CountryShow} from "@dbs-bible-wiki";
+import Banner from '~/components/partials/Banner.astro'
+
+export async function getStaticPaths() {
+  const countries = await fetch(`${SITE.apiUrl}/countries.json`).then((response) => response.json())
+  return countries.map((country) => { return { params: { id: country.id } } });
+}
+
+const { id } = Astro.params;
+const countryResponse = await fetch(`${SITE.apiUrl}/countries/${id}.json`);
+const country = await countryResponse.json();
+---
+
+<Layout>
+
+<Banner 
+	background="banner_countries"
+  title={country.title}
+  subtitle={country.title_vernacular}
+  breadcrumbs={[
+  { title: "countries", link: `/countries`, },
+  { title: country.title, link: `#`, },
+  ]} />
+
+  <CountryShow country={country} client:visible />
+</Layout>

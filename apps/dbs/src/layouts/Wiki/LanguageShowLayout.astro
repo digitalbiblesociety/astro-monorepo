@@ -1,0 +1,27 @@
+---
+import Layout from "~/layouts/BaseLayout.astro"
+import { SITE } from "~/config.mjs"
+import { LanguageShow } from "@dbs/bible-wiki"
+import Banner from '~/components/partials/Banner.astro'
+
+export async function getStaticPaths() {
+  const languages = await fetch(`${SITE.apiUrl}/languages.json`).then((response) => response.json())
+  return languages.map((language) => { return { params: { id: language.iso } } });
+}
+
+const { id } = Astro.params;
+const languageResponse = await fetch(`${SITE.apiUrl}/languages/${id}.json`);
+const language = await languageResponse.json();
+---
+
+<Layout>
+	<Banner 
+		background="banner_languages"
+		title={language.title}
+		subtitle={language.title_vernacular}
+		breadcrumbs={[
+			{ title: "languages", link: `/languages` },
+			{ title: language.title, link: `#` },
+		]} />
+	<LanguageShow language={language} client:visible />
+</Layout>

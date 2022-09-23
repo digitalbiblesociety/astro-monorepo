@@ -1,0 +1,29 @@
+---
+import Layout from "~/layouts/BaseLayout.astro";
+import { SITE } from "~/config.mjs";
+import BibleShow from "~/components/partials/pages/BibleShow.svelte";
+import Banner from '~/components/partials/Banner.astro'
+
+export async function getStaticPaths() {
+  const bibles = await fetch(`${SITE.apiUrl}/bibles_dbs.json`).then((response) => response.json())
+  return bibles.map((bible) => { return { params: { id: bible.id } } });
+}
+
+const { id } = Astro.params;
+const bibleResponse = await fetch(`${SITE.apiUrl}/bibles/${id}.json`);
+const bible = await bibleResponse.json();
+---
+
+<Layout>
+
+<Banner 
+	background="banner_bibles"
+  title={bible.title}
+  subtitle={bible.title_vernacular}
+  breadcrumbs={[
+  { title: "Bibles", link: `/bibles`, },
+  { title: bible.title, link: `#`, },
+  ]} />
+
+  <BibleShow bible={bible} client:visible />
+</Layout>

@@ -2,7 +2,7 @@
 	import { onMount } from "svelte"
 	import pkg from 'lodash';
   	const { toArray, groupBy } = pkg;
-	import Banner from './Banner.svelte'
+
 	export let bible
 
 	export let translations = {
@@ -83,22 +83,6 @@
 
 </script>
 {#if bible}
-<Banner 
-	background="banner_bibles"
-	translations={{
-		title: bible.title ?? '',
-		subtitle: bible.title_vernacular ?? '',
-		breadcrumbs: [
-			{
-				title: "Bibles",
-				link: `/bibles`,
-			},
-			{
-				title: bible.title,
-				link: `#`,
-			},
-		],
-	}} />
 		  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 z-30">
 
 			  <dl class="rounded-lg bg-white shadow-lg flex flex-row justify-center py-2">
@@ -170,8 +154,9 @@
 						</div>
 						<div>
 
+							{#if bible_links.pdf || bible_links.inscript || bible_links.epub || bible_links.html_zip}
 								<div class="bg-gray-100 flex flex-row justify-between p-4">
-									<div class="flex w-1/5 text-center justify-center place-items-center"></div>
+
 									<div class="w-4/5 grid grid-cols-2">
 
 										{#if bible_links.inscript}
@@ -232,6 +217,7 @@
 
 									</div>
 								</div>
+							{/if}
 
 						</div>
 						</div>

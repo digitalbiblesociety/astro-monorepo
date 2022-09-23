@@ -1,0 +1,9 @@
+---
+import { Datatable } from "@dbs/datatables"
+
+const { bibles, locale, translation } = Astro.props;
+---
+
+<div class="max-w-3xl mx-auto relative">
+	<Datatable inputData={bibles} locale={locale} tableType="bibles" client:visible />
+</div>

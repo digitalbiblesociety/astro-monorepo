@@ -2,25 +2,18 @@
 	import { readable } from 'svelte/store'
 	import { Render, Subscribe, createTable } from 'svelte-headless-table'
 	import { addColumnFilters, addColumnOrder, addSortBy, addTableFilter, addPagination, addSelectedRows } from 'svelte-headless-table/plugins'
-	import {
-		alphabetsColumns,
-		biblesColumns,
-		countriesColumns,
-		filmsColumns,
-		resourcesColumns,
-		organizationsColumns,
-		languagesColumns,
-		languagebiblesColumns,
-		countryLanguagesColumns } from './DatatableColumns.js'
 	import DtPagination from './partials/DataTablePagination.svelte'
 	import DtHeader from './partials/DataTableHeader.svelte'
 	import DtSearch from './partials/DataTableSearch.svelte'
+	import Columns from './columns/index'
   
-	export let tableType
 	export let inputData
+	export let tableType
 	export let locale
 
-	const data = readable(inputData);
+	const tHead = (table) => Columns(tableType, table, locale)
+
+	const data = readable(inputData)
 	const table = createTable(data, {
 		filter: addColumnFilters(),
 		tableFilter: addTableFilter(),
@@ -29,29 +22,6 @@
 		orderColumns: addColumnOrder(),
 		page: addPagination({ initialPageSize: 200 }),
 	});
-
-	const tHead = (table) => {
-		switch (tableType) {
-			case "languages":
-				return languagesColumns(table, locale)
-			case "language_bibles":
-				return languagebiblesColumns(table, locale)
-			case "bibles":
-				return biblesColumns(table, locale)
-			case "countries":
-				return countriesColumns(table, locale)
-			case "alphabets":
-				return alphabetsColumns(table, locale)
-			case "films":
-				return filmsColumns(table, locale)
-			case "resources":
-				return resourcesColumns(table, locale)
-			case "organizations":
-				return organizationsColumns(table, locale)
-			case "country_languages":
-				return countryLanguagesColumns(table, locale)
-		}
-	}
 
 	const columns = table.createColumns(tHead(table));
 	const { flatColumns, headerRows, pageRows, tableAttrs, tableBodyAttrs, pluginStates} = table.createViewModel(columns);

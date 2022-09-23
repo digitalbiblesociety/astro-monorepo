@@ -1,0 +1,20 @@
+{
+  "name": "@dbs/astro-bible-wiki",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "exports": {
+    ".": "./index.js"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^1.3.0",
+    "@dbs/datatables": "workspace:^0.0.1"
+  }
+}
