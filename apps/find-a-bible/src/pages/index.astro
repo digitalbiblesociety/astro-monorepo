@@ -1,0 +1,9 @@
+---
+	import {SITE} from '~/config.mjs';
+	const locales = SITE.locales
+---
+<script is:inline define:vars={{locales}}>
+    const navLang = navigator.language || navigator.userLanguage;
+    const lang = (navLang != undefined) ? (navLang in locales) ? navLang.substring(0,2) : 'en' : 'en';
+    window.location.pathname = `/${lang}/`;
+</script>

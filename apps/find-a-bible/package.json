@@ -1,0 +1,38 @@
+{
+  "name": "@onwidget/astrowind",
+  "description": "A template to make your website using Astro + Tailwind CSS.",
+  "version": "0.1.2",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build && subfont -ir --no-fallbacks --root dist",
+    "preview": "astro preview",
+    "pretty": "prettier --write ."
+  },
+  "devDependencies": {
+    "@astrojs/image": "^0.3.7",
+    "@astrojs/rss": "^1.0.0",
+    "@astrojs/sitemap": "^1.0.0",
+    "@astrojs/svelte": "^1.0.0",
+    "@astrojs/tailwind": "^1.0.0",
+    "@rgossiaux/svelte-headlessui": "^1.0.2",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.4.0",
+    "@tailwindcss/line-clamp": "^0.3.0",
+    "@tailwindcss/typography": "^0.5.4",
+    "astro": "^1.0.0",
+    "dotenv": "^16.0.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.0",
+    "qrcode-svg": "^1.1.0",
+    "reading-time": "^1.5.0",
+    "subfont": "^6.9.0",
+    "svelte": "^3.49.0",
+    "svelte-headless-table": "^0.13.3"
+  },
+  "dependencies": {
+    "d3": "^7.6.1",
+    "d3-selection": "^3.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+	"locales": [
+	  {
+		"language": "English",
+		"locale": "en"
+	  },
+	  {
+		"language": "Español",
+		"locale": "es"
+	  }
+	]
+  }

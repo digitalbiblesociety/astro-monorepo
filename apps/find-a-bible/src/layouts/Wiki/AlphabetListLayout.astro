@@ -1,0 +1,17 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE, getLanguageFromPath } from "~/config.mjs";
+
+import Datatable from "~/components/datatable/Datatable.svelte";
+
+const alphabetsResponse = await fetch(`${SITE.apiUrl}/alphabets.json`);
+const alphabets = await alphabetsResponse.json();
+
+const language = getLanguageFromPath(Astro.canonicalURL);
+const {content} = Astro.props;
+---
+
+<Layout>
+  <h1 class="text-center text-2xl">{content.title}</h1>
+  <Datatable inputData={alphabets} tableType="alphabets" client:only />
+</Layout>

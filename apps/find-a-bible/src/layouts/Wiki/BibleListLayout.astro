@@ -1,0 +1,29 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE } from "~/config.mjs";
+
+import Banner from "~/components/partials/Banner.svelte";
+
+import Datatable from "~/components/datatable/Datatable.svelte";
+
+const biblesResponse = await fetch(`${SITE.apiUrl}/bibles.json`);
+const bibles = await biblesResponse.json();
+---
+
+<Layout>
+  <Banner
+    background="banner_bibles"
+    translations={{
+      title: "Bibles",
+      subtitle: "",
+      breadcrumbs: [
+        {
+          title: "Home",
+          link: `/`,
+        },
+      ],
+    }}
+  />
+
+  <Datatable inputData={bibles} tableType="bibles" client:only />
+</Layout>

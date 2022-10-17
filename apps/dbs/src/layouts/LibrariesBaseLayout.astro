@@ -1,12 +1,11 @@
 ---
-	import Layout from '~/layouts/BaseLayout.astro'
-	import Banner from '~/components/partials/Banner.astro'
-
-	// Language Block
-	import {i18n} from "~/translations/i18n.mjs";
-	import { getLanguageFromPath } from "~/config.mjs";
-	const locale = getLanguageFromPath(Astro.url)
-	const t = i18n[locale]
+  import Layout from '~/layouts/BaseLayout.astro'
+  import Banner from '~/components/partials/Banner.astro'
+  // Language Block
+  import {i18n} from "~/translations/i18n.mjs";
+  import { getLanguageFromPath } from "~/config.mjs";
+  const locale = getLanguageFromPath(Astro.url)
+  const t = i18n[locale]
 ---
 
 <Layout>
@@ -15,18 +14,16 @@
 		title={t["Libraries"]}
 		subtitle=""
 		caption={t["libraries_about_caption"]}
-		breadcrumbs={[
-			{ link: `/libraries/treasures`, title: t('Treasures') },
-			{ link: '#', title: t('Overview') },
-		]}
 		subnav={[
 			{title:t["Overview"],url:`/${locale}/libraries/`},
 			{title:t["Treasures Libraries"],url:`/${locale}/libraries/treasures`},
 			// {title:t["Bible Libraries"],url:`/${locale}/libraries/bible`},
 			// TODO: Restore Bible Libraries Pages once they're downloadable
-			{title:t["FAQs"],url:`/${locale}/libraries/faqs`}
+			{title:t["FAQs"],url:`/${locale}/libraries/faq`}
 		]} />
 
+<div class="prose mx-auto">
 	<slot />
+</div>
 
 </Layout>

@@ -1,6 +1,6 @@
 ---
-	import { Datatable } from "@dbs/svelte-datatables"
-	import { t } from "$lib/translations"
+	import Layout from './BaseLayout.astro'
+	import { SITE } from "~/config.mjs";
 	import Breadcrumbs from "~/components/partials/Breadcrumbs.astro"
 	import Icon from 'astro-icon'
 
@@ -10,16 +10,11 @@
 	const locale = getLanguageFromPath(Astro.url)
 	const t = i18n[locale]
 
-	export async function getStaticPaths() {
-		const libraries = await fetch(`${SITE.apiUrl}/libraries.json`).then((response) => response.json())
-		return libraries.map((library) => { return { params: { id: library.id } } });
-	}
-
 	const { id } = Astro.params;
 	const libraryResponse = await fetch(`${SITE.apiUrl}/libraries/${id}.json`);
 	const library = await libraryResponse.json();
-
 ---
+<Layout>
 	<div 
 		class="border-t-1 relative -mx-9 -mt-1 flex flex-col justify-between rounded-t-xl border-2 border-b-0 border-gray-400 bg-cover bg-center bg-no-repeat text-center" 
 		style={`background-image: url('https://images.bible.cloud/treasures/banners/${library.id}.jpg');`}>
@@ -27,29 +22,16 @@
 		<h2 class="text-shadow-xl pb-8 text-3xl font-extrabold text-gray-300 sm:text-4xl">{library.title}</h2>
 	</div>
 	
-		<div class="">
-			<Breadcrumbs
-				breadcrumbs="{[
-					{ link: `/libraries/`, title: t['common.Libraries') },
-					{ link: `/libraries/treasures`, title: t['common.Treasures') },
-					{ link: '#', title: library.title },
-				]}" />
-		</div>
 	
 
 			<div class="mx-auto mt-8 max-w-7xl px-4 sm:px-6 lg:px-8">
 				<div class="relative mx-auto max-w-4xl">
 					<div class="py-12 sm:flex">
-						<div
-							class="mt-3 pr-8 text-xl text-gray-800 dark:text-gray-300 sm:mt-4">
+						<div class="mt-3 pr-8 text-xl text-gray-800 dark:text-gray-300 sm:mt-4">
 							<a
 								class="button mb-8 p-4"
-								href={`http://downloads.dbs.org/treasures/${library.iso.toUpperCase()}/index.html`}>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									class="inline-block h-6 w-6"
-									viewBox="0 0 62 61"
-									fill="currentColor">
+								href={'http://downloads.dbs.org/treasures/' + library.iso.toUpperCase() + '/index.html'}>
+								<svg xmlns="http://www.w3.org/2000/svg" class="inline-block h-6 w-6" viewBox="0 0 62 61" fill="currentColor">
 									<path d="M32.1 0h17l-4.8 17.3z"></path>
 									<path d="M15.5 17.1 11.5 0h16.1z"></path>
 									<path d="m9.5.9 4.2 17.8H.1z"></path>
@@ -59,18 +41,15 @@
 									<path d="M45.9 20.7h13.8l-26 34.2z"></path>
 									<path d="M17.3 18.7 29.9.9l12.6 17.8z"></path>
 								</svg>
-								{t["Demo"]}
-								{library.title}
+								{ library.title }
 							</a>
 	
 							<a
 								class="button-dark mb-8 p-4"
-								href={`https://dbs-web.s3.us-west-2.amazonaws.com/downloads/treasureslibraries/${library.iso.toUpperCase()}.zip`}>
-								<Icon name="heroicons-outline:arrow-right" class="inline-flex h-5 w-5" />
-								{t["Download"]}
-								{library.title}
+								href={'https://dbs-web.s3.us-west-2.amazonaws.com/downloads/treasureslibraries/' + library.iso.toUpperCase() + '.zip'}>
+								Download
 							</a>
-							{library.description}
+							<span set:html={library.description}></span>
 						</div>
 						<div class="mb-4 shrink-0 sm:mb-0 sm:mr-4">
 							<img
@@ -123,4 +102,4 @@
 				</div>
 			</div>
 
-	
+</Layout>

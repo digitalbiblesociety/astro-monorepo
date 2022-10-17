@@ -7,3 +7,4 @@ export const locale = writable("en")
 export const cartQuantity = localStore("cartQuantity", 0)
 
 export const mobileMenuOpen = writable(false)
+export const articlePage = writable(1)

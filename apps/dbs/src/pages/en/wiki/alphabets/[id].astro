@@ -1,0 +1,26 @@
+---
+import Layout from '~/layouts/Wiki/AlphabetShowLayout.astro'
+import { SITE } from "~/config.mjs"
+
+
+export async function getStaticPaths() {
+  const alphabets = await fetch(`${SITE.apiUrl}/alphabets.json`).then((response) => response.json())
+
+  for (let i = 0; i < alphabets.length; i++) {
+    const alphabet = alphabets[i];
+    alphabets[i].local = await fetch(`${SITE.apiUrl}/alphabets/${alphabet.id}.json`, { method: "HEAD" }).then(function (response) { return response.ok })
+  }
+
+  return alphabets.filter(alphabet => alphabet.local).map((alphabet) => { return { params: { id: alphabet.script } } });
+}
+
+const { id } = Astro.params;
+
+const alphabetResponse = await fetch(`${SITE.apiUrl}/alphabets/${id}.json`)
+const alphabet = alphabetResponse.json()
+
+---
+
+<Layout>
+
+</Layout>

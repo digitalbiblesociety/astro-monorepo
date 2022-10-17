@@ -1,42 +1,32 @@
 ---
-	import Layout from '~/layouts/LibrariesBaseLayout.astro'
+	import Layout from '~/layouts/BaseLayout.astro'
 	import Banner from "~/components/partials/Banner.astro"
 	import { t, locale } from '~/components/utils.js'
+
+	// Language Block
+	import {i18n} from "~/translations/i18n.mjs";
+	import { getLanguageFromPath } from "~/config.mjs";
+	const locale = getLanguageFromPath(Astro.url)
+	const t = i18n[locale]
 
 	const libraries = await fetch('https://cdn.jsdelivr.net/gh/digitalbiblesociety/data/libraries.json')
 		.then(response => response.json())
 ---
 <Layout>
-<Banner
-		title={t["common.Treasures Libraries"]}
-		subtitle=""
-		caption={t["libraries.treasures_caption"]}
-		breadcrumbs={[
-			{ link: `/libraries`, title: t['common.Libraries'] },
-			{ link: '#', title: t['common.Treasures Libraries'] },
-		]}
-		subnav={[
-			{
-				title:t["common.Overview"],
-				url:`/${locale}/libraries/`
-			},
-			{
-				title:t["common.Treasures Libraries"],
-				url:`/${locale}/libraries/treasure`,
-				selected:true
-			},
-			{
-				title:t["common.Bible"] + " " + t["common.Libraries"],
-				url:`/${locale}/libraries/bible`
-			},
-			{
-				title:t["common.FAQs"],
-				url:`/${locale}/libraries/faqs`
-			},
-		]} />
-
 
 <section id="container" class="mx-auto max-w-5xl">
+
+	<Banner
+		title={t["Libraries"]}
+		subtitle=""
+		caption={t["libraries_about_caption"]}
+		subnav={[
+			{title:t["Overview"],url:`/${locale}/libraries/`},
+			{title:t["Treasures Libraries"],url:`/${locale}/libraries/treasures`},
+			// {title:t["Bible Libraries"],url:`/${locale}/libraries/bible`},
+			// TODO: Restore Bible Libraries Pages once they're downloadable
+			{title:t["FAQs"],url:`/${locale}/libraries/faq`}
+		]} />
 
 	<div class="max-w-4xl px-6 md:px-12 pt-4 md:pt-6 italic mx-auto text-sm text-center sm:hide md:block mb-2">
 		<slot />
@@ -53,15 +43,9 @@
 							class="flex-1 truncate rounded-t-lg p-6"
 							style={`background-image:url(https://images.bible.cloud/treasures/banners/${library.id}.jpg);background-size:cover;`}>
 							<div class="flex items-center space-x-3">
-								<h3
-									class="text-shadow block w-full truncate text-center text-xl text-gray-100">
-									{library.title_vernacular}
-								</h3>
+								<h3 class="text-shadow block w-full truncate text-center text-xl text-gray-100">{library.title_vernacular}</h3>
 							</div>
-							<p
-								class="text-shadow mt-1 block w-full truncate text-center text-xl text-gray-200">
-								{library.title}
-							</p>
+							<p class="text-shadow mt-1 block w-full truncate text-center text-xl text-gray-200">{library.title}</p>
 						</div>
 					</div>
 					<div>
@@ -85,7 +69,7 @@
 											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
 										</path>
 									</svg>
-									<span class="ml-1">{t["common.Demo"]}</span>
+									<span class="ml-1">{t["Demo"]}</span>
 								</a>
 							</div>
 							<div class="-ml-px flex w-0 flex-1">
@@ -105,7 +89,7 @@
 											d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
 										</path>
 									</svg>
-									<span class="ml-1">{t["common.Download"]}</span>
+									<span class="ml-1">{t["Download"]}</span>
 								</a>
 							</div>
 							<div class="-ml-px flex w-0 flex-1">
@@ -125,7 +109,7 @@
 											d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
 										</path>
 									</svg>
-									<span class="ml-1">{t["common.Overview"]}</span>
+									<span class="ml-1">{t["Overview"]}</span>
 								</a>
 							</div>
 						</div>

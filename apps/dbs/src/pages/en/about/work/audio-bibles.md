@@ -2,12 +2,11 @@
 layout: ../../../../layouts/AboutWorkLayout.astro
 title: 'Audio Bibles'
 description: ''
-
 ---
 
 ### The Literacy Factor
 
-Jesus told his disciples, “Go therefore and make disciples of all the nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all things that I have commanded you, and lo, I am with you always, even to the end of the age (Matthew 28:19–20).“
+Jesus told his disciples: _“Go therefore and make disciples of all the nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit, teaching them to observe all things that I have commanded you, and lo, I am with you always, even to the end of the age (Matthew 28:19–20).“_
 
 According to the World Literacy Foundation, 1 in 5 people are completely illiterate while nearly half of the world's population struggle with basic level reading and writing. The impact of which upon economic, social, and health issues is massive.
 

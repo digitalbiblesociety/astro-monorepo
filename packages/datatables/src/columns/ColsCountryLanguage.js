@@ -1,7 +1,7 @@
 import { createRender } from "svelte-headless-table";
 import Cell from "../partials/Cell.svelte";
 
-export function countryLanguagesColumns(table, locale) {
+export default function countryLanguagesColumns(table, locale) {
   return [
     table.column({
       header: "Title",

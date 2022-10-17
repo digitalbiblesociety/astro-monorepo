@@ -1,0 +1,96 @@
+---
+import Layout from "~/layouts/BaseLayout.astro";
+import Newsletter from '~/components/partials/Newsletter.astro'
+import { Icon } from 'astro-icon'
+
+import {i18n} from "~/translations/i18n.mjs";
+import { getLanguageFromPath } from "~/config.mjs";
+const locale = getLanguageFromPath(Astro.url)
+const t = i18n[locale]
+const { meta } = Astro.props;
+---
+
+<Layout>
+		<div class="relative">
+			<div class="relative mx-auto mb-24 max-w-7xl lg:grid lg:grid-cols-5">
+				<div class=" py-16 px-4 sm:px-6 lg:col-span-2 lg:px-8 lg:py-24 xl:pr-12 ">
+					<div class="py-6 mx-6 text-center text-base text-gray-500 dark:text-gray-200 border rounded-lg">
+							<div class="pt-4 flex justify-center">
+								<Icon name="heroicons-outline:location-marker" class=" mr-4 h-8 w-8 text-primary-500" />
+								<div>
+									P.O. Box 2881 <br />
+									Conroe, TX. 77305
+								</div>
+							</div>
+							<div class="pt-4 flex justify-center">
+								<Icon name="heroicons-outline:phone" class=" mr-4 h-8 w-8 text-primary-500 dark:text-gray-300" />
+								<div>
+									936-494-4442 <div class="text-sm text-gray-400"> 9:00am-5:00pm CST </div>
+								</div>
+							</div>
+							<div class="pt-4 flex justify-center">
+								<Icon name="heroicons-outline:inbox" class=" mr-4 h-8 w-8 text-primary-500" />
+								<div class="ml-3">info@dbs.org</div>
+							</div>
+					</div>
+				</div>
+				<div class="px-4 pt-16 sm:px-6 lg:col-span-3 lg:px-8 lg:pt-12 xl:pl-12">
+					<div class="mx-auto max-w-lg ">
+
+						<form
+							action="https://formspree.io/f/xleoznoq"
+							method="POST"
+							class="grid grid-cols-1 gap-y-6">
+							<div>
+								<input
+									type="text"
+									name="name"
+									placeholder={t['Name']}
+									class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-800 shadow-sm focus:border-primary-500 focus:ring-primary-500" />
+							</div>
+							<div>
+								<label for="email" class="sr-only">Email</label>
+								<input
+									id="email"
+									name="email"
+									type="email"
+									autocomplete="email"
+									class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-800 shadow-sm focus:border-primary-500 focus:ring-primary-500"
+									placeholder={t['Email']} />
+							</div>
+							<div>
+								<input
+									type="text"
+									name="subject"
+									placeholder={t['Subject']}
+									class="block w-full rounded-md border-gray-300 py-3 px-4 text-gray-800 shadow-sm focus:border-primary-500 focus:ring-primary-500" />
+							</div>
+							<div>
+								<label for="message" class="sr-only">Message</label>
+								<textarea
+									id="message"
+									name="message"
+									rows="4"
+									class="block w-full rounded-md border border-gray-300 py-3 px-4 text-gray-900 placeholder-gray-500 shadow-sm focus:border-primary-500 focus:ring-primary-500"
+									placeholder="t['Message')">
+								</textarea>
+							</div>
+							<div>
+								<button
+									type="submit"
+									class="inline-flex justify-center rounded-md border border-transparent bg-primary-600 py-3 px-6 text-base font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+									{t['Submit']}
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<Newsletter />
+
+		<hr />
+
+		<slot />
+</Layout>

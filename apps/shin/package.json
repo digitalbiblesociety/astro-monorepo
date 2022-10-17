@@ -1,0 +1,41 @@
+{
+  "name": "@dbs/shin",
+  "description": "A Website Generator",
+  "version": "0.1.2",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build && subfont -ir --no-fallbacks --root dist",
+    "publish-mx": "cd ./dist && rm -rf .git && echo \"mxa.bible.cloud\" >| CNAME && git init && git add . && git commit -m \"auto-push\" && git branch -M main && git remote add origin git@github.com:digitalbiblesociety/tav-astro-mx.git && git push -f -u origin main",
+    "publish-in": "cd ./dist && rm -rf .git && echo \"ina.bible.cloud\" >| CNAME && git init && git add . && git commit -m \"auto-push\" && git branch -M main && git remote add origin git@github.com:digitalbiblesociety/tav-astro-in.git && git push -f -u origin main",
+    "publish-ec": "cd ./dist && rm -rf .git && echo \"eca.bible.cloud\" >| CNAME && git init && git add . && git commit -m \"auto-push\" && git branch -M main && git remote add origin git@github.com:digitalbiblesociety/tav-astro-ec.git && git push -f -u origin main",
+    "preview": "astro preview",
+    "pretty": "prettier --write ."
+  },
+  "devDependencies": {
+    "@astrojs/image": "^0.3.3",
+    "@astrojs/rss": "^1.0.0",
+    "@astrojs/sitemap": "^1.0.0",
+    "@astrojs/svelte": "^1.0.0",
+    "@astrojs/tailwind": "^1.0.0",
+    "@rgossiaux/svelte-headlessui": "^1.0.2",
+    "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@tailwindcss/forms": "^0.4.0",
+    "@tailwindcss/line-clamp": "^0.3.0",
+    "@tailwindcss/typography": "^0.5.4",
+    "@dbs/datatables": "workspace:^0.0.1",
+    "astro": "^1.0.0",
+    "dotenv": "^16.0.1",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.5.0",
+    "qrcode-svg": "^1.1.0",
+    "reading-time": "^1.5.0",
+    "subfont": "^6.9.0",
+    "svelte": "^3.49.0",
+    "svelte-headless-table": "^0.13.3",
+    "d3": "^7.6.1",
+    "d3-selection": "^3.0.0",
+    "lodash": "^4.17.21"
+  }
+}

@@ -1,0 +1,41 @@
+---
+import Layout from '~/layouts/BaseLayout.astro'
+const posts = await Astro.glob('./posts/*.md'); // returns an array of posts that live at ./src/pages/post/*.md
+import Banner from '~/components/partials/Banner.astro'
+
+import {i18n} from "~/translations/i18n.mjs";
+import { getLanguageFromPath } from "~/config.mjs";
+const locale = getLanguageFromPath(Astro.url)
+const t = i18n[locale]
+---
+
+<Layout>
+
+	<Banner 
+		title={t["projects_title"]}
+		subtitle="" 
+		caption={t["projects_tagline"]}
+		breadcrumbs={[
+			{ link: `/about/`, title: t['About'] },
+			{ link: `/about/projects`, title: t['Projects'] },
+			{ link: '#', title: t['about.projects_title'] },
+		]}
+		subnav={[
+			{title:t["Overview"],url:'/about/projects/'},
+			{title:t["Stories"],url:'/about/projects/stories',selected:true},
+			{title:t["Project"],url:'/about/projects/proposals'}
+		]} />
+
+<div class="prose mx-auto">
+{
+  posts.map((post) => (
+    <article>
+      <h4>{post.frontmatter.title}</h4>
+      <date>{ new Date(post.frontmatter.date).toLocaleDateString() }</date>
+      <p>{post.frontmatter.excerpt}</p>
+      <a href={post.frontmatter.url}>Read more</a>
+    </article>
+  )) 
+}
+</div>
+</Layout>

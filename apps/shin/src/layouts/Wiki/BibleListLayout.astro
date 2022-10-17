@@ -1,0 +1,36 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE, TRANSLATIONS, getLanguageFromPath } from "~/config.mjs";
+
+import Datatable from "@dbs/datatables";
+import Banner from "~/components/partials/Banner.svelte";
+import Cell from "~/components/datatable/partials/Cell.svelte"
+import { createRender } from "svelte-headless-table";
+
+const locale = getLanguageFromPath(Astro.url);
+const biblesResponse = await fetch(`${SITE.apiUrl}/bibles_dbs.json`);
+let bibles = await biblesResponse.json();
+
+bibles = bibles.filter(bible => (
+  bible.ci == import.meta.env.COUNTRY_ID
+))
+
+---
+
+<Layout>
+  <Banner
+    background="banner_bibles"
+    translations={{
+      title: TRANSLATIONS[locale].bibles,
+      subtitle: "",
+      breadcrumbs: [
+        {
+          title: "Home",
+          link: `/`,
+        },
+      ],
+    }}
+  />
+
+  <Datatable inputData={bibles} locale={locale} tableType="bibles" client:visible />
+</Layout>

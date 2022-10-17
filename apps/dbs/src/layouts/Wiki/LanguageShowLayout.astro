@@ -1,7 +1,7 @@
 ---
 import Layout from "~/layouts/BaseLayout.astro"
 import { SITE } from "~/config.mjs"
-import { LanguageShow } from "@dbs/bible-wiki"
+import { LanguageShowPage } from "@dbs/astro-bible-wiki"
 import Banner from '~/components/partials/Banner.astro'
 
 export async function getStaticPaths() {
@@ -23,5 +23,5 @@ const language = await languageResponse.json();
 			{ title: "languages", link: `/languages` },
 			{ title: language.title, link: `#` },
 		]} />
-	<LanguageShow language={language} client:visible />
+	<LanguageShowPage language={language} client:visible />
 </Layout>

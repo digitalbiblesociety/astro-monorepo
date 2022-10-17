@@ -1,0 +1,28 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import Map from '~/components/partials/Map/Map.svelte'
+import { SITE } from "~/config.mjs";
+import QrCode from "qrcode-svg";
+
+const title = `${SITE.name}`;
+const description = "";
+const canonical = new URL("", Astro.site);
+
+const {content} = Astro.props;
+
+const qr_code = new QrCode({
+  content: "https://find.bible/",
+  color: "#000",
+  bgColor: "#fff",
+  eccLevel: "L",
+  padding: 0,
+  render: "svg",
+  container: "svg-viewbox",
+});
+---
+
+<Layout meta={{ title, description, canonical }}>
+
+
+
+</Layout>

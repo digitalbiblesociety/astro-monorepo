@@ -1,0 +1,21 @@
+---
+import Layout from '~/layouts/Wiki/BibleShowLayout.astro'
+
+export async function getStaticPaths() {
+  const data = await fetch(`${SITE.apiUrl}/bibles.json`).then((response) =>
+    response.json()
+  );
+
+  return data.map((bible) => {
+    return {
+      params: { id: bible.id },
+    };
+  });
+}
+
+const { id } = Astro.params;
+const bibleResponse = await fetch(`${SITE.apiUrl}/bibles/${id}.json`);
+const bible = await bibleResponse.json();
+
+---
+

@@ -6,24 +6,31 @@ import Banner from '~/components/partials/Banner.astro'
 
 export async function getStaticPaths() {
   const bibles = await fetch(`${SITE.apiUrl}/bibles_dbs.json`).then((response) => response.json())
-  return bibles.map((bible) => { return { params: { id: bible.id } } });
+
+  for (let i = 0; i < bibles.length; i++) {
+    const bible = bibles[i];
+    bibles[i].local = await fetch(`${SITE.apiUrl}/bibles/${bible.id}.json`, { method: "HEAD" })
+      .then(function (response) { return response.ok })
+  }
+
+  return bibles.filter(bible => bible.local).map((bible) => { return { params: { id: bible.id } } });
 }
 
 const { id } = Astro.params;
-const bibleResponse = await fetch(`${SITE.apiUrl}/bibles/${id}.json`);
-const bible = await bibleResponse.json();
+let error
+let bible
+try {
+  bible = await fetch(`${SITE.apiUrl}/bibles/${id}.json`)
+  .then(response => response.json())
+  .catch(error => console.log(error));
+} catch (errorMessage) {
+  error = errorMessage
+}
+
 ---
 
 <Layout>
 
-<Banner 
-	background="banner_bibles"
-  title={bible.title}
-  subtitle={bible.title_vernacular}
-  breadcrumbs={[
-  { title: "Bibles", link: `/bibles`, },
-  { title: bible.title, link: `#`, },
-  ]} />
-
   <BibleShow bible={bible} client:visible />
+  
 </Layout>

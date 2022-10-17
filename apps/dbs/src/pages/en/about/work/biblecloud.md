@@ -7,7 +7,6 @@ title: 'Bible CLoud'
 
 # Bibles Available Online
 
-
 <img class="float-right w-64" src="https://dbs.org/img/about/projects_biblecloud.png" />
 
 The Bible Cloud, is the Bible resource center of the Digital Bible Society, where you can find, read, and download thousands of biblical resources in many languages. The BibleCloud was created to assist Christian Workers worldwide in securing and sharing the Bible message in every language where resources exist.

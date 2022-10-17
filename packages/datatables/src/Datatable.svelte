@@ -5,14 +5,12 @@
 	import DtPagination from './partials/DataTablePagination.svelte'
 	import DtHeader from './partials/DataTableHeader.svelte'
 	import DtSearch from './partials/DataTableSearch.svelte'
-	import Columns from './columns/index'
+	import ColumnTypes from './columns/ColumnTypes'
   
 	export let inputData
 	export let tableType
 	export let locale
-
-	const tHead = (table) => Columns(tableType, table, locale)
-
+	
 	const data = readable(inputData)
 	const table = createTable(data, {
 		filter: addColumnFilters(),
@@ -23,7 +21,7 @@
 		page: addPagination({ initialPageSize: 200 }),
 	});
 
-	const columns = table.createColumns(tHead(table));
+	const columns = table.createColumns(ColumnTypes(tableType, table, locale));
 	const { flatColumns, headerRows, pageRows, tableAttrs, tableBodyAttrs, pluginStates} = table.createViewModel(columns);
 	const ids = flatColumns.map((c) => c.id);
 	const { columnIdOrder } = pluginStates.orderColumns;
