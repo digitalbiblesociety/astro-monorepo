@@ -44,7 +44,7 @@
 				{#each articles as article}
 					<a
 						class="flex flex-col overflow-hidden rounded-lg border border-gray-300 shadow-lg
-								dark:border-gray-800 dark:bg-slate-600"
+								dark:border-gray-800 dark:bg-stone-600"
 						href="{`/about/projects/${article.slug}`}">
 						{#if article.featured_media_src_url}
 							<div class="flex-shrink-0">
@@ -133,7 +133,7 @@
 				<div
 					on:click="{loadPosts}"
 					data-page="{Number(current_page) - 1}"
-					class="cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 hover:bg-gray-50 dark:bg-slate-700 dark:text-gray-200">
+					class="cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 hover:bg-gray-50 dark:bg-stone-700 dark:text-gray-200">
 					{$t("common.Previous")}
 				</div>
 			{/if}
@@ -141,7 +141,7 @@
 				<div
 					on:click="{loadPosts}"
 					data-page="{Number(current_page) + 1}"
-					class="ml-3 cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 hover:bg-gray-50 dark:bg-slate-700 dark:text-gray-200">
+					class="ml-3 cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 hover:bg-gray-50 dark:bg-stone-700 dark:text-gray-200">
 					{$t("common.Next")}
 				</div>
 			{/if}

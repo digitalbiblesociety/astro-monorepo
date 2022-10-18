@@ -14,7 +14,7 @@ export let pages
 {#if $mobileMenuOpen == true}
 	<!-- Mobile menu, show/hide based on menu state. -->
 	<nav aria-label="Global" id="mobile-menu">
-		<div class="space-y-1 bg-gray-100 px-2 pt-2 pb-3 text-gray-800 dark:bg-slate-900 dark:text-gray-200">
+		<div class="space-y-1 bg-gray-100 px-2 pt-2 pb-3 text-gray-800 dark:bg-stone-900 dark:text-gray-200">
 			<!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-900 hover:bg-gray-50 hover:text-gray-900"
 		  <a href="#" class="bg-gray-100 text-gray-900 block rounded-md py-2 px-3 text-base font-medium" aria-current="page">Dashboard</a> -->
 			{#each pages as page}

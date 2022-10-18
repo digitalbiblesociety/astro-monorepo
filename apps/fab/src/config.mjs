@@ -10,8 +10,6 @@ export const SITE = {
   postsPerPage: 6,
 };
 
-
-
 export function getLanguageFromPath(URL){
   const lang = URL.pathname.split("/")[1];
   return lang;

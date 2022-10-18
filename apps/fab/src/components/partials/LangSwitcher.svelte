@@ -1,6 +1,6 @@
 <script>
 	import { Menu, MenuButton, MenuItems, MenuItem } from "@rgossiaux/svelte-headlessui"
-	import {KNOWN_LANGUAGES} from '../../config.mjs';
+	import {SITE} from '../../config.mjs';
 
 	export let url;
 </script>
@@ -15,11 +15,11 @@
 	
 		<MenuItems
 			class="absolute w-28 rounded-md bg-white drop-shadow-lg dark:bg-gray-800">
-			{#each Object.keys(KNOWN_LANGUAGES) as iso}
+			{#each Object.keys(SITE.locales) as iso}
 				<MenuItem
 					class="block cursor-pointer py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700"
 					on:click="{() => window.location.href = `/${iso}/${url}`}">
-					{ KNOWN_LANGUAGES[iso] }
+					{ SITE.locales[iso] }
 				</MenuItem>
 			{/each}
 		</MenuItems>
