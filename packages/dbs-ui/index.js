@@ -1,4 +1,4 @@
-import Banner from 'src/Banner.svelte'
+import Banner from './src/Banner.astro'
 
 export {
     Banner

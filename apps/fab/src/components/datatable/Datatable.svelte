@@ -9,6 +9,7 @@
   
 	export let tableType
 	export let inputData
+	export let locale
 
 	const data = readable(inputData);
 	const table = createTable(data, {
@@ -23,21 +24,21 @@
 	const tHead = (table) => {
 		switch (tableType) {
 			case "languages":
-				return languagesColumns(table)
+				return languagesColumns(table, locale)
 			case "language_bibles":
-				return languagebiblesColumns(table)
+				return languagebiblesColumns(table, locale)
 			case "bibles":
-				return biblesColumns(table)
+				return biblesColumns(table, locale)
 			case "countries":
-				return countriesColumns(table)
+				return countriesColumns(table, locale)
 			case "alphabets":
-				return alphabetsColumns(table)
+				return alphabetsColumns(table, locale)
 			case "films":
-				return filmsColumns(table)
+				return filmsColumns(table, locale)
 			case "resources":
-				return resourcesColumns(table)
+				return resourcesColumns(table, locale)
 			case "country_languages":
-				return countryLanguagesColumns(table)
+				return countryLanguagesColumns(table, locale)
 		}
 	}
 

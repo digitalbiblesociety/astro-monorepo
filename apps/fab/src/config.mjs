@@ -2,7 +2,7 @@ export const SITE = {
   name: "Find a Bible",
   domain: "https://find.bible",
   github: "https://github.com/digitalbiblesociety/findabible",
-  apiUrl: "https://cdn.jsdelivr.net/gh/digitalbiblesociety/data/",
+  apiUrl: "http://data.test/",
   locales: {
     en : 'English',
     es: 'Español'

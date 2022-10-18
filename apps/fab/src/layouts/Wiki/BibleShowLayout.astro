@@ -3,10 +3,8 @@ import Layout from "~/layouts/PageLayout.astro";
 import StaticMapHelper from '~/utils/StaticPathHelper.js'
 import BibleShow from "~/components/partials/BibleShow.svelte";
 import { SITE } from "~/config.mjs";
+import Banner from "@dbs/ui";
 
-export async function getStaticPaths() {
-  return StaticMapHelper('bibles')
-}
 
 const { id } = Astro.params;
 const bibleResponse = await fetch(`${SITE.apiUrl}/bibles/${id}.json`);
@@ -14,5 +12,21 @@ const bible = await bibleResponse.json();
 ---
 
 <Layout>
+  <Banner 
+	background="banner_bibles"
+	translations={{
+		title: bible.title ?? '',
+		subtitle: bible.title_vernacular ?? '',
+		breadcrumbs: [
+			{
+				title: "Bibles",
+				link: `/bibles`,
+			},
+			{
+				title: bible.title,
+				link: `#`,
+			},
+		],
+	}} />
   <BibleShow bible={bible} />
 </Layout>

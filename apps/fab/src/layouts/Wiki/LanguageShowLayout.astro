@@ -2,17 +2,7 @@
 import Layout from "~/layouts/PageLayout.astro";
 import { SITE } from "~/config.mjs";
 import LanguageShow from "~/components/partials/LanguageShow.svelte";
-export async function getStaticPaths() {
-  const data = await fetch(`${SITE.apiUrl}/languages.json`).then((response) =>
-    response.json()
-  );
 
-  return data.map((language) => {
-    return {
-      params: { iso: language.id },
-    };
-  });
-}
 
 const { iso } = Astro.params;
 const languageResponse = await fetch(`${SITE.apiUrl}/languages/${iso}.json`);

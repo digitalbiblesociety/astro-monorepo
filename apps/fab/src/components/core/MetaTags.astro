@@ -1,20 +1,14 @@
 ---
 import { getImage } from '@astrojs/image'
 
-//const { src: defaultImage } = await getImage({
-//  src: import("~/assets/images/default.png"),
-//  width: 1200,
-//  height: 628,
-//});
+const { src: defaultImage } = await getImage({
+  src: "https://via.placeholder.com/1200x628/fff.png",
+  width: 1200,
+  height: 628,
+});
 
-const {
-  title = 'Bible Cloud',
-  description = '',
-  //  image = defaultImage,
-  canonical,
-} = Astro.props
-
-//const absoluteImageUrl = new URL(image, Astro.site);
+const { title = 'Bible Cloud', description = '', image = defaultImage, canonical} = Astro.props
+const absoluteImageUrl = new URL(image, Astro.site);
 ---
 
 <meta charset="UTF-8" />

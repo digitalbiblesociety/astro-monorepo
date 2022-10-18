@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from "svelte"
-	import { groupBy,toArray } from 'lodash';
 	import Banner from './Banner.svelte'
 	export let bible
 
@@ -40,28 +39,17 @@
 
 	};
 
+	function groupBy(array, field)
+	{
+		return array.reduce((r, v, i, a, k = v.length) => ((r[k] || (r[k] = [])).push(v), r), {})
+	}
+
 	function fileSize(size) {
     	var i = Math.floor(Math.log(size) / Math.log(1024));
     	return (size / Math.pow(1024, i)).toFixed(2) * 1 + "\xa0" + ['B', 'kB', 'MB', 'GB', 'TB'][i];
 	}
 </script>
 {#if bible}
-<Banner 
-	background="banner_bibles"
-	translations={{
-		title: bible.title ?? '',
-		subtitle: bible.title_vernacular ?? '',
-		breadcrumbs: [
-			{
-				title: "Bibles",
-				link: `/bibles`,
-			},
-			{
-				title: bible.title,
-				link: `#`,
-			},
-		],
-	}} />
 		  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 z-30">
 
 			  <dl class="rounded-lg bg-white shadow-lg flex flex-row justify-center py-2">
@@ -124,7 +112,7 @@
 	<section class="overflow-hidden text-gray-600">
 		<div class="container mx-auto px-5">
 				<div class="col-span-2">
-					{#each toArray(groupBy(bible.links, 'type')) as link_group_type}
+					{#each groupBy(bible.links, 'type') as link_group_type}
 					{#if translations['link_sections'][link_group_type[0].type]}
 					<div class="bg-gray-50 my-4 rounded shadow-md">
 					<div class="px-4 py-5 border-b border-gray-200 sm:px-6">
@@ -132,7 +120,7 @@
 						<p class="mt-1 text-sm text-gray-500">{ translations['link_sections'][link_group_type[0].type]['description'] ?? '' }</p>
 					</div>
 					<div>
-						{#each toArray(groupBy(link_group_type, 'provider')) as link_group_provider}
+						{#each groupBy(link_group_type, 'provider') as link_group_provider}
 							<div class="bg-gray-100 flex flex-row justify-between p-4">
 								<div class="flex w-1/5 text-center justify-center place-items-center">{link_group_provider[0].provider}</div>
 								<div class="w-4/5 grid grid-cols-2">

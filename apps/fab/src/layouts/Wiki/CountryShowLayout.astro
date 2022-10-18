@@ -4,17 +4,7 @@ import Banner from "~/components/partials/Banner.svelte"
 import CountryShow from "~/components/partials/CountryShow.svelte";
 import { SITE } from "~/config.mjs";
 import Datatable from "~/components/datatable/Datatable.svelte";
-export async function getStaticPaths() {
-  const data = await fetch(`${SITE.apiUrl}/countries.json`).then((response) =>
-    response.json()
-  );
 
-  return data.map((country) => {
-    return {
-      params: { id: country.id },
-    };
-  });
-}
 
 const { id } = Astro.params;
 const countryResponse = await fetch(`${SITE.apiUrl}/countries/${id}.json`);

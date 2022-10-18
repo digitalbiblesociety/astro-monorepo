@@ -1,7 +1,7 @@
 import { createRender } from "svelte-headless-table";
 import Cell from "./partials/Cell.svelte";
 
-export function countriesColumns(table) {
+export function countriesColumns(table, locale) {
   return [
     table.column({
       header: "Title",
@@ -11,7 +11,7 @@ export function countriesColumns(table) {
         createRender(Cell, {
           title: value.tt,
           icon: `<svg class="mr-1 inline-block h-5 w-5 drop-shadow-md"><use href="/img/flags.svg#${value.id}" xlink:href="#${value.id}"></use></svg>`,
-          href: "/countries/" + value.id,
+          href: '/' + locale + "/countries/" + value.id,
         }),
     }),
     table.column({
@@ -26,7 +26,7 @@ export function countriesColumns(table) {
   ];
 }
 
-export function filmsColumns(table) {
+export function filmsColumns(table, locale) {
   return [
     table.column({
       header: "Title",
@@ -41,7 +41,7 @@ export function filmsColumns(table) {
   ];
 }
 
-export function resourcesColumns(table) {
+export function resourcesColumns(table, locale) {
   return [
     table.column({
       header: "Title",
@@ -61,7 +61,7 @@ export function resourcesColumns(table) {
   ];
 }
 
-export function biblesColumns(table) {
+export function biblesColumns(table, locale) {
   return [
     table.column({
       header: "Title",
@@ -71,7 +71,7 @@ export function biblesColumns(table) {
         createRender(Cell, {
           title: value.tt,
           subtitle: value.tv,
-          href: "/bibles/" + value.id,
+          href: '/' + locale + "/bibles/" + value.id,
         }),
       plugins: {
         sort: {
@@ -98,7 +98,7 @@ export function biblesColumns(table) {
   ];
 }
 
-export function languagesColumns(table) {
+export function languagesColumns(table, locale) {
   return [
     table.column({
       header: "Title",
@@ -108,7 +108,7 @@ export function languagesColumns(table) {
         createRender(Cell, {
           title: value.tt,
           subtitle: value.iso,
-          href: "/languages/" + value.id,
+          href: '/' + locale + "/languages/" + value.id,
         }),
       plugins: {
         sort: {
@@ -132,13 +132,13 @@ export function languagesColumns(table) {
         createRender(Cell, {
           title: value.cn,
           icon: "",
-          href: "/countries/" + value.ci,
+          href: '/' + locale + "/countries/" + value.ci,
         }),
     }),
   ];
 }
 
-export function languagebiblesColumns(table) {
+export function languagebiblesColumns(table, locale) {
   return [
     table.column({
       header: "Title",
@@ -148,7 +148,7 @@ export function languagebiblesColumns(table) {
         createRender(Cell, {
           title: value.tt,
           subtitle: value.tv,
-          href: "/bibles/" + value.id,
+          href: '/' + locale + "/bibles/" + value.id,
         }),
       plugins: {
         sort: {
@@ -166,7 +166,7 @@ export function languagebiblesColumns(table) {
   ];
 }
 
-export function countryLanguagesColumns(table) {
+export function countryLanguagesColumns(table, locale) {
   return [
     table.column({
       header: "Title",
@@ -176,7 +176,7 @@ export function countryLanguagesColumns(table) {
         createRender(Cell, {
           title: value.name,
           subtitle: value.autonym,
-          href: "/languages/" + value.iso,
+          href: '/' + locale + "/languages/" + value.iso,
         }),
     }),
     table.column({
@@ -187,7 +187,7 @@ export function countryLanguagesColumns(table) {
   ];
 }
 
-export function alphabetsColumns(table) {
+export function alphabetsColumns(table, locale) {
   return [
     table.column({
       header: "Title",
@@ -197,7 +197,7 @@ export function alphabetsColumns(table) {
         createRender(Cell, {
           title: value.name,
           subtitle: value.family,
-          href: "/alphabets/" + value.script,
+          href: '/' + locale + "/alphabets/" + value.script,
         }),
     }),
   ];

@@ -1,0 +1,18 @@
+---
+import Layout from '~/layouts/Wiki/LanguageShowLayout.astro'
+import { SITE } from "~/config.mjs";
+export async function getStaticPaths() {
+  const data = await fetch(`${SITE.apiUrl}/languages.json`).then((response) =>
+    response.json()
+  );
+
+  return data.map((language) => {
+    return {
+      params: { iso: language.id },
+    };
+  });
+}
+
+---
+
+<Layout></Layout>

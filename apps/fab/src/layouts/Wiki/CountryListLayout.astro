@@ -2,7 +2,7 @@
 import Layout from "~/layouts/PageLayout.astro";
 import { SITE } from "~/config.mjs";
 
-import Banner from "~/components/partials/Banner.svelte";
+import Banner from "@dbs/ui";
 import Datatable from "~/components/datatable/Datatable.svelte";
 
 const countriesResponse = await fetch(`${SITE.apiUrl}/countries.json`);
