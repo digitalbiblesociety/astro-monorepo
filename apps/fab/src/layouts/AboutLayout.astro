@@ -1,7 +1,9 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
 import { getLanguageFromPath, TRANSLATIONS } from '~/config.mjs';
-const language = getLanguageFromPath(Astro.url);
+import { i18n } from '@dbs/ui'
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
 
 ---
 <Layout>
@@ -9,10 +11,10 @@ const language = getLanguageFromPath(Astro.url);
 <div class="prose mx-auto max-w-prose">
 
     <nav class="text-center">
-        <a href={`/${language}/about`}>{TRANSLATIONS[language].about}</a>
-        <a href={`/${language}/about/faq`}>{TRANSLATIONS[language].faq}</a>
-        <a href={`/${language}/about/suggestions`}>{TRANSLATIONS[language].suggestions}</a>
-        <a href={`/${language}/about/contact`}>{TRANSLATIONS[language].contact}</a>
+        <a href={`/${locale}/about`}>{t['about']}</a>
+        <a href={`/${locale}/about/faq`}>{t['faq']}</a>
+        <a href={`/${locale}/about/suggestions`}>{t['suggestions']}</a>
+        <a href={`/${locale}/about/contact`}>{t['contact']}</a>
     </nav>
 
     <slot />

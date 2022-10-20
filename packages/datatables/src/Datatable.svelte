@@ -28,9 +28,10 @@
 	$columnIdOrder = ids;
 </script>
 
+<div class="dt-table">
 <DtSearch pluginStates={pluginStates} />
 
-<table class="min-w-full divide-y divide-gray-300 dark:divide-gray-900 rounded-t-lg" {...$tableAttrs}>
+<table class="min-w-full mx-auto divide-y divide-gray-300 dark:divide-gray-900 rounded-t-lg" {...$tableAttrs}>
 	<DtHeader headerRows={$headerRows} />
 	  <tbody class="divide-y divide-gray-200 dark:divide-gray-900 bg-white dark:bg-stone-700" {...$tableBodyAttrs}>
 		{#each $pageRows as row (row.id)}
@@ -55,3 +56,4 @@
 </table>
 
 <DtPagination {pluginStates} />
+</div>

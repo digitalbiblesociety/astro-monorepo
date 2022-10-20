@@ -1,20 +1,9 @@
 ---
-import Layout from "~/layouts/PageLayout.astro";
-import StaticMapHelper from '~/utils/StaticPathHelper.js'
-import BibleShow from "~/components/partials/BibleShow.svelte";
-import { SITE } from "~/config.mjs";
+import Layout from "~/layouts/Wiki/BibleShowLayout.astro";
+import StaticPathHelper from "~/utils/StaticPathHelper";
 
 export async function getStaticPaths() {
-  const biblesResponse = await fetch(`${SITE.apiUrl}/bibles.json`);
-  const bibles = await biblesResponse.json();
-	return bibles.map((bible) => { return { params: { id: bible.id } } });
+  return StaticPathHelper('bibles');
 }
-
-const { id } = Astro.params;
-const bibleResponse = await fetch(`${SITE.apiUrl}/bibles/${id}.json`);
-const bible = await bibleResponse.json();
 ---
-
-<Layout>
-  <BibleShow bible={bible} />
-</Layout>
+<Layout />

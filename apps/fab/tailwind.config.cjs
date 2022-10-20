@@ -3,7 +3,10 @@ const colors = require("tailwindcss/colors");
 require("dotenv").config();
 
 module.exports = {
-  content: ["./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}"],
+  content: [
+    "./src/**/*.{astro,html,js,jsx,md,svelte}",
+    "../../packages/**/*.{astro,html,js,jsx,md,svelte}"
+  ],
   theme: {
     extend: {
       colors: {

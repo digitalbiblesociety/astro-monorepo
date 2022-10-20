@@ -1,12 +1,14 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import Map from '~/components/partials/Map/Map.svelte'
-import { SITE } from "~/config.mjs";
+import Map from '~/components/partials/Map/Map.svelte';
+import { SITE, getLanguageFromPath } from "~/config.mjs";
+
 import QrCode from "qrcode-svg";
 
 const title = `${SITE.name} — Your website with Astro + Tailwind CSS`;
 const description = "🚀 AstroWind is a free and Ready to Start template to make your website using Astro and Tailwind CSS.";
 const canonical = new URL("", Astro.site);
+const locale = getLanguageFromPath(Astro.url);
 
 const {content} = Astro.props;
 
@@ -23,7 +25,7 @@ const qr_code = new QrCode({
 
 <Layout meta={{ title, description, canonical }}>
 
-  <Map client:only />
+  <Map locale={locale} client:only />
 
     <div class="overflow-hidden bg-gray-50 py-16 lg:py-24">
       <div class="relative mx-auto max-w-xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">

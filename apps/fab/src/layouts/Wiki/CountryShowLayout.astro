@@ -1,37 +1,97 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import Banner from "~/components/partials/Banner.svelte"
-import CountryShow from "~/components/partials/CountryShow.svelte";
+import { Banner } from "@dbs/ui";
 import { SITE } from "~/config.mjs";
-import Datatable from "~/components/datatable/Datatable.svelte";
-
+import Datatable from "@dbs/datatables";
 
 const { id } = Astro.params;
 const countryResponse = await fetch(`${SITE.apiUrl}/countries/${id}.json`);
 const country = await countryResponse.json();
+
+let infobox
+
+	let translations = {
+		'population': 'Population',
+		'languages': 'Languages',
+		'official_language': 'Official Language',
+		'religion_primary': 'Primary Religion',
+		'world_watch_list': 'World Watch List',
+		'persecution_type': 'Persecution Type',
+		'overview': 'Overview',
+	}
+
+	const table_row = (row, locale) =>  `
+	<tr class="py-4 text-sm">
+		<td class="whitespace-nowrap px-6 text-gray-900 dark:text-gray-200">
+			<a href=/${locale}/languages/${row.iso}>
+				<div>${row.name}</div>
+				<div class="text-xs italic text-gray-500 dark:text-gray-300">${row.autonym ?? ''}</div>
+			</a>
+		</td>
+		<td class="hidden whitespace-nowrap px-6 sm:table-cell">${row.iso}</td>
+	</tr>`
+
 ---
 
 <Layout>
 
 <Banner
   background="countries-list"
-  translations={{
-    title: country.name,
-    subtitle: country.region_name,
-    breadcrumbs: [
-      {
-        title: "Home",
-        link: `/`,
-      },
-    ],
-  }}
+  title={country.name}
+  subtitle={country.region_name}
 />
 <div class="flex flex-row">
 <div class="w-full sm:w-3/5 p-4">
-  <Datatable inputData={country.languages} tableType='country_languages' client:only />
+  <Datatable inputData={country.languages} tableType='country_languages' client:visible />
 </div>
 <div class="w-2/5 hidden sm:block">
-  <CountryShow country={country} />
+
+  <div class="prose dark:prose-invert px-4 py-8">
+    {country.overview}
+    <a class="block mt-2 text-center" href={country.url_wiki}> Wikipedia </a>
+  </div>
+
+  <dl class="mx-4">
+    <div class="flex justify-between py-1 text-sm">
+      <dt>{translations.population}</dt>
+      <dd>
+        {new Intl.NumberFormat(country.population, {
+          maximumSignificantDigits: 8
+        }).format(country.population)}
+      </dd>
+    </div>
+    <div class="flex justify-between py-1 text-sm">
+      <dt>{translations.official_language}</dt>
+      <dd>
+        <a class="underline" href="/{locale}/languages/{country.official_language_iso}">{country.official_language}</a>
+      </dd>
+    </div>
+    <div class="flex justify-between py-1 text-sm">
+      <dt>{translations.languages}</dt>
+      <dd>{country.languages.length}</dd>
+    </div>
+    <div class="flex justify-between py-1 text-sm">
+      <dt>{translations.religion_primary}</dt>
+      <dd>{country.religion_primary}</dd>
+    </div>
+
+    {(country.persecution) ? <div class="mt-2 border-t border-b border-gray-200">
+      <div class="flex justify-between py-1 text-sm">
+        <dt>{translations.world_watch_list}</dt>
+        <dd>{country.persecution.rank}
+          <small class="align-top text-xs">({country.persecution.score})</small>
+        </dd>
+      </div>
+      <div class="flex flex-col py-1 text-sm">
+        <dt>{translations.persecution_type}</dt>
+        <dd>{country.persecution.persecution_type}</dd>
+      </div>
+    </div> : ''}
+  </dl>
+  
+  {infobox ? <table class="infobox" set:html={infobox}></table> : '' }
+
 </div>
 </div>
 </Layout>
+

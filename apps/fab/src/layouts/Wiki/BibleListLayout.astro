@@ -1,28 +1,21 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
 import { SITE, getLanguageFromPath } from "~/config.mjs";
-import Banner from "@dbs/ui";
-import Datatable from "~/components/datatable/Datatable.svelte";
+
+import Datatable from "@dbs/datatables";
+import { Banner,i18n } from "@dbs/ui";
 
 const biblesResponse = await fetch(`${SITE.apiUrl}/bibles.json`);
 const bibles = await biblesResponse.json();
 const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
 ---
 
 <Layout>
   <Banner
     background="banner_bibles"
-    translations={{
-      title: "Bibles",
-      subtitle: "",
-      breadcrumbs: [
-        {
-          title: "Home",
-          link: `/`,
-        },
-      ],
-    }}
+    title={t['bibles']}
   />
 
-  <Datatable inputData={bibles} locale={locale} tableType="bibles" client:only />
+  <Datatable inputData={bibles} locale={locale} tableType="bibles" client:visible />
 </Layout>

@@ -1,28 +1,16 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { SITE } from "~/config.mjs";
+import { SITE, getLanguageFromPath } from "~/config.mjs";
 
-import Banner from "@dbs/ui";
-import Datatable from "~/components/datatable/Datatable.svelte";
+import Datatable from "@dbs/datatables";
+import { Banner, i18n } from "@dbs/ui";
 
 const countriesResponse = await fetch(`${SITE.apiUrl}/countries.json`);
 const countries = await countriesResponse.json();
+const locale = getLanguageFromPath(Astro.url);
 ---
 
 <Layout>
-  <Banner
-    background="countries-list"
-    translations={{
-      title: "Countries",
-      subtitle: "",
-      breadcrumbs: [
-        {
-          title: "Home",
-          link: `/`,
-        },
-      ],
-    }}
-  />
-
-  <Datatable inputData={countries} tableType="countries" client:only />
+  <Banner background="banner_countries" title="Countries" />
+  <Datatable inputData={countries} locale={locale} tableType="countries" client:visible />
 </Layout>

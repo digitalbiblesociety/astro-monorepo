@@ -1,16 +1,42 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { SITE } from "~/config.mjs";
-import LanguageShow from "~/components/partials/LanguageShow.svelte";
+import { SITE, getLanguageFromPath } from "~/config.mjs";
+import { Banner, i18n } from "@dbs/ui";
+import Datatable from "@dbs/datatables";
 
-
-const { iso } = Astro.params;
-const languageResponse = await fetch(`${SITE.apiUrl}/languages/${iso}.json`);
+const { id } = Astro.params;
+const languageResponse = await fetch(`${SITE.apiUrl}/languages/${id}.json`);
 const language = await languageResponse.json();
+const locale = getLanguageFromPath(Astro.url)
+const t = i18n[locale]
+
+const resources = language.bibles.map(bible => {
+	return {
+		title: bible.title,
+		title_vernacular: bible.title_vernacular,
+		url: `/${locale}/bibles/${bible.id}`,
+    type: 'bibles',
+		date: bible.date
+	}
+}).concat(language.films.map(film => {
+  return {
+    title: film.title,
+    title_vernacular: film.title_vernacular,
+    type: 'films',
+    url: film.url,
+    date: ''
+  }
+})).concat(language.resources.map(resource => {
+  return {
+    title: resource.title,
+    title_vernacular: resource.title_vernacular,
+    type: 'resources',
+    url: resource.url,
+    date: ''
+  }
+}))
 ---
-
 <Layout>
-
-  <LanguageShow language={language} client:only />
-
+  <Banner title={language.name} />
+  <Datatable inputData={resources} tableType="resources" />
 </Layout>

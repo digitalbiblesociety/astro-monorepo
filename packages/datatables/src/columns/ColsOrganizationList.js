@@ -19,7 +19,7 @@ export default function organizationsColumns(table, locale) {
         createRender(Cell, {
           title: value.tt,
           subtitle: '',
-          href: '/' + locale + "/about/community/organizations/" + value.id,
+          href: '/' + locale + "/organizations/" + value.id,
         }),
     }),
     table.column({

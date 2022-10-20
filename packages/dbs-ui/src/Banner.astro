@@ -1,27 +1,25 @@
 ---
-	export let breadcrumbs
-	export let background
-	export let translations
-	export let tabs
+	import BreadcrumbNav from "./Breadcrumbs.astro";
+	const {title,subtitle,background,breadcrumbs} = Astro.props;
 ---
 
 <div class="relative overflow-hidden xl:rounded-tl-xl xl:rounded-tr-xl text-center h-44">
-	<div class="relative flex flex-col h-full text-white z-30">
+	{breadcrumbs ? <BreadcrumbNav breadcrumbs={breadcrumbs} /> : ''}
 
-		<div class="flex flex-col flex-grow justify-center items-center">
-			<h1 class="text-4xl font-extrabold leading-8 tracking-wider sm:text-2xl">{translations?.title ?? ''}</h1>
-			<h2 class="text-xl">{translations?.subtitle ?? ''}</h2>
-		</div>
+	<header class="flex flex-col flex-grow py-8 justify-center items-center relative z-30">
+		<h1 class="text-4xl font-extrabold leading-8 tracking-wider sm:text-2xl text-stone-100">{title}</h1>
+		<h2 class="text-xl text-stone-100">{subtitle ?? ''}</h2>
+	</header>
 
-	</div>
-
-	<picture>
-		<!-- <source srcset="{background}.webp" type="image/webp"> -->
-		<source srcset="/img/banner/{background}.jpg" type="image/jpeg">
-		<!-- svelte-ignore a11y-missing-attribute -->
-		<img class="object-cover h-full w-full inset-0 absolute z-10" src="/img/{background}.jpg" role="presentation" />
-	</picture>
+	{background ?	
+		<picture>
+			<source srcset={`/img/banner/${background}.webp`} type="image/webp">
+			<source srcset={`/img/banner/${background}.jpg`} type="image/jpeg">
+			<img src={`/img/banner/${background}.jpg`} class="object-cover h-full w-full inset-0 absolute z-10" />
+		</picture>
+	: ''}
 
 	<div class="absolute inset-0 w-full h-full overflow-hidden bg-gradient-to-r from-primary-500 via-primary-800 
 	to-secondary-500 dark:from-primary-800 dark:via-primary-900 dark:to-secondary-800 opacity-80 z-20"></div>
+	
 </div>

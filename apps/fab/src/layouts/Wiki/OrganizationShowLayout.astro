@@ -1,0 +1,109 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE, getLanguageFromPath } from "~/config.mjs";
+import { Banner, Breadcrumbs, i18n } from "@dbs/ui"
+import Datatable from "@dbs/datatables"
+
+const { id } = Astro.params;
+const organizationResponse = await fetch(`${SITE.apiUrl}/organizations/${id}.json`);
+const organization = await organizationResponse.json();
+const locale = getLanguageFromPath(Astro.url);
+
+const resources = organization.bibles.map(bible => {
+	return {
+		title: bible.title,
+		title_vernacular: bible.title_vernacular,
+		url: `/${locale}/bibles/${bible.id}`,
+    type: 'bible',
+		date: bible.date
+	}
+}).concat(organization.films.map(film => {
+  return {
+    title: film.title,
+    title_vernacular: film.title_vernacular,
+    type: 'film',
+    url: film.url,
+    date: ''
+  }
+})).concat(organization.resources.map(resource => {
+  return {
+    title: resource.title,
+    title_vernacular: resource.title_vernacular,
+    type: 'resource',
+    url: resource.url,
+    date: ''
+  }
+}))
+
+---
+<Layout>
+<div class="relative flex flex-col -mb-9 pb-5 xl:rounded-tl-xl xl:rounded-tr-xl text-gray-100 text-2xl text-center h-32"
+	style={`background-image: linear-gradient(to bottom right, ${organization.colors.primary}, ${organization.colors.secondary});`}>
+	<div class="start">
+
+	</div>
+	<h1 class="text-center text-3xl font-extrabold leading-8 tracking-wider text-white-900 xl:text-4xl">{organization.name}</h1>
+	<div class="absolute top-0 right-4 sm:right-0 flex">
+		<a class="p-1" href={organization.url_website}>
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+			</svg>
+		</a>
+		<a class="p-1" href={organization.url_facebook}>
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+				<path fill="none" d="M0 0h24v24H0z"/>
+				<path d="M14 14h3l1-4h-4V8c0-2 0-2 2-2h2V2h-3c-3 0-5 2-5 5v3H7v4h3v8h4v-8z"/>
+			</svg>
+		</a>
+		<a class="p-1" href={organization.url_donate}>
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+			</svg>
+		</a>
+		<a class="p-1" href={organization.url_twitter}>
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 33.9 33.9" fill="currentColor">
+				<path d="M30 10v1A20 20 0 0 1 0 28h2c3 0 6-1 8-3-3 0-5-2-6-5a7 7 0 0 0 3 0c-3-1-6-4-6-7l4 1A7 7 0 0 1 2 4c4 5 9 7 15 8v-2a7 7 0 0 1 12-5l4-1-3 4 4-2-4 4z"/>
+			</svg>
+		</a>
+	</div>
+</div>
+
+	<div>
+
+		{(organization.bible || organization.resources) ? 
+			<Datatable inputData={resources} locale={locale} tableType="resources" client:visible />
+			<noscript>
+				<style>
+        			.dt-table {display:none;}
+    			</style>
+				<table>
+				<thead>
+					<th>Language</th>
+					<th>title</th>
+					<th class="hidden md:table-cell">Date</th>
+				</thead>
+				<tbody>
+					{organization.bibles.map(row => (
+						<tr>
+							<td class="hidden whitespace-nowrap px-6 py-4 text-gray-900">{row.id}</td>
+							<td class="whitespace-nowrap px-6 py-4 text-gray-900">
+								<a href={`/${locale}/languages/${row.id}`}>
+									<div class="text-sm text-gray-900 dark:text-gray-300">{row.language ? row.language.name : ""}</div>
+									<div class="text-xs italic text-gray-500">{row.iso}</div>
+								</a>
+							</td>
+							<td class="px-6 py-4">
+								<a class="max-w-sm overflow-hidden text-ellipsis text-sm" href={`/${locale}/bibles/${row.id}`}>
+									<div class="text-gray-900 dark:text-gray-300">{row.title}</div>
+									<div class="text-gray-500">{row.title_vernacular ?? ""}</div>
+								</a>
+							</td>
+							<td class="hidden whitespace-nowrap px-6 py-4 text-gray-900 md:table-cell">{row.date}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+			</noscript> : ''}
+
+	</div>
+</Layout>

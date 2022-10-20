@@ -1,0 +1,16 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE, getLanguageFromPath } from "~/config.mjs";
+
+import Datatable from "@dbs/datatables";
+import { Banner, i18n } from "@dbs/ui";
+
+const organizationsResponse = await fetch(`${SITE.apiUrl}/organizations.json`);
+const organizations = await organizationsResponse.json();
+const locale = getLanguageFromPath(Astro.url);
+---
+
+<Layout>
+  <Banner background="banner_organizations" title="Organizations" />
+  <Datatable inputData={organizations} locale={locale} tableType="organizations" client:visible />
+</Layout>

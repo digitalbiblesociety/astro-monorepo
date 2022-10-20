@@ -2,6 +2,8 @@
 	import countryShapes from "./country-shapes.js"
 	import Map from "./WorldMap.svelte"
   
+	export let locale
+
 	const createData = () => {
 	  return countryShapes.map(d => [
 		d.properties.geounit,
@@ -15,6 +17,7 @@
   <div class="wrapper">
 	<Map
 	  {data}
+	  locale={locale}
 	  nameAccessor="{d => d[0]}"
 	  rAccessor="{d => d[1]}"
 	  colorAccessor="{d => d[2]}" />
@@ -33,6 +36,5 @@
 	  position: absolute;
 	  top: 0;
 	  font-style: italic;
-	  color: var(--text-light);
 	}
   </style>

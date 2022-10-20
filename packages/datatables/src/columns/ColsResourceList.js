@@ -15,8 +15,12 @@ export default function resourcesColumns(table, locale) {
         }),
     }),
     table.column({
-      header: "Author",
-      accessor: "author",
+      header: "Type",
+      accessor: "type",
+    }),
+    table.column({
+      header: "Date",
+      accessor: "date",
     }),
   ];
 }

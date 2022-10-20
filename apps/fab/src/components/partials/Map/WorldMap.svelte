@@ -4,6 +4,7 @@
 	import { zoom, zoomIdentity } from "d3-zoom"
 	import { select } from "d3-selection"
 	
+	export let locale = 'en'
 	export let color_buttons = true
 	export let pins = null
 	
@@ -622,7 +623,7 @@
 					class="cursor-pointer"
 					center="{data.properties.center}"
 					d="{path(data)}"
-					on:click="{() => window.location.href = `/countries/${data.properties.country_id}`}"
+					on:click="{() => window.location.href = `/${locale}/countries/${data.properties.country_id}`}"
 					fill="{currentCountries[data.properties.country_id]}"
 					stroke="#222">
 				</path>
@@ -632,7 +633,7 @@
 				{#each pins as pin}
 					<g
 						transform="translate({projection([pin.longitude, pin.latitude])})"
-						on:click="{() => window.location.href = `/organizations/${pin.id}`}">
+						on:click="{() => window.location.href = `/${locale}/organizations/${pin.id}`}">
 						<circle
 							r="7"
 							fill="{pin.primary_color}"
