@@ -4,7 +4,7 @@ import { SITE } from "~/config.mjs";
 const sectionResponse = await fetch(`${SITE.apiUrl}/site_index.json`)
 const sections = await sectionResponse.json()
 const date = new Date()
-const locales = Object(SITE.locales).keys()
+const locales = Object.keys(SITE.locales)
 
 export const get = () =>
   rss({
