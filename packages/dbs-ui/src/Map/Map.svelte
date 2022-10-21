@@ -14,7 +14,7 @@
 	let data = createData()
   </script>
   
-  <div class="wrapper">
+  <div class="wrapper h-[50vh] bg-gradient-to-br from-blue-900 to-teal-500">
 	<Map
 	  {data}
 	  locale={locale}
@@ -28,7 +28,6 @@
   
   <style>
 	.wrapper {
-	  background: #f8f8f8;
 	  margin: -1em;
 	  padding: 1em;
 	}

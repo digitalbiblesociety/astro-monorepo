@@ -18,7 +18,7 @@
 	let projection = geoNaturalEarth1()
 	let path = geoPath(projection)
 	let width = 1000
-	let height = 400
+	let height = 450
 	let viewBox = [0, 0, width, height]
 	let map_data
 
@@ -614,7 +614,7 @@
 		</div>
 	{/if}
 	
-	<svg id="map" class="bg-secondary-500 mx-auto max-h-64 w-full" viewBox={[0, 0, width, height]}>
+	<svg id="map" class="mx-auto w-full h-[20rem]" viewBox={[0, 0, width, height]}>
 		{#if map_data}
 		<g id="countryWrap">
 			{#each map_data as data, i}

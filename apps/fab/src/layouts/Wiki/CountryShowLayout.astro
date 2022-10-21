@@ -1,12 +1,13 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { Banner } from "@dbs/ui";
-import { SITE } from "~/config.mjs";
+import { Banner, ScriptlessTable } from "@dbs/ui";
+import { SITE, getLanguageFromPath } from "~/config.mjs";
 import Datatable from "@dbs/datatables";
 
 const { id } = Astro.params;
 const countryResponse = await fetch(`${SITE.apiUrl}/countries/${id}.json`);
 const country = await countryResponse.json();
+const locale = getLanguageFromPath(Astro.url);
 
 let infobox
 
@@ -21,15 +22,13 @@ let infobox
 	}
 
 	const table_row = (row, locale) =>  `
-	<tr class="py-4 text-sm">
-		<td class="whitespace-nowrap px-6 text-gray-900 dark:text-gray-200">
-			<a href=/${locale}/languages/${row.iso}>
+    <td class="whitespace-nowrap py-2 text-sm text-gray-900 dark:text-gray-200">
+			<a href="/${locale}/languages/${row.iso}" class="hover:underline">
 				<div>${row.name}</div>
 				<div class="text-xs italic text-gray-500 dark:text-gray-300">${row.autonym ?? ''}</div>
 			</a>
 		</td>
-		<td class="hidden whitespace-nowrap px-6 sm:table-cell">${row.iso}</td>
-	</tr>`
+		<td class="hidden whitespace-nowrap py-2 text-sm sm:table-cell text-center">${row.population.toLocaleString("en-US")}</td>`
 
 ---
 
@@ -42,7 +41,8 @@ let infobox
 />
 <div class="flex flex-row">
 <div class="w-full sm:w-3/5 p-4">
-  <Datatable inputData={country.languages} tableType='country_languages' client:visible />
+  <Datatable inputData={country.languages} locale={locale} tableType='country_languages' client:visible />
+  <ScriptlessTable inputData={country.languages} locale={locale} tableType='country_languages' />
 </div>
 <div class="w-2/5 hidden sm:block">
 

@@ -8,9 +8,10 @@ import { Banner, i18n } from "@dbs/ui";
 const countriesResponse = await fetch(`${SITE.apiUrl}/countries.json`);
 const countries = await countriesResponse.json();
 const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
 ---
 
 <Layout>
-  <Banner background="banner_countries" title="Countries" />
+  <Banner background="banner_countries" title={t.countries} />
   <Datatable inputData={countries} locale={locale} tableType="countries" client:visible />
 </Layout>

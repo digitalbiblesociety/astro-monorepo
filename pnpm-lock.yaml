@@ -69,6 +69,7 @@ importers:
       '@tailwindcss/line-clamp': ^0.3.0
       '@tailwindcss/typography': ^0.5.4
       astro: ^1.0.0
+      astro-og-canvas: ^0.1.5
       autoprefixer: 10.4.5
       d3: ^7.6.1
       d3-selection: ^3.0.0
@@ -80,6 +81,8 @@ importers:
       subfont: ^6.9.0
       svelte: ^3.49.0
       svelte-headless-table: ^0.13.3
+    dependencies:
+      astro-og-canvas: 0.1.5_astro@1.5.1
     devDependencies:
       '@astrojs/image': 0.3.7
       '@astrojs/rss': 1.0.2
@@ -1198,6 +1201,17 @@ packages:
       svgo: 2.8.0
     dev: false
 
+  /astro-og-canvas/0.1.5_astro@1.5.1:
+    resolution: {integrity: sha512-5fzA7pVRhlh4t4tuX73TwYsP9phb5S+UU1Hhzu/D5GsP3djwuDpw8sTLohIxxsKbvWErko4HCvU2qDMtCoX7KA==}
+    engines: {node: '>=16.0.0'}
+    peerDependencies:
+      astro: ^1.0.0
+    dependencies:
+      astro: 1.5.1
+      canvaskit-wasm: 0.37.0
+      entities: 4.4.0
+    dev: false
+
   /astro/1.5.1:
     resolution: {integrity: sha512-jHJ0NeaGEhGkp+z7wBlNtb8s7HVFkudNJaCJO1AXk7e2AhhcPrtiueRpjDK1QWkixWHF1EYNhav7TNqJscodMw==}
     engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
@@ -1483,6 +1497,10 @@ packages:
 
   /caniuse-lite/1.0.30001421:
     resolution: {integrity: sha512-Sw4eLbgUJAEhjLs1Fa+mk45sidp1wRn5y6GtDpHGBaNJ9OCDJaVh2tIaWWUnGfuXfKf1JCBaIarak3FkVAvEeA==}
+
+  /canvaskit-wasm/0.37.0:
+    resolution: {integrity: sha512-hegK3gdVQJwgOre02kFHJDEo9b+VHY/bA/N+12C7fECSosGL9Q7gwcz4vnDdOnzSoeLCRH26oTNK3gEO+dm+dg==}
+    dev: false
 
   /capitalize/2.0.4:
     resolution: {integrity: sha512-wcSyiFqXRYyCoqu0o0ekXzJAKCLMkqWS5QWGlgTJFJKwRmI6pzcN2hBl5VPq9RzLW5Uf4FF/V/lcFfjCtVak2w==}
@@ -2331,6 +2349,11 @@ packages:
 
   /entities/2.2.0:
     resolution: {integrity: sha512-p92if5Nz619I0w+akJrLZH0MX0Pb5DX39XOwQTtXSdQQOaYH03S1uIQp4mhOZtAXrxq4ViO67YTiLBo2638o9A==}
+
+  /entities/4.4.0:
+    resolution: {integrity: sha512-oYp7156SP8LkeGD0GF85ad1X9Ai79WtRsZ2gxJqtBuzH+98YUV6jkHEKlZkMbcrjJjIVJNIDP/3WL9wQkoPbWA==}
+    engines: {node: '>=0.12'}
+    dev: false
 
   /eol/0.9.1:
     resolution: {integrity: sha512-Ds/TEoZjwggRoz/Q2O7SE3i4Jm66mqTDfmdHdq/7DKVk3bro9Q8h6WdXKdPqFLMoqxrDK5SVRzHVPOS6uuGtrg==}

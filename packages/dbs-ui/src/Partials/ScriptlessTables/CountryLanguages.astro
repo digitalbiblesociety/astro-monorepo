@@ -1,0 +1,18 @@
+---
+
+---
+
+<noscript>
+    <style>.dt-table {display: none;}</style>
+    <table class="w-full">
+      <thead>
+        <th>Title</th>
+        <th>Population</th>
+      </thead>
+      <tbody>
+      {(country.languages.map(language => (
+        <tr set:html={table_row(language, locale)}></tr>
+      )))}
+      </tbody>
+    </table>
+</noscript>
