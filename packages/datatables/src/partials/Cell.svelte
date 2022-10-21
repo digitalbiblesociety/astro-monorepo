@@ -5,7 +5,7 @@
 	export let icon = undefined
 </script>
 
-<a href={href} class="hover:underline flex flex-row">
+<a href={href} class="hover:underline flex flex-row items-center">
 	{#if icon}
 		{@html icon}
 	{/if}

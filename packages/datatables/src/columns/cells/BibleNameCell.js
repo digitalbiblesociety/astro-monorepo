@@ -4,7 +4,7 @@ import Cell from "../../partials/Cell.svelte";
 export default function (locale) {
 	return {
 		header: "Title",
-		id: "title-block",
+		id: "bible-title-block",
 		accessor: (item) => item,
 		cell: ({ value }) =>
 		  createRender(Cell, {

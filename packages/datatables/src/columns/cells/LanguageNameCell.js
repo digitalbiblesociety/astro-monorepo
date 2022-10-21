@@ -3,22 +3,22 @@ import Cell from "../../partials/Cell.svelte";
 
 export default function (locale) {
 	return {
-		header: "Title",
-		id: "title-block",
+		header: "Language",
+		id: "language-block",
 		accessor: (item) => item,
 		cell: ({ value }) =>
 		  createRender(Cell, {
 			title: value.tt,
-			subtitle: value.iso,
+			subtitle: value.tv,
 			href: '/' + locale + "/languages/" + value.id,
-		  }),
+		}),
 		plugins: {
-		  sort: {
-			getSortValue: (i) => i.tt + i.tv,
-		  },
-		  tableFilter: {
-			getFilterValue: (i) => i.tt + i.tv,
-		  },
+			sort: {
+				getSortValue: (i) => i.tt + i.tv + i.iso,
+			},
+			tableFilter: {
+				getFilterValue: (i) => i.tt + i.tv + i.iso,
+			},
 		},
 	}
 }
