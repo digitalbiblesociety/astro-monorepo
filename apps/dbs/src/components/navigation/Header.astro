@@ -1,10 +1,7 @@
 ---
 
 import CartButton from "./Header/CartButton.svelte"
-import LanguageSwitcher from "@dbs/ui"
-
-
-
+import { LanguageSwitcher } from "@dbs/ui"
 import Menu from './Header/Menu.astro'
 import MenuMobile from "./Header/MenuMobile.svelte"
 import MenuMobileButton from './Header/MenuMobileButton.svelte'
@@ -16,7 +13,7 @@ import Logo from "./Logo.astro"
 // import DesktopMenu from "./Partials/MenuDesktop.svelte"
 
 
-import { getLanguageFromPath } from "~/config.mjs";
+import { getLanguageFromPath, SITE } from "~/config.mjs";
 import {i18n} from "~/translations/i18n.mjs";
 const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
@@ -179,7 +176,7 @@ let pages = [
 			<Logo />
 			<Search client:idle />
 			<div class="relative z-10 flex items-center justify-between">
-				<LanguageSwitcher />
+				<LanguageSwitcher locales={SITE.locales} />
 				<CartButton client:visible />
 				<MenuMobileButton client:visible />
 			</div>

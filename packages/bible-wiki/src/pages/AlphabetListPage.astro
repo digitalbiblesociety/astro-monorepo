@@ -6,7 +6,6 @@ const { alphabets, locale, translation } = Astro.props;
 ---
 
 <div class="max-w-3xl mx-auto">
-	
 	<h1 class="text-center text-3xl pt-12">{translation["Alphabets"]}</h1>
 	<Datatable inputData={alphabets} locale={locale} tableType="alphabets" client:visible />
 </div>

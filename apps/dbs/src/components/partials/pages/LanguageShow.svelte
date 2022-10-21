@@ -1,7 +1,7 @@
 <script>
 	import Banner from "./Banner.svelte";
 	import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@rgossiaux/svelte-headlessui';
-	import Datatable from "../datatable/Datatable.svelte";
+	import Datatable from "@dbs/datatables";
 
 	export let language
 	export let locale

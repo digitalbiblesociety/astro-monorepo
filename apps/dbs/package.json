@@ -15,7 +15,7 @@
     "@astrojs/mdx": "^0.11.1",
     "@astrojs/svelte": "^1.0.0",
     "@astrojs/tailwind": "^1.0.1",
-    "@dbs/astro-bible-wiki": "workspace:^0.0.1",
+    "@dbs/ui": "workspace:next",
     "@dbs/datatables": "workspace:^0.0.1",
     "@iconify-json/heroicons-outline": "^1.1.4",
     "@iconify-json/heroicons-solid": "^1.1.5",

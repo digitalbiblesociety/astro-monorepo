@@ -3,13 +3,11 @@ import Layout from '~/layouts/BaseLayout.astro'
 import { SITE } from "~/config.mjs";
 import { getLanguageFromPath } from "~/config.mjs";
 import { i18n } from "~/translations/i18n.mjs";
-
 import Datatable from "@dbs/datatables"
 
 const languages = await fetch(`${SITE.apiUrl}/languages.json`).then(response => response.json())
 const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
-
 ---
 
 <Layout>
