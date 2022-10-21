@@ -6,6 +6,7 @@ export default function alphabetsColumns(table, locale) {
 	return [
 		table.column({header: "id",accessor: 'script'}),
 		table.column(AlphabetNameCell(locale)),
+		table.column({header: "Family",accessor:'family'}),
 		table.column({header: "Type",accessor: 'type'}),
 ];
 }

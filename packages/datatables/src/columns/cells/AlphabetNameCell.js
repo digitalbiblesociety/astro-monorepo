@@ -8,19 +8,7 @@ export default function (locale) {
 		accessor: (item) => item,
 		cell: ({ value }) => createRender(Cell, {
 			title: value.name,
-			subtitle: value.family,
 			href: '/' + locale + "/alphabets/" + value.script,
-		}),
-		plugins: {
-			sort: {
-				getSortValue: (i) => i.name + i.family,
-			},
-			tableFilter: {
-				getFilterValue: (i) => i.name + i.family,
-			},
-		},
+		})
 	}
 }
-
-
-
