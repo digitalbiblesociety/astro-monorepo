@@ -1,5 +1,5 @@
 <script>
-	import countryShapes from "./country-shapes.js"
+	import countryShapes from "./country-shapes.json"
 	import Map from "./WorldMap.svelte"
   
 	export let locale
