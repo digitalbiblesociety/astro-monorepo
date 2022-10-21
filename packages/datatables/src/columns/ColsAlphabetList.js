@@ -4,8 +4,12 @@ import Cell from "../partials/Cell.svelte";
 export default function alphabetsColumns(table, locale) {
 	return [
 		table.column({
-			header: "Title",
-			id: "name",
+			header: "id",
+			accessor: 'script',
+		}),
+		table.column({
+			header: "Alphabet",
+			id: "alphabet-name",
 			accessor: (item) => item,
 			cell: ({ value }) => createRender(Cell, {
 				title: value.name,
