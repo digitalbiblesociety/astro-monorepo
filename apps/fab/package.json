@@ -7,6 +7,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
+    "build-dev": "astro build cd ./dist && echo \"dev.find.bible\" >| CNAME && git init && git add . && git commit -m \"auto-push\" && git branch -M main && git remote add origin git@github.com:digitalbiblesociety/fab-dev.git && git push -f -u origin main",
     "preview": "astro preview",
     "pretty": "prettier --write ."
   },
@@ -37,6 +38,7 @@
     "svelte-headless-table": "^0.13.3"
   },
   "dependencies": {
+    "astro-compress": "^1.0.12",
     "astro-og-canvas": "^0.1.5"
   }
 }

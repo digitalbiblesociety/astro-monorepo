@@ -10,7 +10,7 @@ const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
 ---
 
-<Layout>
+<Layout meta={{ title: t.bibles }}>
   <Banner
     background="banner_bibles"
     title={t['bibles']}

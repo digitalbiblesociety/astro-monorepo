@@ -11,7 +11,7 @@ const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
 ---
 
-<Layout>
+<Layout meta={{ title: t.organizations }}>
   <Banner background="banner_organizations" title="Organizations" />
   <Datatable inputData={organizations} locale={locale} t={t} tableType="organizations" client:visible />
 </Layout>

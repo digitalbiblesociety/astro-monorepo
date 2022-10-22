@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { getLanguageFromPath, TRANSLATIONS } from '~/config.mjs';
+import { getLanguageFromPath } from '~/config.mjs';
 import { i18n } from '@dbs/ui'
 const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
@@ -14,7 +14,7 @@ let aboutNav = [
 ]
 
 ---
-<Layout>
+<Layout meta={{ title: t.contact }}>
 
 <div class="prose mx-auto max-w-prose">
 

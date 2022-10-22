@@ -36,7 +36,7 @@ const resources = language.bibles.map(bible => {
   }
 }))
 ---
-<Layout>
+<Layout meta={{ title: language.name }}>
   <Banner title={language.name} />
   <Datatable inputData={resources} tableType="resources" />
 </Layout>

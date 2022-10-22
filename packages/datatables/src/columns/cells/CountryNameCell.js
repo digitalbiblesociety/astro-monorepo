@@ -17,7 +17,7 @@ export default function (locale, t) {
 		cell: ({ value }) =>
 		createRender(Cell, {
 			title: value.cn,
-			href: '/' + locale + "/countries/" + value.id,
+			href: '/' + locale + "/countries/" + value.ci,
 			icon: `<svg class="mr-1 inline-block h-5 w-5 drop-shadow-md"><use href="/img/flags.svg#${value.ci}" xlink:href="#${value.ci}"></use></svg>`,
 		}),
 	}
