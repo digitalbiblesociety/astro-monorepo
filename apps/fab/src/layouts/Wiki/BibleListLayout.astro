@@ -16,5 +16,5 @@ const t = i18n[locale]
     title={t['bibles']}
   />
 
-  <Datatable inputData={bibles} locale={locale} tableType="bibles" client:visible />
+  <Datatable inputData={bibles} locale={locale} t={t} tableType="bibles" client:visible />
 </Layout>

@@ -3,9 +3,9 @@ import Cell from "../partials/Cell.svelte";
 import CountryNameCell from './cells/CountryNameCell'
 import OrganizationNameCell from './cells/OrganizationNameCell'
 
-export default function organizationsColumns(table, locale) {
+export default function organizationsColumns(table, locale, t) {
   return [
-    table.column(OrganizationNameCell(locale)),
-    table.column(CountryNameCell(locale)),
+    table.column(OrganizationNameCell(locale, t)),
+    table.column(CountryNameCell(locale, t)),
   ];
 }

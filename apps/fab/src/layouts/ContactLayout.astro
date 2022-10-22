@@ -1,0 +1,66 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { getLanguageFromPath, TRANSLATIONS } from '~/config.mjs';
+import { i18n } from '@dbs/ui'
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+
+const { content } = Astro.props;
+
+---
+<Layout>
+
+<div class="prose mx-auto max-w-prose">
+
+    <nav class="text-center">
+        <a href={`/${locale}/about`}>{ t.about }</a>
+        <a href={`/${locale}/about/faq`}>{ t.faq }</a>
+        <a href={`/${locale}/about/contact`}>{ t.contact }</a>
+    </nav>
+
+
+<div class="overflow-hidden bg-white px-4 sm:px-6 lg:px-8">
+	<form class="relative mx-auto max-w-xl" action="https://formspree.io/f/xgerrbpe" method="POST">
+	  <div class="mt-12">
+		<div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
+
+		<div class="sm:col-span-2">
+			<label for="name" class="block text-sm font-medium text-gray-700">{content.name}</label>
+			<div class="mt-1">
+			  <input type="text" name="name" id="name" autocomplete="given-name" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-primary-500 focus:ring-primary-500">
+			</div>
+		</div>
+
+		<div class="sm:col-span-2">
+			<label for="email" class="block text-sm font-medium text-gray-700">{content.email}</label>
+			<div class="mt-1">
+			  <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-primary-500 focus:ring-primary-500">
+			</div>
+		</div>
+
+		<div class="sm:col-span-2">
+			<label for="body" class="block text-sm font-medium text-gray-700">{content.message}</label>
+			<div class="mt-1">
+			  <textarea id="body" name="body" rows="4" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-primary-500 focus:ring-primary-500"></textarea>
+			</div>
+		</div>
+
+		<div class="sm:col-span-2">
+			<button type="submit" class="inline-flex w-full items-center justify-center rounded-md border border-transparent bg-primary-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+				{content.submit}
+			</button>
+		</div>
+
+	</div>
+	  </div>
+	</form>
+  </div>
+  
+
+    <slot />
+
+
+
+</div>
+
+</Layout>

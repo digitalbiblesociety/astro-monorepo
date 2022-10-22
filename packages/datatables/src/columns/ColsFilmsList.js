@@ -1,10 +1,10 @@
 import { createRender } from "svelte-headless-table";
 import Cell from "../partials/Cell.svelte";
 
-export default function filmsColumns(table, locale) {
+export default function filmsColumns(table, locale, t) {
   return [
     table.column({
-      header: "Title",
+      header: t?.title ?? "Title",
       id: "title-block",
       accessor: (item) => item,
       cell: ({ value }) =>

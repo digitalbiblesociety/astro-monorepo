@@ -10,6 +10,7 @@
 	export let inputData
 	export let tableType
 	export let locale
+	export let t
 	
 	const data = readable(inputData)
 	const table = createTable(data, {
@@ -21,7 +22,7 @@
 		page: addPagination({ initialPageSize: 200 }),
 	});
 
-	const columns = table.createColumns(ColumnTypes(tableType, table, locale));
+	const columns = table.createColumns(ColumnTypes(tableType, table, locale, t));
 	const { flatColumns, headerRows, pageRows, tableAttrs, tableBodyAttrs, pluginStates} = table.createViewModel(columns);
 	const ids = flatColumns.map((c) => c.id);
 	const { columnIdOrder } = pluginStates.orderColumns;
@@ -29,7 +30,7 @@
 </script>
 
 <div class="dt-table">
-<DtSearch pluginStates={pluginStates} />
+<DtSearch t={t} pluginStates={pluginStates} />
 
 <table class="min-w-full mx-auto divide-y divide-gray-300 dark:divide-gray-900 rounded-t-lg" {...$tableAttrs}>
 	<DtHeader headerRows={$headerRows} />

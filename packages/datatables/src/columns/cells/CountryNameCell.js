@@ -1,9 +1,9 @@
 import { createRender } from "svelte-headless-table";
 import Cell from "../../partials/Cell.svelte";
 
-export default function (locale) {
+export default function (locale, t) {
 	return {
-		header: "Country",
+		header: t?.country ?? 'Country',
 		id: "country-name-cell",
 		accessor: (item) => item,
 		plugins: {

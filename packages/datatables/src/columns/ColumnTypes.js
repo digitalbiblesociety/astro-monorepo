@@ -8,25 +8,25 @@ import ColsLanguageBibleList from "./ColsLanguageBibleList"
 import ColsCountryLanguage from './ColsCountryLanguage'
 import ColsOrganizationList from './ColsOrganizationList.js'
 
-export default function columnTypes(tableType, table, locale) {
+export default function columnTypes(tableType, table, locale, t) {
 	switch (tableType) {
 		case "languages":
-			return ColsLanguageList(table, locale)
+			return ColsLanguageList(table, locale, t)
 		case "language_bibles":
-			return ColsLanguageBibleList(table, locale)
+			return ColsLanguageBibleList(table, locale, t)
 		case "bibles":
-			return ColsBibleList(table, locale)
+			return ColsBibleList(table, locale, t)
 		case "countries":
-			return ColsCountryList(table, locale)
+			return ColsCountryList(table, locale, t)
 		case "alphabets":
-			return ColsAlphabetList(table, locale)
+			return ColsAlphabetList(table, locale, t)
 		case "films":
-			return ColsFilmsList(table, locale)
+			return ColsFilmsList(table, locale, t)
 		case "resources":
-			return ColsResourceList(table, locale)
+			return ColsResourceList(table, locale, t)
 		case "organizations":
-			return ColsOrganizationList(table, locale)
+			return ColsOrganizationList(table, locale, t)
 		case "country_languages":
-			return ColsCountryLanguage(table, locale)
+			return ColsCountryLanguage(table, locale, t)
 	}
 }

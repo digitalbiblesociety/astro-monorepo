@@ -13,5 +13,5 @@ const t = i18n[locale]
 
 <Layout>
   <Banner background="banner_countries" title={t.countries} />
-  <Datatable inputData={countries} locale={locale} tableType="countries" client:visible />
+  <Datatable inputData={countries} locale={locale} t={t} tableType="countries" client:visible />
 </Layout>

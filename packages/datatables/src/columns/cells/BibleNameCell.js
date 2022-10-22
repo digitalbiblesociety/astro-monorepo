@@ -1,9 +1,9 @@
 import { createRender } from "svelte-headless-table";
 import Cell from "../../partials/Cell.svelte";
 
-export default function (locale) {
+export default function (locale, t) {
 	return {
-		header: "Title",
+		header: t.title ?? 'Titlez',
 		id: "bible-title-block",
 		accessor: (item) => item,
 		cell: ({ value }) =>

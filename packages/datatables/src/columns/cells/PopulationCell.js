@@ -1,6 +1,6 @@
-export default function (locale) {
+export default function (locale, t) {
 	return {
-		header: "Population",
+		header: t?.population ?? "Population",
 		accessor: "po",
 		cell: ({ value }) => (value) ? value.toLocaleString(locale) : ''
 	}

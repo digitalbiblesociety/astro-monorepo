@@ -11,22 +11,20 @@ export const get = () =>
     title: `${SITE.name}`,
     description: "",
     site: import.meta.env.SITE,
-    items: locales.map(locale => {
-      return sections?.countries.map((country) => ({
-        link: `/${locale}/countries/${country.id}`,
+    items: sections?.countries.map((country) => ({
+        link: `/en/countries/${country.id}`,
         title: country.tt,
         description: '',
         pubDate: date,
       })).concat(sections?.languages.map((language) => ({
-        link: `/${locale}/languages/${language.id}`,
+        link: `/en/languages/${language.id}`,
         title: language.tt,
         description: '',
         pubDate: date,
       }))).concat(sections?.bibles.map((bible) => ({
-        link: `/${locale}/bibles/${bible.id}`,
+        link: `/en/bibles/${bible.id}`,
         title: bible.tt,
         description: '',
         pubDate: date,
-      })));
-    })
+      })))
   });
