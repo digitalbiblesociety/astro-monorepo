@@ -5,9 +5,14 @@ import Datatable from "@dbs/datatables";
 import { Banner,i18n } from "@dbs/ui";
 
 const biblesResponse = await fetch(`${SITE.apiUrl}/bibles.json`);
-const bibles = await biblesResponse.json();
+let bibles = await biblesResponse.json();
 const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
+
+const scope = import.meta.env.COUNTRY_SCOPE
+if(scope !== 'all') {
+  bibles = bibles.filter(bible => {return bible.country_id == scope})
+}
 ---
 
 <Layout meta={{ title: t.bibles }}>

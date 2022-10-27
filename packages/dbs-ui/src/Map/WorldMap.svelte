@@ -5,6 +5,7 @@
 	import { select } from "d3-selection"
 	
 	export let locale = 'en'
+	export let t
 	export let color_buttons = true
 	export let pins = null
 	
@@ -223,7 +224,7 @@
 		QA: "#a1c1a1",
 		MZ: "#7aa67a",
 	}
-	let currentCountries = { ...countries }
+	$: currentCountries = { ...countries }
 	
 	const wwl_2022 = {
 		AF: "#b74c2e",
@@ -588,6 +589,8 @@
 				"WS",
 			],
 		}
+
+		console.log(region)
 	
 		for (let country in countries) {
 			if (!world[region].includes(country)) {
@@ -604,12 +607,12 @@
 			<div
 				class="my-1 mx-4 cursor-pointer rounded bg-gray-200 px-3"
 				on:click="{() => changeMapColor('default')}">
-				Christian Percentage
+				{t.christian_percentage}
 			</div>
 			<div
 				class="my-1 mx-4 cursor-pointer rounded bg-gray-200 px-3"
 				on:click="{() => changeMapColor('world_watch_list')}">
-				World Watch List
+				{t.world_watch_list}
 			</div>
 		</div>
 	{/if}
@@ -645,7 +648,7 @@
 			{/if}
 		{/if}
 	</svg>
-	<!--
+	
 	<div
 		class="mx-auto flex max-w-lg flex-row justify-center rounded-tl-lg rounded-tr-lg bg-primary-800 bg-opacity-50 py-2">
 		<div
@@ -717,5 +720,5 @@
 			</svg>
 		</div>
 	</div>
-	-->
+	
 </div>

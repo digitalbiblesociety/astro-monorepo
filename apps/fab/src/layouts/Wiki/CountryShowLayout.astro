@@ -11,15 +11,15 @@ const locale = getLanguageFromPath(Astro.url);
 
 let infobox
 
-	let translations = {
-		'population': 'Population',
-		'languages': 'Languages',
-		'official_language': 'Official Language',
-		'religion_primary': 'Primary Religion',
-		'world_watch_list': 'World Watch List',
-		'persecution_type': 'Persecution Type',
-		'overview': 'Overview',
-	}
+let translations = {
+	'population': 'Population',
+	'languages': 'Languages',
+	'official_language': 'Official Language',
+	'religion_primary': 'Primary Religion',
+	'world_watch_list': 'World Watch List',
+	'persecution_type': 'Persecution Type',
+	'overview': 'Overview',
+}
 
 	const table_row = (row, locale) =>  `
     <td class="whitespace-nowrap py-2 text-sm text-gray-900 dark:text-gray-200">
@@ -36,7 +36,7 @@ const country_languages = country.languages.map(language => {
     tt: language.name,
     tv: language.autonym,
     po: language.population
-  }  
+  }
 })
 
 ---
@@ -47,6 +47,11 @@ const country_languages = country.languages.map(language => {
   background="countries-list"
   title={country.name}
   subtitle={country.region_name}
+  tabs={[
+    {title: 'Languages', url: `/${locale}/countries/${country.id}`},
+    {title: 'Maps', url: `/${locale}/countries/${country.id}/maps`},
+    {title: 'Language Maps', url: `/${locale}/countries/${country.id}/languages`},
+  ]}
 />
 <div class="flex flex-row">
 <div class="w-full sm:w-3/5 p-4">

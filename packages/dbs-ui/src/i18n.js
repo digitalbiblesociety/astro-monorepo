@@ -13,7 +13,9 @@ export default {
 		date: "Date",
 		search: "Search",
 		population: "Population",
-		region: "Region"
+		region: "Region",
+		christian_percentage: "Christian Percentage",
+		world_watch_list: "World Watch List",
 	},
 	es: {
 		about: "Sobre",
@@ -29,6 +31,8 @@ export default {
 		date: "Fecha",
 		search: "Buscar",
 		population: "Población",
-		region: "Región"
+		region: "Región",
+		christian_percentage: "Porcentaje cristiano",
+		world_watch_list: "Lista mundial de vigilancia",
 	}
 }

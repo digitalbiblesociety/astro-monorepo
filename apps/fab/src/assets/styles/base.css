@@ -2,8 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .btn {
-    @apply inline-flex items-center justify-center rounded border border-transparent font-medium text-center text-base leading-snug transition py-3 px-6 shadow-lg ease-in duration-200 focus:ring-blue-500 focus:ring-offset-blue-200 focus:ring-2 focus:ring-offset-2;
-  }
-}
+.status-0 {@apply text-green-600} /* International	The language is widely used between nations in trade, knowledge exchange, and international policy. */
+.status-1 {@apply text-green-700} /* National	The language is used in education, work, mass media, and government at the national level. */
+.status-2 {@apply text-green-300} /* Provincial	The language is used in education, work, mass media, and government within major administrative subdivisions of a nation. */
+.status-3 {@apply text-lime-600} /* Wider communication	The language is used in work and mass media without official status to transcend language differences across a region. */
+.status-4 {@apply text-lime-600} /* Educational	The language is in vigorous use, with standardization and literature being sustained through a widespread system of institutionally supported education. */
+.status-5 {@apply text-blue-600} /* Developing	The language is in vigorous use, with literature in a standardized form being used by some though this is not yet widespread or sustainable. */
+.status-6a {@apply text-green-600} /* Vigorous	The language is used for face-to-face communication by all generations and the situation is sustainable. */
+.status-6b {@apply text-amber-600} /* Threatened	The language is used for face-to-face communication within all generations, but it is losing users. */
+.status-7 {@apply text-yellow-600} /* Shifting	The child-bearing generation can use the language among themselves, but it is not being transmitted to children. */
+.status-8a {@apply text-red-600} /* Moribund	The only remaining active users of the language are members of the grandparent generation and older. */
+.status-8b {@apply text-red-600} /* Nearly extinct	The only remaining users of the language are members of the grandparent generation or older who have little opportunity to use the language. */
+.status-9 {@apply text-red-600} /* Dormant	The language serves as a reminder of heritage identity for an ethnic community, but no one has more than symbolic proficiency. */
+.status-10 {@apply text-gray-400} /* Extinct	The language is no longer used and no one retains a sense of ethnic identity associated with the language. */
+.status-11 {@apply text-purple-600} /* Construct	The language is a con-lang */

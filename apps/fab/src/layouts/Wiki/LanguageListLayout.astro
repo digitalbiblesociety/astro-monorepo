@@ -5,12 +5,21 @@ import Datatable from "@dbs/datatables";
 import { i18n, Banner } from "@dbs/ui";
 
 const languagesResponse = await fetch(`${SITE.apiUrl}/languages.json`);
-const languages = await languagesResponse.json();
+let languages = await languagesResponse.json();
 const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
+
+const scope = import.meta.env.COUNTRY_SCOPE
+if(scope !== 'all') {
+  languages = languages.filter(bible => {return bible.country_id == scope})
+}
 ---
 
 <Layout meta={{ title: t.languages }}>
-  <Banner background="banner_languages" title={t.languages} />
+  <Banner background="banner_languages" title={t.languages} tabs={[
+    {title: 'Languages', url: `/${locale}/languages`},
+    {title: 'Maps', url: `/${locale}/languages/maps`},
+  ]} />
+
   <Datatable inputData={languages} locale={locale} t={t} tableType="languages" client:visible />
 </Layout>

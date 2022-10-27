@@ -57,6 +57,7 @@ importers:
   apps/fab:
     specifiers:
       '@astrojs/image': ^0.3.7
+      '@astrojs/partytown': ^1.0.1
       '@astrojs/rss': ^1.0.0
       '@astrojs/sitemap': ^1.0.0
       '@astrojs/svelte': ^1.0.0
@@ -75,6 +76,7 @@ importers:
       d3: ^7.6.1
       d3-selection: ^3.0.0
       dotenv: ^16.0.1
+      leaflet: ^1.9.2
       prettier: ^2.7.1
       prettier-plugin-astro: ^0.5.0
       qrcode-svg: ^1.1.0
@@ -83,8 +85,10 @@ importers:
       svelte: ^3.49.0
       svelte-headless-table: ^0.13.3
     dependencies:
+      '@astrojs/partytown': 1.0.1
       astro-compress: 1.0.12
       astro-og-canvas: 0.1.5_astro@1.5.1
+      leaflet: 1.9.2
     devDependencies:
       '@astrojs/image': 0.3.7
       '@astrojs/rss': 1.0.2
@@ -110,6 +114,12 @@ importers:
       subfont: 6.12.1
       svelte: 3.52.0
       svelte-headless-table: 0.13.4_svelte@3.52.0
+
+  apps/shin:
+    specifiers:
+      astro: ^1.5.2
+    dependencies:
+      astro: 1.5.2
 
   packages/bible-wiki:
     specifiers:
@@ -266,6 +276,13 @@ packages:
       micromark-util-types: 1.0.2
       uvu: 0.5.6
       vfile-message: 3.1.2
+
+  /@astrojs/partytown/1.0.1:
+    resolution: {integrity: sha512-JVmKwQa2aWMAmz3tkNHtg5hw7gOTI6ROyFIYcUQtN6j8aysEiWKnt4xzz67RvDWId1h7sIde87UeH+4YoEyGug==}
+    dependencies:
+      '@builder.io/partytown': 0.7.1
+      mrmime: 1.0.1
+    dev: false
 
   /@astrojs/prism/1.0.1:
     resolution: {integrity: sha512-HxEFslvbv+cfOs51q/C7aMVFuW3EAGg0d1xXU/0e/QeScDzfrp5Ra4SOb8mV082SgENVjtVvet4zR84t3at4VQ==}
@@ -554,6 +571,11 @@ packages:
       '@babel/helper-string-parser': 7.19.4
       '@babel/helper-validator-identifier': 7.19.1
       to-fast-properties: 2.0.0
+
+  /@builder.io/partytown/0.7.1:
+    resolution: {integrity: sha512-hvu2gG9NDtCa5aoL4JkvDe3E5SegXlHAkhtA+Az96uTtFA0PYuEPjDYGiayGTkZuRKUmxetebWjIFgSDNdlBOw==}
+    hasBin: true
+    dev: false
 
   /@emmetio/abbreviation/2.2.3:
     resolution: {integrity: sha512-87pltuCPt99aL+y9xS6GPZ+Wmmyhll2WXH73gG/xpGcQ84DRnptBsI2r0BeIQ0EB/SQTOe2ANPqFqj3Rj5FOGA==}
@@ -1256,6 +1278,81 @@ packages:
       - supports-color
       - terser
       - ts-node
+
+  /astro/1.5.2:
+    resolution: {integrity: sha512-ZzPwZYo4GgwNBiOA7xumpkbKNVT/k/ZEvEkAL2lj3NAZHnU801wk9qLlugu8ECoLT4k1j9B/SSmhLr+AhLTazw==}
+    engines: {node: ^14.18.0 || >=16.12.0, npm: '>=6.14.0'}
+    hasBin: true
+    dependencies:
+      '@astrojs/compiler': 0.27.2
+      '@astrojs/language-server': 0.26.2
+      '@astrojs/markdown-remark': 1.1.3
+      '@astrojs/telemetry': 1.0.1
+      '@astrojs/webapi': 1.1.0
+      '@babel/core': 7.19.3
+      '@babel/generator': 7.19.5
+      '@babel/parser': 7.19.4
+      '@babel/plugin-transform-react-jsx': 7.19.0_@babel+core@7.19.3
+      '@babel/traverse': 7.19.4
+      '@babel/types': 7.19.4
+      '@proload/core': 0.3.3
+      '@proload/plugin-tsm': 0.2.1_@proload+core@0.3.3
+      '@types/babel__core': 7.1.19
+      '@types/html-escaper': 3.0.0
+      '@types/yargs-parser': 21.0.0
+      boxen: 6.2.1
+      ci-info: 3.5.0
+      common-ancestor-path: 1.0.1
+      cookie: 0.5.0
+      debug: 4.3.4
+      deepmerge-ts: 4.2.2
+      diff: 5.1.0
+      eol: 0.9.1
+      es-module-lexer: 0.10.5
+      esbuild: 0.14.54
+      execa: 6.1.0
+      fast-glob: 3.2.12
+      github-slugger: 1.4.0
+      gray-matter: 4.0.3
+      html-entities: 2.3.3
+      html-escaper: 3.0.3
+      import-meta-resolve: 2.1.0
+      kleur: 4.1.5
+      magic-string: 0.25.9
+      mime: 3.0.0
+      ora: 6.1.2
+      path-browserify: 1.0.1
+      path-to-regexp: 6.2.1
+      postcss: 8.4.18
+      postcss-load-config: 3.1.4_postcss@8.4.18
+      preferred-pm: 3.0.3
+      prompts: 2.4.2
+      recast: 0.20.5
+      rehype: 12.0.1
+      resolve: 1.22.1
+      rollup: 2.78.1
+      semver: 7.3.8
+      shiki: 0.11.1
+      sirv: 2.0.2
+      slash: 4.0.0
+      string-width: 5.1.2
+      strip-ansi: 7.0.1
+      supports-esm: 1.0.0
+      tsconfig-resolver: 3.0.1
+      typescript: 4.8.4
+      unist-util-visit: 4.1.1
+      vfile: 5.3.5
+      vite: 3.1.8
+      yargs-parser: 21.1.1
+      zod: 3.19.1
+    transitivePeerDependencies:
+      - less
+      - sass
+      - stylus
+      - supports-color
+      - terser
+      - ts-node
+    dev: false
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
@@ -3952,6 +4049,10 @@ packages:
 
   /kolorist/1.6.0:
     resolution: {integrity: sha512-dLkz37Ab97HWMx9KTes3Tbi3D1ln9fCAy2zr2YVExJasDRPGRaKcoE4fycWNtnCAJfjFqe0cnY+f8KT2JePEXQ==}
+    dev: false
+
+  /leaflet/1.9.2:
+    resolution: {integrity: sha512-Kc77HQvWO+y9y2oIs3dn5h5sy2kr3j41ewdqCMEUA4N89lgfUUfOBy7wnnHEstDpefiGFObq12FdopGRMx4J7g==}
     dev: false
 
   /levn/0.3.0:

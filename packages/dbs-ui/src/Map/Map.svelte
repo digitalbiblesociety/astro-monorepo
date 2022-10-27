@@ -3,6 +3,7 @@
 	import Map from "./WorldMap.svelte"
   
 	export let locale
+	export let t
 
 	const createData = () => {
 	  return countryShapes.map(d => [
@@ -18,6 +19,7 @@
 	<Map
 	  {data}
 	  locale={locale}
+	  t={t}
 	  nameAccessor="{d => d[0]}"
 	  rAccessor="{d => d[1]}"
 	  colorAccessor="{d => d[2]}" />

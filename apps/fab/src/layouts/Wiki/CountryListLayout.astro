@@ -12,6 +12,9 @@ const t = i18n[locale]
 ---
 
 <Layout meta={{ title: t.countries }}>
-  <Banner background="banner_countries" title={t.countries} />
+  <Banner background="banner_countries" title={t.countries} tabs={[
+    {title: 'Countries', url: `/${locale}/countries`},
+    {title: 'Maps', url: `/${locale}/countries/maps`},
+  ]} />
   <Datatable inputData={countries} locale={locale} t={t} tableType="countries" client:visible />
 </Layout>

@@ -7,6 +7,7 @@ import { SITE } from "./src/config.mjs";
 
 // https://astro.build/config
 import compress from "astro-compress";
+import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,5 +19,5 @@ export default defineConfig({
     config: {
       applyBaseStyles: false
     }
-  }), sitemap(), image(), svelte()] // , compress()
+  }), sitemap(), image(), svelte()] //  compress(),
 });

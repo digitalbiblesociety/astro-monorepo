@@ -38,7 +38,9 @@
     "svelte-headless-table": "^0.13.3"
   },
   "dependencies": {
+    "@astrojs/partytown": "^1.0.1",
     "astro-compress": "^1.0.12",
-    "astro-og-canvas": "^0.1.5"
+    "astro-og-canvas": "^0.1.5",
+    "leaflet": "^1.9.2"
   }
 }
