@@ -22,5 +22,5 @@ if(scope !== 'all') {
   ]} />
 
   <Datatable inputData={languages} locale={locale} t={t} tableType="languages" 
-    defaultSort={{"id": "po", "order": "desc"}} client:visible />
+    defaultSort={{initialSortKeys: [{"id": "po", "order": "desc"}]}} client:visible />
 </Layout>

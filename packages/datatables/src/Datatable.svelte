@@ -7,7 +7,7 @@
 	import DtSearch from './partials/DataTableSearch.svelte'
 	import ColumnTypes from './columns/ColumnTypes'
   
-	export let defaultSort = {}
+	export let defaultSort
 	export let inputData
 	export let tableType
 	export let locale
@@ -17,7 +17,7 @@
 	const table = createTable(data, {
 		filter: addColumnFilters(),
 		tableFilter: addTableFilter(),
-		sort: addSortBy({initialSortKeys: [defaultSort]}),
+		sort: addSortBy(defaultSort),
 		select: addSelectedRows({ initialSelectedDataIds: { 1: true } }),
 		orderColumns: addColumnOrder(),
 		page: addPagination({ initialPageSize: 200 }),

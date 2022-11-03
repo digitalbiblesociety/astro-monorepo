@@ -19,5 +19,5 @@ export default defineConfig({
     config: {
       applyBaseStyles: false
     }
-  }), sitemap(), image(), svelte()] //  compress(),
+  }), sitemap(), image(), svelte(), compress()] //  compress(),
 });
