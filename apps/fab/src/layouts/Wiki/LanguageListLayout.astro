@@ -21,5 +21,6 @@ if(scope !== 'all') {
     {title: 'Maps', url: `/${locale}/languages/maps`},
   ]} />
 
-  <Datatable inputData={languages} locale={locale} t={t} tableType="languages" client:visible />
+  <Datatable inputData={languages} locale={locale} t={t} tableType="languages" 
+    defaultSort={{"id": "po", "order": "desc"}} client:visible />
 </Layout>

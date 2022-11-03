@@ -1,61 +1,42 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
 import { getLanguageFromPath } from '~/config.mjs';
+import AboutNav from "~/components/partials/AboutNav.astro";
 import { i18n } from '@dbs/ui'
 const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
 
 const { content } = Astro.props;
-
-let aboutNav = [
-	{title: t.about, href:`/${locale}/about`},
-	{title: t.faq, href:`/${locale}/about/faq`},
-	{title: t.contact, href:`/${locale}/about/contact`},
-]
-
 ---
 <Layout meta={{ title: t.contact }}>
 
 <div class="prose mx-auto max-w-prose">
 
-	  <div class="border-b border-gray-200">
-		<nav class="-mb-px flex justify-center space-x-8" aria-label="Tabs">
-		  <!-- Current: "", Default: "" -->
-		  {aboutNav.map(ref => (
-			<a href={ref.href} 
-			class={
-				(ref.href == Astro.url.pathname ? 
-				'border-primary-500 text-primary-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300') + 
-				` whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm no-underline`}>
-				{ref.title}
-			</a>
-		  ))}
-		</nav>
-	  </div>
+	<AboutNav />
 
-<div class="overflow-hidden bg-white px-4 sm:px-6 lg:px-8">
+<div class="overflow-hidden px-4 sm:px-6 lg:px-8">
 	<form class="relative mx-auto max-w-xl" action="https://formspree.io/f/xgerrbpe" method="POST">
 	  <div class="mt-12">
 		<div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
 
 		<div class="sm:col-span-2">
-			<label for="name" class="block text-sm font-medium text-gray-700">{content.name}</label>
+			<label for="name" class="block text-sm font-medium text-stone-700 dark:text-stone-200">{content.name}</label>
 			<div class="mt-1">
-			  <input type="text" name="name" id="name" autocomplete="given-name" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-primary-500 focus:ring-primary-500">
+			  <input type="text" name="name" id="name" autocomplete="given-name" class="block w-full rounded-md dark:bg-stone-700 border-stone-300 dark:border-stone-900 py-3 px-4 shadow-sm focus:border-primary-500 focus:ring-primary-500">
 			</div>
 		</div>
 
 		<div class="sm:col-span-2">
-			<label for="email" class="block text-sm font-medium text-gray-700">{content.email}</label>
+			<label for="email" class="block text-sm font-medium text-stone-700 dark:text-stone-200">{content.email}</label>
 			<div class="mt-1">
-			  <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-primary-500 focus:ring-primary-500">
+			  <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md dark:bg-stone-700 border-stone-300 dark:border-stone-900 py-3 px-4 shadow-sm focus:border-primary-500 focus:ring-primary-500">
 			</div>
 		</div>
 
 		<div class="sm:col-span-2">
-			<label for="body" class="block text-sm font-medium text-gray-700">{content.message}</label>
+			<label for="body" class="block text-sm font-medium text-stone-700 dark:text-stone-200">{content.message}</label>
 			<div class="mt-1">
-			  <textarea id="body" name="body" rows="4" class="block w-full rounded-md border-gray-300 py-3 px-4 shadow-sm focus:border-primary-500 focus:ring-primary-500"></textarea>
+			  <textarea id="body" name="body" rows="4" class="block w-full rounded-md dark:bg-stone-700 border-stone-300 dark:border-stone-900 py-3 px-4 shadow-sm focus:border-primary-500 focus:ring-primary-500"></textarea>
 			</div>
 		</div>
 

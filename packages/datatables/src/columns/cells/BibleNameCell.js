@@ -3,13 +3,14 @@ import Cell from "../../partials/Cell.svelte";
 
 export default function (locale, t) {
 	return {
-		header: t.title ?? 'Titlez',
+		header: t.title ?? 'Title',
 		id: "bible-title-block",
 		accessor: (item) => item,
 		cell: ({ value }) =>
 		  createRender(Cell, {
 			title: value.tt,
 			subtitle: value.tv,
+			className: 'max-w-xl truncate',
 			href: '/' + locale + "/bibles/" + value.id,
 		  }),
 		plugins: {

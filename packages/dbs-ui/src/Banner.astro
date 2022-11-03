@@ -8,8 +8,8 @@
 	{breadcrumbs ? <BreadcrumbNav breadcrumbs={breadcrumbs} /> : ''}
 
 	<header class="flex-grow relative z-30 pt-12">
-		<h1 class="text-2xl md:text-4xl font-extrabold leading-8 tracking-wider text-stone-100">{title}</h1>
-		<h2 class="text-xl text-stone-100">{subtitle ?? ''}</h2>
+		<h1 set:html={title} class="text-2xl md:text-4xl font-extrabold leading-8 tracking-wider text-stone-100"></h1>
+		<h2 set:html={subtitle} class="text-xl text-stone-100"></h2>
 	</header>
 
 	{background ?	

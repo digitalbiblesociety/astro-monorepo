@@ -4,6 +4,9 @@ import { SITE, getLanguageFromPath } from "~/config.mjs";
 import Datatable from "@dbs/datatables";
 import { Banner,i18n } from "@dbs/ui";
 
+const resourcesResponse = await fetch(`${SITE.apiUrl}/resources.json`);
+const resources = await resourcesResponse.json();
+
 const biblesResponse = await fetch(`${SITE.apiUrl}/bibles.json`);
 let bibles = await biblesResponse.json();
 const locale = getLanguageFromPath(Astro.url);
@@ -18,8 +21,14 @@ if(scope !== 'all') {
 <Layout meta={{ title: t.bibles }}>
   <Banner
     background="banner_bibles"
-    title={t['bibles']}
-  />
+    title={t['bibles']} 
+    breadcrumbs={[
+      {title: 'Bibles', url: `/${locale}/bibles`}
+    ]}
+    tabs={[
+      {title: 'Bibles', url: `/${locale}/bibles/`, count: bibles.length},
+      {title: 'Resources', url: `/${locale}/resources/`, count: resources.length}
+    ]} />
 
   <Datatable inputData={bibles} locale={locale} t={t} tableType="bibles" client:visible />
 </Layout>

@@ -14,10 +14,7 @@ export default function resourcesColumns(table, locale) {
           href: value.url,
         }),
     }),
-    table.column({
-      header: "Type",
-      accessor: "type",
-    }),
+    table.column({ header: "Type", accessor: "type" }),
     table.column({
       header: "Date",
       accessor: "date",

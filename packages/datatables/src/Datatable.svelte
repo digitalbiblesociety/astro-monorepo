@@ -7,6 +7,7 @@
 	import DtSearch from './partials/DataTableSearch.svelte'
 	import ColumnTypes from './columns/ColumnTypes'
   
+	export let defaultSort = {}
 	export let inputData
 	export let tableType
 	export let locale
@@ -16,7 +17,7 @@
 	const table = createTable(data, {
 		filter: addColumnFilters(),
 		tableFilter: addTableFilter(),
-		sort: addSortBy(),
+		sort: addSortBy({initialSortKeys: [defaultSort]}),
 		select: addSelectedRows({ initialSelectedDataIds: { 1: true } }),
 		orderColumns: addColumnOrder(),
 		page: addPagination({ initialPageSize: 200 }),
@@ -32,7 +33,7 @@
 <div class="dt-table">
 <DtSearch t={t} pluginStates={pluginStates} />
 
-<table class="min-w-full mx-auto divide-y divide-gray-300 dark:divide-gray-900 rounded-t-lg" {...$tableAttrs}>
+<table class="w-full mx-auto divide-y divide-gray-300 dark:divide-gray-900 rounded-t-lg" {...$tableAttrs}>
 	<DtHeader headerRows={$headerRows} />
 	  <tbody class="divide-y divide-gray-200 dark:divide-gray-900 bg-white dark:bg-stone-700" {...$tableBodyAttrs}>
 		{#each $pageRows as row (row.id)}

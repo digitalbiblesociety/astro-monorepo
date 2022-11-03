@@ -1,5 +1,5 @@
 <script>
-	import { onMount } from "svelte"	
+	import { onMount } from "svelte"
 	import { geoPath, geoNaturalEarth1 } from "d3"
 	import { zoom, zoomIdentity } from "d3-zoom"
 	import { select } from "d3-selection"
@@ -605,12 +605,12 @@
 	{#if color_buttons}
 		<div class="flex flex-row justify-center relative bottom-0">
 			<div
-				class="my-1 mx-4 cursor-pointer rounded bg-gray-200 px-3"
+				class="my-1 mx-4 cursor-pointer rounded bg-gray-200 text-stone-800 px-3"
 				on:click="{() => changeMapColor('default')}">
 				{t.christian_percentage}
 			</div>
 			<div
-				class="my-1 mx-4 cursor-pointer rounded bg-gray-200 px-3"
+				class="my-1 mx-4 cursor-pointer rounded bg-gray-200 text-stone-800 px-3"
 				on:click="{() => changeMapColor('world_watch_list')}">
 				{t.world_watch_list}
 			</div>
