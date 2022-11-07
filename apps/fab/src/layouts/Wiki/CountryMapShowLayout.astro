@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { Banner } from "@dbs/ui";
+import { Banner, i18n } from "@dbs/ui";
 import { SITE, getLanguageFromPath } from "~/config.mjs";
 import MapBlock from "~/components/partials/MapBlock.astro";
 
@@ -8,6 +8,7 @@ const { id } = Astro.params;
 const countryResponse = await fetch(`${SITE.apiUrl}/countries/${id}.json`);
 const country = await countryResponse.json();
 const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
 
 const maps = country.maps.map(map => {
 	return 	{
@@ -26,8 +27,8 @@ const maps = country.maps.map(map => {
   title={country.name}
   subtitle={country.region_name}
   tabs={[
-    {title: 'Languages', url: `/${locale}/countries/${country.id}`},
-    {title: 'Maps', url: `/${locale}/countries/${country.id}/maps`},
+    {title: t?.languages ?? 'Languages', url: `/${locale}/countries/${country.id}`},
+    {title: t?.maps ?? 'Maps', url: `/${locale}/countries/${country.id}/maps`},
 	{title: 'Languages Maps', url: `/${locale}/countries/${country.id}/languages`},
   ]}
 />

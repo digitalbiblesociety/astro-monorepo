@@ -1,0 +1,58 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { Banner } from "@dbs/ui";
+import { SITE, getLanguageFromPath } from "~/config.mjs";
+
+const { id } = Astro.params;
+
+const iso = id.split('-')[0];
+const numeral_id = id.split('-')[1];
+
+
+const filmResponse = await fetch(`https://api.arclight.org/v2/media-components?apiKey=52b06248a3c6e8.12980089&subTypes=featureFilm,shortFilm&languageIds=${numeral_id}&metadataLanguageTags=en`);
+const films = await filmResponse.json();
+const media = await Promise.all(
+	films['_embedded']['mediaComponents'].map(film => fetch(`https://api.arclight.org/v2/media-components/${film.mediaComponentId}/languages/${numeral_id}?apiKey=52b06248a3c6e8.12980089`))
+)
+
+// https://api.arclight.org/v2/media-components/${film_id}/languages/${lang_id}?apiKey=52b06248a3c6e8.12980089
+
+const locale = getLanguageFromPath(Astro.url);
+
+const languageResponse = await fetch(`${SITE.apiUrl}/languages/${iso}.json`);
+const language = await languageResponse.json()
+
+function humanReadable(timeInMilliseconds) {
+	var date = new Date(timeInMilliseconds);
+	var str = '';
+	str += date.getUTCHours() + ' Hours, ';
+	str += date.getUTCMinutes() + ' Minutes';
+	return str;
+}
+
+---
+<Layout>
+	<Banner 
+	background="banner_countries" 
+	title={language.name} 
+	subtitle={language.translations.map(translation => `<span class="px-2 text-sm">${translation.name}</span>`)} />
+
+<div class="mx-auto mt-12 grid max-w-4xl grid-cols-4 gap-4">
+	{films['_embedded']['mediaComponents'].map(film => (
+		<div>
+		{(film.subType == 'featureFilm') ? 
+			<a class="relative overflow-hidden rounded" href={`/${locale}/films/watch/${film.mediaComponentId}___${numeral_id}`}>
+				<figure>
+					{(film.imageUrls.mobileCinematicHigh) ? <img class="block w-full" alt={film.title} src={film.imageUrls.mobileCinematicHigh} /> : '' }
+					<figcaption class="absolute bottom-0 top-0 flex w-full flex-col place-items-center justify-center bg-black/40 text-center text-white hover:bg-black/80">
+						<div class="text-lg lg:text-xl">{film.title}</div>
+						<div class="mt-1 text-sm opacity-70 lg:mt-1.5 lg:text-base">
+							{humanReadable(film.lengthInMilliseconds)}
+						</div>
+					</figcaption>
+				</figure>
+			</a> : ''}
+		</div>
+		))}
+</div>
+</Layout>

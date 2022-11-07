@@ -1,0 +1,20 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { getLanguageFromPath } from "~/config.mjs";
+import { i18n, Banner } from "@dbs/ui";
+import Films from "~/components/partials/Films.svelte";
+
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+
+const scope = import.meta.env.COUNTRY_SCOPE;
+
+const filmsResponse = await fetch(`https://api.arclight.org/v2/media-countries/${scope}?apiKey=52b06248a3c6e8.12980089&expand=mediaLanguages&metadataLanguageTags=en`);
+const data = await filmsResponse.json();
+const films = data['_embedded']['mediaLanguages'];
+---
+
+<Layout meta={{ title: t.languages }}>
+	<Banner background="banner_languages" title={t.films} />
+	<Films films={films} locale={locale} t={t} client:visible />
+</Layout>

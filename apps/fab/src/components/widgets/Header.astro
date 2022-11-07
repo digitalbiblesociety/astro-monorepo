@@ -57,23 +57,33 @@ const t = i18n[locale]
           <a
             class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
             href={`/${locale}/languages`}
-            >{t['languages']}
-          </a>
+            >{t['languages']}</a>
         </li>
-        <li>
+        {import.meta.env.COUNTRY_SCOPE == 'all' ? <li>
           <a
             class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
             href={`/${locale}/countries`}
-            >{t['countries']}
-          </a>
+            >{t['countries']}</a>
         </li>
         <li>
           <a
             class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-            href={`/${locale}/about`}
-            >{t['about']}
-          </a>
+            href={`/${locale}/organizations`}>{t?.organizations ?? 'Organizations'}</a>
         </li>
+        <li>
+          <a
+            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href={`/${locale}/about`}>{t['about']}</a>
+        </li> : <li>
+          <a
+            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href={`/${locale}/films`}>{t.films}</a>
+        </li>
+        <li>
+          <a
+            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href={`/${locale}/bibles/audio`}>{t.audio}</a>
+        </li> }
       </ul>
     </nav>
   </div>

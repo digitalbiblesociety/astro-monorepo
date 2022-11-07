@@ -9,17 +9,20 @@ let languages = await languagesResponse.json();
 const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
 
+let tabs = [
+    {title: t?.languages ?? 'Languages', url: `/${locale}/languages`},
+    {title: t?.maps ?? 'Maps', url: `/${locale}/languages/maps`},
+  ]
+
 const scope = import.meta.env.COUNTRY_SCOPE
 if(scope !== 'all') {
-  languages = languages.filter(bible => {return bible.country_id == scope})
+  languages = languages.filter(language => {return language.ci == scope})
+  tabs = []
 }
 ---
 
 <Layout meta={{ title: t.languages }}>
-  <Banner background="banner_languages" title={t.languages} tabs={[
-    {title: 'Languages', url: `/${locale}/languages`},
-    {title: 'Maps', url: `/${locale}/languages/maps`},
-  ]} />
+  <Banner background="banner_languages" title={t.languages} tabs={tabs} />
 
   <Datatable inputData={languages} locale={locale} t={t} tableType="languages" 
     defaultSort={{initialSortKeys: [{"id": "po", "order": "desc"}]}} client:visible />

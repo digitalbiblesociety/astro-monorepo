@@ -5,7 +5,7 @@ import Datatable from "@dbs/datatables";
 import { Banner,i18n } from "@dbs/ui";
 
 const resourcesResponse = await fetch(`${SITE.apiUrl}/resources.json`);
-const resources = await resourcesResponse.json();
+let resources = await resourcesResponse.json();
 
 const biblesResponse = await fetch(`${SITE.apiUrl}/bibles.json`);
 let bibles = await biblesResponse.json();
@@ -14,7 +14,8 @@ const t = i18n[locale]
 
 const scope = import.meta.env.COUNTRY_SCOPE
 if(scope !== 'all') {
-  bibles = bibles.filter(bible => {return bible.country_id == scope})
+  bibles = bibles.filter(bible => {return bible.ci == scope})
+  resources = resources.filter(resource => {return resource.ci == scope})
 }
 ---
 
@@ -22,12 +23,9 @@ if(scope !== 'all') {
   <Banner
     background="banner_bibles"
     title={t['bibles']} 
-    breadcrumbs={[
-      {title: 'Bibles', url: `/${locale}/bibles`}
-    ]}
     tabs={[
-      {title: 'Bibles', url: `/${locale}/bibles/`, count: bibles.length},
-      {title: 'Resources', url: `/${locale}/resources/`, count: resources.length}
+      {title: t?.bibles ?? 'bibles', url: `/${locale}/bibles/`, count: bibles.length},
+      {title: t?.resources ?? 'resources', url: `/${locale}/resources/`, count: resources.length}
     ]} />
 
   <Datatable inputData={bibles} locale={locale} t={t} tableType="bibles" client:visible />

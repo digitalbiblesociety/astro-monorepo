@@ -6,8 +6,8 @@ export default function languagesColumns(table, locale, t) {
     table.column(LanguageNameCell(locale, t)),
     table.column({header:'iso',accessor:'id'}),
     table.column(PopulationCell(locale, t)),
-    table.column({header:'Resource Count',accessor:'rc'}),
-    table.column({header:'Films Count',accessor:'fc'}),
-    table.column({header:'Bibles Count',accessor:'bc'}),
+    table.column({header:t?.resources ?? 'resources',accessor:'rc'}),
+    table.column({header:t?.films ?? 'films',accessor:'fc'}),
+    table.column({header:t?.bibles ?? 'bibles',accessor:'bc'}),
   ];
 }

@@ -1,0 +1,21 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { getLanguageFromPath } from "~/config.mjs";
+import { i18n, Banner, AudioBiblePlayer } from "@dbs/ui";
+
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+
+const scope = import.meta.env.COUNTRY_SCOPE;
+
+---
+
+<Layout meta={{ title: t.audio }}>
+
+	<AudioBiblePlayer 
+		key={import.meta.env.DBP_APIKEY} 
+		country_id={import.meta.env.COUNTRY_SCOPE} 
+		equivalents={} 
+		client:visible/>
+
+</Layout>

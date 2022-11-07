@@ -2,9 +2,14 @@
 import { SITE } from "~/config.mjs";
 
 export default async (type, id = 'id') => {
-	const data = await fetch(`${SITE.apiUrl}/${type}.json`).then((response) =>
+	let data = await fetch(`${SITE.apiUrl}/${type}.json`).then((response) =>
     response.json()
   );
+
+  const scope = import.meta.env.COUNTRY_SCOPE
+  if(scope !== 'all') {
+    data = data.filter(item => {return item.ci == scope})
+  }
 
   return data.map((item) => {
     return {

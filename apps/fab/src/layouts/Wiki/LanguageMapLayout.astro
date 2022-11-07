@@ -125,8 +125,8 @@ let language_maps = [
 
 <Layout meta={{ title: t.languages }}>
   <Banner background="banner_languages" title={t.languages + ' Maps'} tabs={[
-    {title: 'Languages', url: `/${locale}/languages`},
-    {title: 'Maps', url: `/${locale}/languages/maps`},
+    {title: t?.languages ?? 'Languages', url: `/${locale}/languages`},
+    {title: t?.maps ?? 'Maps', url: `/${locale}/languages/maps`},
   ]} />
   <MapBlock maps={language_maps} />
 </Layout>
