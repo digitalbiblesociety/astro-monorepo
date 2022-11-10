@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { getLanguageFromPath } from "~/config.mjs";
+import { getLanguageFromPath } from "~/config.js";
 import { i18n, Banner } from "@dbs/ui";
 import MapBlock from "~/components/partials/MapBlock.astro";
 const locale = getLanguageFromPath(Astro.url);
@@ -124,7 +124,9 @@ let language_maps = [
 ---
 
 <Layout meta={{ title: t.languages }}>
-  <Banner background="banner_languages" title={t.languages + ' Maps'} tabs={[
+  <Banner 
+  backgroundImage="/img/banner/banner_countries.jpg"
+  title={t.languages + ' Maps'} tabs={[
     {title: t?.languages ?? 'Languages', url: `/${locale}/languages`},
     {title: t?.maps ?? 'Maps', url: `/${locale}/languages/maps`},
   ]} />

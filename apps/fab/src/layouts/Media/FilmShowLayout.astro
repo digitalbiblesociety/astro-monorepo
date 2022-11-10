@@ -1,7 +1,7 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
 import { Banner } from "@dbs/ui";
-import { SITE, getLanguageFromPath } from "~/config.mjs";
+import { SITE, getLanguageFromPath } from "~/config.js";
 
 const { id } = Astro.params;
 
@@ -33,7 +33,7 @@ function humanReadable(timeInMilliseconds) {
 ---
 <Layout>
 	<Banner 
-	background="banner_countries" 
+	backgroundImage="/img/banner/banner_countries.jpg"
 	title={language.name} 
 	subtitle={language.translations.map(translation => `<span class="px-2 text-sm">${translation.name}</span>`)} />
 

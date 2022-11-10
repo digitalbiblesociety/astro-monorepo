@@ -1,5 +1,5 @@
 ---
-import { getLanguageFromPath } from '~/config.mjs'
+import { getLanguageFromPath } from '~/config.js'
 import { i18n } from '@dbs/ui'
 const locale = getLanguageFromPath(Astro.url)
 const t = i18n[locale]

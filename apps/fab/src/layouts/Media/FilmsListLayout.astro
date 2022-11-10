@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { getLanguageFromPath } from "~/config.mjs";
+import { getLanguageFromPath } from "~/config.js";
 import { i18n, Banner } from "@dbs/ui";
 import Films from "~/components/partials/Films.svelte";
 
@@ -15,6 +15,8 @@ const films = data['_embedded']['mediaLanguages'];
 ---
 
 <Layout meta={{ title: t.languages }}>
-	<Banner background="banner_languages" title={t.films} />
+	<Banner 
+	backgroundImage="/img/banner/banner_languages.jpg"
+	title={t.films} />
 	<Films films={films} locale={locale} t={t} client:visible />
 </Layout>

@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { SITE, getLanguageFromPath } from "~/config.mjs";
+import { SITE, getLanguageFromPath } from "~/config.js";
 import Datatable from "@dbs/datatables";
 import { Banner, i18n } from "@dbs/ui";
 
@@ -15,7 +15,7 @@ const t = i18n[locale]
 
 <Layout meta={{ title: t.resources }}>
 	<Banner
-    background="banner_resources"
+    backgroundImage="/img/banner/banner_languages.jpg"
     title={t['resources']} 
     tabs={[
       {title: t['bibles'], url: `/${locale}/bibles/`, count: bibles.length},

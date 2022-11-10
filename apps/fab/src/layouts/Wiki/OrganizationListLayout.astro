@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { SITE, getLanguageFromPath } from "~/config.mjs";
+import { SITE, getLanguageFromPath } from "~/config.js";
 import Datatable from "@dbs/datatables";
 import { Banner, i18n } from "@dbs/ui";
 
@@ -11,6 +11,6 @@ const t = i18n[locale]
 ---
 
 <Layout meta={{ title: t.organizations }}>
-  <Banner background="banner_organizations" title="Organizations" />
+  <Banner backgroundImage="/img/banner/banner_organizations.jpg" title="Organizations" />
   <Datatable inputData={organizations} locale={locale} t={t} tableType="organizations" client:visible />
 </Layout>

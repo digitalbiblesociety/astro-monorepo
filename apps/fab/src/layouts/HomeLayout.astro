@@ -2,12 +2,20 @@
 import Layout from "~/layouts/PageLayout.astro";
 import FabFrontPage from "./Pages/FabFrontPage.astro";
 import CSFrontPage from "./Pages/CSFrontPage.astro";
-const scope = import.meta.env.COUNTRY_SCOPE
+import { getLanguageFromPath, SITE } from '~/config.js'
+import { scope } from '~/utils/env'
+import { i18n } from '@dbs/ui'
+const locale = getLanguageFromPath(Astro.url)
+const t = i18n[locale]
 const {content} = Astro.props;
+
 ---
 
-<Layout>
+<Layout meta={{title:t?.home ?? "Home",description: t.cs_tagline }}>
 
-{scope === 'all' ? <FabFrontPage content={content} /> : <CSFrontPage />}
+{ scope === 'all' ? 
+	<FabFrontPage content={content} /> : 
+	<CSFrontPage />
+}
 
 </Layout>

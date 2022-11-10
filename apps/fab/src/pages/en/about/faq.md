@@ -14,10 +14,10 @@ Find-A-Bible is the single digital platform where the major Bible agencies of th
 ### Who is FOBAI and its members?
 The Forum of Bible Agencies International (FOBAI) is an alliance of more than 40 leading international Bible agencies and mission organizations that span more than 150 countries. FOBAI is an alliance of non-profit agencies founded upon a unified vision toward working together to maximize the worldwide access and impact of God’s Word (www.forum-intl.net).
 
-### Who owns Find-A-Bible content?
+### Who owns Find a Bible content?
 The Bible-based resources available in the Find-A-Bible directory are the property of the individual members of FOBAI or the organizations of multiple Bible Agencies around the world. Although some material accessible through Find-A-Bible is freely available to the public, other resources are offered for sale from  various websites. Find-A-Bible does not own any copyrights for any of the discoverable resources nor does it offer resources for sale.
 
-### Whose work is reflected on the Find-A-Bible website?
+### Whose work is reflected on the Find a Bible website?
 The massive database employed by Find-A-Bible is a reflection of decades of work by dozens of individuals. The website itself was designed and is maintained by <a href="https://dbs.org" target="_blank">Digital Bible Society</a>, initially from a grant from <a href="https://bibleleague.ca/" target="_blank">BibleLeague of Canada</a>, but now as a volunteer project on behalf of FOBAI. As an increasing number of Bible agencies produce an increasing volume of content in the world's languages, Find-A-Bible will become more essential and far more of a challenge. <a href="https://find.bible/about/contact">We need your help!</a>
 
 ### How can I support the work of Find-A-Bible?

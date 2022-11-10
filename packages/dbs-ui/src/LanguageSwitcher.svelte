@@ -1,6 +1,6 @@
 <script>
 	import { Menu, MenuButton, MenuItems, MenuItem } from "@rgossiaux/svelte-headlessui"
-	export let url;
+	export let url
 	export let locales
 </script>
 

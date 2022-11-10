@@ -1,5 +1,5 @@
 
-import { SITE } from "~/config.mjs";
+import { SITE } from "~/config.js";
 
 export default async (type, id = 'id') => {
 	let data = await fetch(`${SITE.apiUrl}/${type}.json`).then((response) =>

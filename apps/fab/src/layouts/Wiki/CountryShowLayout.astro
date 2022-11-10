@@ -1,7 +1,7 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
 import { Banner, ScriptlessTable } from "@dbs/ui";
-import { SITE, getLanguageFromPath } from "~/config.mjs";
+import { SITE, getLanguageFromPath } from "~/config.js";
 import Datatable from "@dbs/datatables";
 
 const { id } = Astro.params;
@@ -44,7 +44,7 @@ const country_languages = country.languages.map(language => {
 <Layout meta={{ title: country.name }}>
 
 <Banner
-  background="countries-list"
+  backgroundImage="/img/banner/banner_countries.jpg"
   title={country.name}
   subtitle={country.region_name}
   tabs={[

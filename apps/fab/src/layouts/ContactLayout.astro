@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { getLanguageFromPath } from '~/config.mjs';
+import { getLanguageFromPath } from '~/config.js';
 import AboutNav from "~/components/partials/AboutNav.astro";
 import { i18n } from '@dbs/ui'
 const locale = getLanguageFromPath(Astro.url);

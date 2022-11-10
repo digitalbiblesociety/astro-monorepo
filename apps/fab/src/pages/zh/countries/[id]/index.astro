@@ -1,0 +1,9 @@
+---
+import Layout from '~/layouts/Wiki/CountryShowLayout.astro'
+import StaticPathHelper from "~/utils/StaticPathHelper";
+
+export async function getStaticPaths() {
+  return StaticPathHelper('countries', 'ci');
+}
+---
+<Layout />

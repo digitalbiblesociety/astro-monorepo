@@ -1,7 +1,7 @@
 ---
 	import BreadcrumbNav from "./Breadcrumbs.astro";
 	import Tabs from './Tabs.astro'
-	const {title,subtitle,background,tabs,breadcrumbs} = Astro.props;
+	const {title,subtitle,backgroundImage,tabs,breadcrumbs} = Astro.props;
 ---
 
 <div class="relative flex flex-col justify-center items-center overflow-hidden xl:rounded-tl-xl xl:rounded-tr-xl text-center h-44">
@@ -12,13 +12,7 @@
 		<h2 set:html={subtitle} class="text-xl text-stone-100"></h2>
 	</header>
 
-	{background ?	
-		<picture>
-			<source srcset={`/img/banner/${background}.webp`} type="image/webp">
-			<source srcset={`/img/banner/${background}.jpg`} type="image/jpeg">
-			<img src={`/img/banner/${background}.jpg`} class="object-cover h-full w-full inset-0 absolute z-10" />
-		</picture>
-	: ''}
+	{backgroundImage ? <img src={ backgroundImage } class="object-cover h-full w-full inset-0 absolute z-10" alt="" /> : ''}
 
 	<div class="absolute inset-0 w-full h-full overflow-hidden bg-gradient-to-r from-primary-500 via-primary-800 
 	to-secondary-500 dark:from-primary-800 dark:via-primary-900 dark:to-secondary-800 opacity-80 z-20"></div>

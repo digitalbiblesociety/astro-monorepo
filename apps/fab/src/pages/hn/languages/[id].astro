@@ -1,0 +1,10 @@
+---
+import Layout from '~/layouts/Wiki/LanguageShowLayout.astro'
+import StaticPathHelper from "~/utils/StaticPathHelper";
+
+export async function getStaticPaths() {
+  return StaticPathHelper('languages');
+}
+---
+
+<Layout />

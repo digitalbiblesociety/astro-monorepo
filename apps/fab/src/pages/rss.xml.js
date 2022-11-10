@@ -1,5 +1,5 @@
 import rss from "@astrojs/rss";
-import { SITE } from "~/config.mjs";
+import { SITE } from "~/config.js";
 
 const sectionResponse = await fetch(`${SITE.apiUrl}/site_index.json`)
 const sections = await sectionResponse.json()
@@ -10,7 +10,7 @@ export const get = () =>
   rss({
     title: `${SITE.name}`,
     description: "",
-    site: import.meta.env.SITE,
+    site: `${SITE.domain}`,
     items: sections?.countries.map((country) => ({
         link: `/en/countries/${country.id}`,
         title: country.tt,

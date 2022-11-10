@@ -1,11 +1,8 @@
 ---
 import Layout from "~/layouts/BaseLayout.astro";
 import { SITE, getLanguageFromPath } from "~/config.mjs";
-
 import Banner from "~/components/partials/Banner.astro";
 import Datatable from  "@dbs/datatables";
-import Cell from "~/components/datatable/partials/Cell.svelte"
-import { createRender } from "svelte-headless-table";
 
 const locale = getLanguageFromPath(Astro.url);
 
@@ -20,7 +17,7 @@ bibles = bibles.filter(bible => (
 
 <Layout>
   <Banner
-    background="banner_bibles"
+    backgroundImage="/img/banner/banner_bibles.jpg"
     translations={{
       title: 'Bibles',
       subtitle: "",

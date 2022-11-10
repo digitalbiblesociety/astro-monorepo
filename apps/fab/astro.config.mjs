@@ -1,23 +1,25 @@
 import { defineConfig } from "astro/config";
+import * as dotenv from 'dotenv'
 import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
-import image from "@astrojs/image";
-import { SITE } from "./src/config.mjs";
+import { currentScope } from "./src/config.js";
+
+dotenv.config()
+const SITE = currentScope(process.env.COUNTRY_SCOPE)
 
 // https://astro.build/config
 import compress from "astro-compress";
-import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.domain,
-  experimental: {
-    integrations: true
-  },
-  integrations: [tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), sitemap(), image(), svelte(), compress()] //  compress(),
+  output: 'static',
+  experimental: { integrations: true },
+  integrations: [
+    tailwind({config: { applyBaseStyles: false } }),
+    sitemap(), 
+    svelte(),
+    compress()
+  ]
 });

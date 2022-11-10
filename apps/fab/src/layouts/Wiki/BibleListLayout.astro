@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/PageLayout.astro";
-import { SITE, getLanguageFromPath } from "~/config.mjs";
+import { SITE, getLanguageFromPath } from "~/config.js";
 import Datatable from "@dbs/datatables";
 import { Banner,i18n } from "@dbs/ui";
 
@@ -21,7 +21,7 @@ if(scope !== 'all') {
 
 <Layout meta={{ title: t.bibles }}>
   <Banner
-    background="banner_bibles"
+    backgroundImage="/img/banner/banner_bibles.jpg"
     title={t['bibles']} 
     tabs={[
       {title: t?.bibles ?? 'bibles', url: `/${locale}/bibles/`, count: bibles.length},

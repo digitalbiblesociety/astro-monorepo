@@ -1,0 +1,18 @@
+---
+import Layout from '~/layouts/Media/FilmWatchLayout.astro'
+
+export async function getStaticPaths() {
+	const film_id = id.split('___')[0];
+	const lang_id = id.split('___')[1];
+	const filmsResponse = await fetch(`https://api.arclight.org/v2/media-components/${film_id}/languages/${lang_id}?apiKey=52b06248a3c6e8.12980089`);
+	const films = await filmsResponse.json();
+
+	return films.map((film) => {
+		return {
+			params: { id: film.mediaComponentId }
+		}
+	});
+}
+---
+
+<Layout />
