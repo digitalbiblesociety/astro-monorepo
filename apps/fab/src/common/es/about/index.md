@@ -1,0 +1,29 @@
+---
+draft: true
+locale: es
+layout: '~/layouts/AboutLayout.astro'
+title: About
+slug: about
+summary: The Find a Bible Project About Page
+---
+
+#### El proyecto
+Find-A-Bible (FAB) es un directorio web que proporciona enlaces a Biblias y recursos bíblicos en más de 7000 idiomas del mundo. El directorio FAB consiste principalmente en contenido creado por miembros del Foro de Agencias Bíblicas Internacionales (FOBAI) y está destinado a ayudar a los usuarios a descubrir y obtener Escrituras y recursos bíblicos en el idioma y los medios de su elección para el discipulado, la evangelización y la plantación de iglesias. Find-A-Bible también presenta enlaces a Biblias impresas, Biblias impresas bajo demanda, Biblias digitales, Biblias en audio, Biblias visuales y recursos bíblicos, en múltiples formatos. Find-A-Bible es un proyecto de colaboración del Foro de Agencias Bíblicas Internacional creado para aumentar la accesibilidad de la Biblia y facilitar el acceso a las Escrituras. El diseño, la interfase y la base de datos de Find-A-Bible fueron creados y son mantenidos por Digital Bible Society (dbs.org).
+
+#### Preguntas frecuentes
+Find-A-Bible fue ideado por los miembros del Foro de Agencias Bíblicas Internacionales con la intención de simplificar el descubrimiento y la obtención de Biblias y recursos bíblicos en todos los idiomas.
+[Más información](faq)
+
+#### Adición de recursos
+¿Conoce una Biblia que necesita estar en este directorio? Seguro que nos gustaría saberlo. ¿Tiene su organización recursos bíblicos en varios idiomas que deberían enumerarse aquí? ¡Haznos saber!
+[Contacto](contact)
+
+#### Fuentes de datos
+Find-A-Bible existe para proporcionar herramientas que simplifican el descubrimiento de los recursos bíblicos existentes. Find-A-Bible también existe para informar a los trabajadores misioneros sobre los idiomas que probablemente encontrarán en determinadas regiones y luego equiparlos con los recursos que servirán en su misión. Hacia esos objetivos, Find-A-Bible se basa en datos derivados de una amplia variedad de fuentes abiertas confiables y, en algunos casos, calcula promedios y las mejores estimaciones para determinar números. En consecuencia, **Find-A-Bible NO debe considerarse una fuente definitiva de datos y estadísticas globales y lingüísticos**. Para obtener datos fiables y fidedignos, le recomendamos encarecidamente que consulte la última versión de [SIL Ethnologue](https://www.ethnologue.com/books) o se suscriba a [Ethnologue.com](https://www.ethnologue.com/), o agencias miembro de las [Sociedades Bíblicas Unidas](https://unitedbiblesocieties.org/). Find-A-Bible consta de cuatro conjuntos de datos (Biblias, Idiomas, Países y Agencias) que se basan en dos marcos de datos: los [Códigos de idioma SIL 639-3](https://iso639-3.sil.org/code_tables/639/data) y los [ISO-3166 International Standard Country Codes](https://www.iso.org/iso-3166-country-codes.html). **Datos de recursos bíblicos** La información y los datos bíblicos son compilados por la [Sociedad Bíblica Digital](https://dbs.org/) con contribuciones significativas de varios flujos de datos API que incluyen: [Biblioteca Bíblica Digital](https://thedigitalbiblelibrary.org/), [La fe viene por el oír](https://www.faithcomesbyhearing.com/audio-bible-resources/bible-brain), [The Jesus Film Project](https://www.jesusfilm.org/), [Red Global de Grabaciones](https://globalrecordings.net/), [Traductores de la Biblia Wycliffe](https://www.wycliffe.org/), [YouVersion](https://youversion.com/), y otros. **Datos de idioma:** Las estadísticas de idioma, la población y los datos de idioma se derivan en gran medida de las siguientes fuentes: [Wikipedia](https://en.wikipedia.org/wiki/List_of_languages_by_number_of_native_speakers), [Joshua Project](https://joshuaproject.net), [Ethnologue (16.ª edición principalmente)](https://www.ethnologue.com/), [the Glottolog](https://glottolog.org/), the [WorldFact Book](https://www.cia.gov/the-world-factbook/), la [Sociedad Bíblica Digital](https://www.dbs.org/) y otros.
+
+#### Conferencia Find-A-Bible
+Durante las reuniones anuales del Foro Bíblico Internacional (FOBAI), personas amistosas se reúnen para colaborar en torno a Find-A-Bible. ¿Quizás te gustaría unirte a nosotros? Contáctenos para obtener más detalles o únase a nosotros en una próxima reunión anual de FOBAI.
+
+**Datos del país:** Las estadísticas y la información del país se recopilan de una variedad de fuentes que incluyen: [Wikipedia](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_area), [Joshua Project Datasets](https://joshuaproject.net/resources/datasets), [OpenDoors International](https://www.opendoors.org/persecution/countries/), [Operation World](https://operationworld.org/), [WorldFact Book](https://www.cia.gov/the-world-factbook/), [las Naciones Unidas](https://www.un.org/en/library/page/databases) y otros. Los datos de idioma específicos del país a menudo se promedian entre las fuentes de investigación y solo deben considerarse estimaciones de "mejor suposición". Nuestro objetivo es simplemente mostrar qué idiomas es más probable que encuentren los trabajadores en un país determinado. Los datos de mapeo se extraen del [WorldFact Book, ](https://www.cia.gov/the-world-factbook/)[the Glottolog](https://glottolog.org/), [Muturzikin.com](https://www.muturzikin.com/), [La Biblioteca Perry-Castañeda](https://maps.lib.utexas.edu/maps/index.html), y otros. 
+
+**Datos de la agencia:** Los datos relacionados con la información de la organización son recopilados por el [Foro de Agencias Bíblicas](https://forum-intl.org/) y la [Sociedad Bíblica Digital](https://dbs.org/). Los datos también son proporcionados por las propias organizaciones o sus sitios web asociados. [Más información](https://forum-intl.org/)

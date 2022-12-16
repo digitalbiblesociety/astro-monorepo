@@ -1,0 +1,10 @@
+---
+import Layout from "~/layouts/Wiki/BibleShowLayout.astro";
+import { NestedResourcePath } from "~/utils/StaticPathHelper";
+
+export async function getStaticPaths() {
+  return NestedResourcePath('bibles')
+}
+---
+
+<Layout />

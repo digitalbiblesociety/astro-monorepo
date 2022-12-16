@@ -1,0 +1,15 @@
+---
+import Layout from '~/layouts/AboutLayout.astro'
+import { MdPathFetch } from '~/utils/StaticPathHelper'
+
+export async function getStaticPaths() {
+	const pages = await Astro.glob('../../../common/*/about/index.md')
+	return MdPathFetch(pages)
+}
+
+const { Content } = Astro.props.content
+---
+
+<Layout>
+	<Content />
+</Layout>

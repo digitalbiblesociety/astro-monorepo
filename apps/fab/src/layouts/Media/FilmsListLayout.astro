@@ -14,7 +14,7 @@ const data = await filmsResponse.json();
 const films = data['_embedded']['mediaLanguages'];
 ---
 
-<Layout meta={{ title: t.languages }}>
+<Layout meta={{ title: t?.languages ?? 'Languages' }}>
 	<Banner 
 	backgroundImage="/img/banner/banner_languages.jpg"
 	title={t.films} />

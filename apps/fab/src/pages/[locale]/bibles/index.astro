@@ -1,0 +1,10 @@
+---
+import Layout from "~/layouts/Wiki/BibleListLayout.astro";
+import { LocalePath } from '~/utils/StaticPathHelper';
+
+export const getStaticPaths = () => {
+	return LocalePath()
+}
+---
+
+<Layout />

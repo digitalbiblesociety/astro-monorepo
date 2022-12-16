@@ -11,7 +11,7 @@ const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
 ---
 
-<Layout meta={{ title: t.countries }}>
+<Layout meta={{ title: t?.countries ?? 'Countries' }}>
   <Banner backgroundImage="/img/banner/banner_countries.jpg" title={t.countries} tabs={[
     {title: t?.countries ?? 'countries', url: `/${locale}/countries`},
     {title: t?.maps ?? 'maps', url: `/${locale}/countries/maps`},

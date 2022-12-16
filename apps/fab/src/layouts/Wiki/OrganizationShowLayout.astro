@@ -8,41 +8,46 @@ const { id } = Astro.params;
 const organizationResponse = await fetch(`${SITE.apiUrl}/organizations/${id}.json`);
 const organization = await organizationResponse.json();
 const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
 
 const resources = organization.bibles.map(bible => {
 	return {
-		title: bible.title,
-		title_vernacular: bible.title_vernacular,
+		tt: bible.title,
+		tv: bible.title_vernacular,
 		url: `/${locale}/bibles/${bible.id}`,
+		ci: bible?.country_id,
+		cn: bible?.country?.name,
     	type: 'bible',
-		date: bible.date
+		iso: bible.iso,
+		ln: bible?.language?.name ?? '',
+		dt: bible.date
 	}
 }).concat(organization.films.map(film => {
   return {
-    title: film.title,
-    title_vernacular: film.title_vernacular,
+    tt: film.title,
+    tv: film.title_vernacular,
     type: 'film',
     url: film.url,
-    date: ''
+    dt: ''
   }
 })).concat(organization.resources.map(resource => {
   return {
-    title: resource.title,
-    title_vernacular: resource.title_vernacular,
+    tt: resource.title,
+    tv: resource.title_vernacular,
     type: 'resource',
     url: resource.url,
-    date: ''
+    dt: ''
   }
 }))
 
 ---
 <Layout meta={{ title: organization.name }}>
-<div class="relative flex flex-col -mb-9 pb-5 xl:rounded-tl-xl xl:rounded-tr-xl text-gray-100 text-2xl text-center h-32"
-	style={`background-image: linear-gradient(to bottom right, ${organization.colors.primary}, ${organization.colors.secondary});`}>
+<div class="relative flex flex-col -mb-9 pb-5 xl:rounded-tl-xl xl:rounded-tr-xl text-stone-100 text-2xl text-center h-32"
+	style={`background-image: linear-gradient(to bottom right, ${organization.colors.primary ?? '#000'}, ${organization.colors.secondary ?? '#222'});`}>
 	<div class="start">
 
 	</div>
-	<h1 class="text-center text-3xl font-extrabold leading-8 tracking-wider text-white-900 xl:text-4xl">{organization.name}</h1>
+	<h1 class="text-center text-3xl font-extrabold leading-8 tracking-wider text-white-900 xl:text-4xl max-w-4xl mx-auto pt-4">{organization.name}</h1>
 	<div class="absolute top-0 right-4 sm:right-0 flex">
 		<a class="p-1" href={organization.url_website}>
 			<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -71,7 +76,7 @@ const resources = organization.bibles.map(bible => {
 	<div>
 
 		{(organization.bible || organization.resources) ? 
-			<Datatable inputData={resources} locale={locale} tableType="resources" client:visible />
+			<Datatable inputData={resources} locale={locale} t={t} defaultSort={'title'} tableType="organization_resources" client:visible />
 			<noscript>
 				<style>
         			.dt-table {display:none;}
@@ -85,20 +90,20 @@ const resources = organization.bibles.map(bible => {
 				<tbody>
 					{organization.bibles.map(row => (
 						<tr>
-							<td class="hidden whitespace-nowrap px-6 py-4 text-gray-900">{row.id}</td>
-							<td class="whitespace-nowrap px-6 py-4 text-gray-900">
+							<td class="hidden whitespace-nowrap px-6 py-4 text-stone-900">{row.id}</td>
+							<td class="whitespace-nowrap px-6 py-4 text-stone-900">
 								<a href={`/${locale}/languages/${row.id}`}>
-									<div class="text-sm text-gray-900 dark:text-gray-300">{row.language ? row.language.name : ""}</div>
-									<div class="text-xs italic text-gray-500">{row.iso}</div>
+									<div class="text-sm text-stone-900 dark:text-stone-300">{row.language ? row.language.name : ""}</div>
+									<div class="text-xs italic text-stone-500">{row.iso}</div>
 								</a>
 							</td>
 							<td class="px-6 py-4">
 								<a class="max-w-sm overflow-hidden text-ellipsis text-sm" href={`/${locale}/bibles/${row.id}`}>
-									<div class="text-gray-900 dark:text-gray-300">{row.title}</div>
-									<div class="text-gray-500">{row.title_vernacular ?? ""}</div>
+									<div class="text-stone-900 dark:text-stone-300">{row.title}</div>
+									<div class="text-stone-500">{row.title_vernacular ?? ""}</div>
 								</a>
 							</td>
-							<td class="hidden whitespace-nowrap px-6 py-4 text-gray-900 md:table-cell">{row.date}</td>
+							<td class="hidden whitespace-nowrap px-6 py-4 text-stone-900 md:table-cell">{row.date}</td>
 						</tr>
 					))}
 				</tbody>

@@ -31,19 +31,19 @@
 		bind:value={query}
 		on:input={filter}
 		autocomplete
-		class="mx-auto mt-5 block w-full max-w-md rounded text-sm"
+		class="dark:bg-stone-900 dark:border-stone-800 mx-auto mt-5 block w-full max-w-md rounded text-sm"
 	/>
 
 	<div class="mx-auto max-w-lg">
 		{#each results as language (language.languageId ?? language.item.languageId)}
 			<a
-				class="my-4 block rounded border-2 border-gray-200 bg-gray-50 p-2"
+				class="my-4 block rounded border-2 border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-900 p-2"
 				href="/{locale}/films/{language.iso3 ?? language.item.iso3}-{language.languageId ?? language.item.languageId}"
 			>
-				<p class="truncate text-sm text-gray-900">
+				<p class="truncate text-sm text-stone-900 dark:text-white">
 					{language.name ?? language.item.name}
 				</p>
-				<p class="truncate text-sm text-gray-500">
+				<p class="truncate text-sm text-stone-500 dark:text-stone-400">
 					{language.nameNative ?? language.item.nameNative}
 				</p>
 			</a>

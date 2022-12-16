@@ -36,9 +36,7 @@ const {} = Astro.props
 
     attachEvent('[data-aw-toggle-color-scheme]', 'click', function (elem) {
       document.documentElement.classList.toggle('dark')
-      localStorage.theme = document.documentElement.classList.contains('dark')
-        ? 'dark'
-        : 'light'
+      localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
     })
   }
   window.onpageshow = function () {

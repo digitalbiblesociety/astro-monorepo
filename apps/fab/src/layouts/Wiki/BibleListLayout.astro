@@ -19,10 +19,10 @@ if(scope !== 'all') {
 }
 ---
 
-<Layout meta={{ title: t.bibles }}>
+<Layout meta={{ title: t?.bibles ?? 'Bibles' }}>
   <Banner
     backgroundImage="/img/banner/banner_bibles.jpg"
-    title={t['bibles']} 
+    title={t?.bibles ?? 'Bibles'} 
     tabs={[
       {title: t?.bibles ?? 'bibles', url: `/${locale}/bibles/`, count: bibles.length},
       {title: t?.resources ?? 'resources', url: `/${locale}/resources/`, count: resources.length}

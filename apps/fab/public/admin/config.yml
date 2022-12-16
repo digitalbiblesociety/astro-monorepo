@@ -1,0 +1,222 @@
+backend:
+  name: github
+  branch: main
+  repo: digitalbiblesociety/data
+  use_graphql: true
+publish_mode: editorial_workflow
+media_folder: "/uploads"
+collections:
+  - name: "bibles"
+    label: "Bibles"
+    format: json
+    folder: "/bibles/"
+    create: true
+    slug: "{{id}}"
+    fields:
+      - {label: "id", name: "id", widget: "string"} # varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
+      - {label: "parent_bible_id", name: "parent_bible_id", widget: "string", required: false} # varchar(12) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "date", name: "date", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "iso", name: "iso", widget: "string"} # char(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+      - {label: "title", name: "title", widget: "string"} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "title_vernacular", name: "title_vernacular", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "copyright", name: "copyright", widget: "string"} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "description", name: "description", widget: "markdown", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "description_short", name: "description_short", widget: "text", required: false} # varchar(160) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "description_vernacular", name: "description_vernacular", widget: "markdown", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "description_reviewed", name: "description_reviewed", widget: "boolean", default: false} # tinyint(1) NOT NULL DEFAULT '0',
+      - {label: "script", name: "script", widget: "string", default: 'Zyyy'} # char(4) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "versification", name: "versification", widget: "string", required: false} # varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "numeral_system_id", name: "numeral_system_id", widget: "string", required: false} # varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default',
+      - {label: "country_id", name: "country_id", widget: "string", required: false} # char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "copyright_type", name: "copyright_type", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "reviewed", name: "reviewed", widget: "boolean", default: false} # tinyint(1) NOT NULL DEFAULT '0',
+      - {label: "isbn13", name: "isbn13", widget: "string", required: false} # varchar(17) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "back_text", name: "back_text", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "cover", name: "cover", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "notes", name: "notes", widget: "text", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "questionable", name: "questionable", widget: "boolean", default: false} # tinyint(1) DEFAULT '0',
+      - {label: "organizations", name: "organizations", widget: "list", fields: [
+          {label: "Related Organization", name: "organization_id", widget: "relation", collection: "organizations", search_fields: ["name"],value_field: "id", display_fields: ["{{name}}"]},
+          {label: "Relationship Type", name: "relationship_type", widget: "string"}
+      ]} 
+      - {label: "links", name: "links", widget: "list", fields: [
+          {label: "url", name: "url", widget: "string", pattern: ['^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?', 'Needs to be a valid URL']},
+          {label: "title", name: "title", widget: "string"},
+          {label: "scope", name: "scope", widget: "select", options: [
+            {label: "Bible with Deuterocanon", value: "FBD"},
+            {label: "Deuterocanon", value: "D"},
+            {label: "Full Bible", value: "FB"},
+            {label: "New Testament", value: "NT"},
+            {label: "New Testament With Old Testament Portions", value: "NTOPT"},
+            {label: "New Testament with Portions", value: "NTP"},
+            {label: "Old Testament", value: "OT"},
+            {label: "Old Testament with Deuterocanon", value: "OTD"},
+            {label: "Portions", value: "P"},
+            {label: "Selections", value: "S"}
+          ]},
+          {label: "type", name: type", widget: "select", options: [
+            {label: "app", value: "app"},
+            {label: "archive", value: "archive"},
+            {label: "archiveaudio", value: "archiveaudio"},
+            {label: "audio", value: "audio"},
+            {label: "audio_device", value: "audio_device"},
+            {label: "audio_web", value: "audio_web"},
+            {label: "cat", value: "cat"},
+            {label: "epub", value: "epub"},
+            {label: "genesis", value: "genesis"},
+            {label: "historic", value: "historic"},
+            {label: "illuminated", value: "illuminated"},
+            {label: "manuscript", value: "manuscript"},
+            {label: "mobi", value: "mobi"},
+            {label: "pdf", value: "pdf"},
+            {label: "print", value: "print"},
+            {label: "study", value: "study"},
+            {label: "video_web", value: "video_web"},
+            {label: "web", value: "web"}
+          ]},
+          {label: "provider", name: provider", widget: "string", required: false},
+          {label: "visible", name: "visible", widget: "boolean", default: true}, 
+          {label: "Related Organization", name: "organization_id", widget: "relation", collection: "organizations", search_fields: ["name"],value_field: "id", display_fields: ["{{name}}"], required: false},
+          {label: "filesize", name: filesize", widget: "number", required: false}, 
+          {label: "notes", name: "notes", widget: "text", required: false}, 
+          {label: "response_code", name: "response_code", widget: "number", required: false}, 
+      ]}
+  - name: "languages"
+    label: "Languages" 
+    format: json
+    folder: "/languages/"
+    create: true
+    slug: "{{iso}}"
+    fields:
+      - {label: "iso", name: "iso", widget: "string", pattern: ['[a-z]{3,3}', "Must be exactly 3 characters"]}
+      - {label: "glotto_id", name: "glotto_id", widget: "string", pattern: ['.{8,8}', "Must be exactly 8 characters"], required: false} # char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "glotto_family", name: "glotto_family", widget: "string", pattern: ['.{8,8}', "Must be exactly 8 characters"], required: false} # char(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "iso1", name: "iso1", widget: "string", pattern: ['[a-z]{2,2}', "Must be exactly 2 characters"], required: false} # char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "name", name: "name", widget: "string"} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+      - {label: "autonym", name: "autonym", widget: "string"} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "translations", name: "translations", widget: "list", fields: [
+          {label: "name", name: "name", widget: "string"},
+          {label: "iso", name: "iso", widget: "string", pattern: ['[a-z]{3,3}', "Must be exactly 3 characters"]}
+        ]}
+      - {label: "dialects", name: "dialects", widget: "list", field: {label: "iso", name: "iso", widget: "string", pattern: ['[a-z]{3,3}', "Must be exactly 3 characters"]}}
+      - {label: "classifications", name: "classifications", widget: "list", fields: [
+          {label: "iso", name: "classification_iso", widget: "string", pattern: ['[a-z]{3,3}', "Must be exactly 3 characters"]},
+          {label: "Glottolog Classification id", name: "classification_id", widget: "string", pattern: ['.{8,8}', "Must be exactly 8 characters"]},
+          {label: "Order", name: "order", widget: "number", min: 0},
+          {label: "Name", name: "name", widget: "string"}
+        ]}
+      - {label: "macroarea", name: "macroarea", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "level", name: "level", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "development", name: "development", widget: "string", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "use", name: "use", widget: "string", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "location", name: "location", widget: "string", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "area", name: "area", widget: "string", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "progress", name: "progress", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "typology", name: "typology", widget: "string", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "writing", name: "writing", widget: "string", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "description", name: "description", widget: "markdown", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "country_id", name: "country_id", widget: "string", pattern: ['[A-Z]{2,2}', "Must be exactly 2 characters"], required: false}
+      - {label: "latitude", name: "latitude", widget: "string", required: false} # decimal(9,6) DEFAULT NULL,
+      - {label: "longitude", name: "longitude", widget: "string", required: false} # decimal(9,6) DEFAULT NULL,
+      - {label: "population", name: "population", widget: "number", min: 0, step: 1, required: false} # int unsigned DEFAULT NULL,
+      - {label: "status_id", name: "status_id", widget: "select", options: ["0","1","2","3","4","5","6a","6b","7","8a","8b","9","10","11"], required: false} # char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "status_notes", name: "status_notes", widget: "text", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "Publish Date", name: "date", widget: "datetime", required: false}
+  - name: "countries"
+    label: "Countries" 
+    format: json
+    folder: "/countries/"
+    create: true
+    slug: "{{id}}"
+    fields:
+      - {label: "id", name: "id", widget: "string", pattern: ['[A-Z]{2,2}', "Must be exactly 2 characters"]}
+      - {label: "name", name: "name", widget: "string", pattern: ['[A-Z]{3,64}', "Must be between 3 and 64 characters"], required: false}
+      - {label: "name_long", name: "name_long", widget: "string", required: false}
+      - {label: "population", name: "population", widget: "number", min:0} # bigint unsigned DEFAULT NULL,
+      - {label: "official_language", name: "official_language", widget: "relation", collection: "languages", search_fields: ["name", "iso"],value_field: "iso", display_fields: ["{{name}} - {{iso}}"]}
+      - {label: "url_wiki", name: "url_wiki", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "hidden", name: "hidden", widget: "boolean", default: "false", required: false} # tinyint DEFAULT '0',
+      - {label: "autonym", name: "autonym", widget: "string"} # varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "fips", name: "fips", widget: "string", pattern: ['[A-Z]{2,2}', "Must be exactly 2 characters"]} # char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "iso_a3", name: "iso_a3", widget: "string", pattern: ['[A-Z]{3,3}', "Must be exactly 3 characters"]} # char(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "continent_id", name: "continent_id", widget: "string", pattern: ['[A-Z]{2,2}', "Must be exactly 2 characters"]} # char(2) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+      - {label: "iso_num", name: "iso_num", widget: "number", min: 0} # int unsigned DEFAULT NULL,
+      - {label: "religion_primary", name: "religion_primary", widget: "string"} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "introduction", name: "introduction", widget: "text"} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "overview", name: "overview", widget: "markdown"} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+      - {label: "independent", name: "independent", widget: "boolean", default: "true"} # tinyint(1) NOT NULL DEFAULT '1',
+      - {label: "wfb", name: "wfb", widget: "boolean", default: false} # tinyint(1) NOT NULL DEFAULT '0',
+      - {label: "sil_language_count", name: "sil_language_count", widget: "number"} # int unsigned DEFAULT NULL,
+      - {label: "land_mass_km", name: "land_mass_km", widget: "number"} # int unsigned DEFAULT NULL,
+      - {label: "population_christian", name: "population_christian", widget: "number"} # int unsigned DEFAULT NULL,
+      - {label: "population_christian_percentage", name: "population_christian_percentage", widget: "number"} # double unsigned DEFAULT NULL,
+      - {label: "population_catholic_percentage", name: "population_catholic_percentage", widget: "number"} # double unsigned DEFAULT NULL,
+      - {label: "population_protestant_percentage", name: "population_protestant_percentage", widget: "number"} # double(8,2) unsigned DEFAULT NULL,
+      - {label: "population_refugee", name: "population_refugee", widget: "number"} # int DEFAULT NULL,
+      - {label: "population_migration", name: "population_migration", widget: "number"} # int DEFAULT NULL,
+      - {label: "population_year_change", name: "population_year_change", widget: "number"} # double DEFAULT NULL,
+      - {label: "population_density_km", name: "population_density_km", widget: "number"} # int unsigned DEFAULT NULL,
+      - {label: "population_average_age", name: "population_average_age", widget: "number"} # int DEFAULT NULL,
+      - {label: "population_urban_percentage", name: "population_urban_percentage", widget: "number"} # int DEFAULT NULL,
+      - {label: "population_literacy_percentage", name: "population_literacy_percentage", widget: "number"} # decimal(8,2) DEFAULT NULL,
+      - {label: "landmass", name: "landmass", widget: "number"} # int unsigned DEFAULT NULL,
+      - {label: "region_code", name: "region_code", widget: "number"} # tinyint unsigned DEFAULT NULL,
+      - {label: "region_id", name: "region_id", widget: "string"} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "region_name", name: "region_name", widget: "string"} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+      - {label: "languages", name: "languages", widget: "list", fields: [
+          {label: "spoken_language", name: "spoken_language", widget: "relation", collection: "languages", search_fields: ["name", "iso"], value_field: "iso", display_fields: ["{{name}} - {{iso}}"]}
+      ]}
+      - {label: "maps", name: "maps", widget: "list", fields: [
+          {label: "country_id", name: "country_id", widget: "relation", collection: "countries", search_fields: ["name", "id"], value_field: "id", display_fields: ["{{name}} - {{id}}"]},
+          {label: "continent_id", name: "continent_id", widget: "string"},
+          {label: "name", name: "name", widget: "string"},
+          {label: "type", name: "type", widget: "string"},
+          {label: "source", name: "source", widget: "string"},
+          {label: "url", name: "url", widget: "string"},
+          {label: "url_thumb", name: "url_thumb", widget: "string"},
+          {label: "url_pdf", name: "url_pdf", widget: "string"}
+      ]}
+      - {label: "persecution", name: "persecution", widget: "list", fields: [
+        {label: "rank", name: "rank", widget: "number"},
+        {label: "score", name: "score", widget: "number"},
+        {label: "year", name: "year", widget: "number"},
+        {label: "country_id", name: "country_id", widget: "relation", collection: "countries", search_fields: ["name", "id"],value_field: "id", display_fields: ["{{name}} - {{id}}"]},
+        {label: "persecution_type", name: "persecution_type", widget: "string"},
+        {label: "url", name: "url", widget: "string"}
+      ]}
+      - {label: "translations", name: "translations", widget: "list", fields: [
+        {label: "languages", name: "languages", widget: "relation", collection: "languages", search_fields: ["name", "iso"], value_field: "iso", display_fields: ["{{name}} - {{iso}}"]},
+        {label: "name", name: "name", widget: "string"}
+      ]}
+  - name: "organizations"
+    label: "Organizations" 
+    format: json
+    folder: "/organizations/"
+    create: true
+    slug: "{{id}}"
+    fields:
+    - {label: "id", name: "id", widget: "string", pattern: ['[a-z]{3,64}', "Must be between 3 and 64 characters"]} # varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+    - {label: "name", name: "name", widget: "string"} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "inactive", name: "inactive", widget: "boolean", default: false} # tinyint(1) DEFAULT '0',
+    - {label: "parent_id", name: "parent_id", widget: "string", pattern: ['[a-z]{3,64}', "Must be between 3 and 64 characters"]} # varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "type", name: "type", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "autonym", name: "autonym", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "url_website", name: "url_website", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "address", name: "address", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "country_id", name: "country_id", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "phone", name: "phone", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "email", name: "email", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "latitude", name: "latitude", widget: "string", pattern: ['^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$]', 'Needs to be a valid latitude/longitude']} # decimal(9,6) DEFAULT NULL,
+    - {label: "longitude", name: "longitude", widget: "string", pattern: ['^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?),\s*[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$]', 'Needs to be a valid latitude/longitude']} # decimal(9,6) DEFAULT NULL,
+    - {label: "primary_color", name: "primary_color", widget: "color", required: false} # varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "secondary_color", name: "secondary_color", widget: "color", required: false} # varchar(7) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "url_facebook", name: "url_facebook", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "url_donate", name: "url_donate", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "url_twitter", name: "url_twitter", widget: "string", required: false} # varchar(191) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+    - {label: "notes", name: "notes", widget: "text", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    - {label: "logo", name: "logo", widget: "text", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    - {label: "icon", name: "icon", widget: "text", required: false} # text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+    - {label: "relationships", name: "relationships", widget: "list", fields: [
+      {label: "Related Organization", name: "organization", widget: "relation", collection: "organizations", search_fields: ["name"],value_field: "id", display_fields: ["{{name}}"]},
+      {label: "type", name: "type", widget: "string"}
+    ]}

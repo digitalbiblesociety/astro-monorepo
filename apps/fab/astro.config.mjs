@@ -20,6 +20,6 @@ export default defineConfig({
     tailwind({config: { applyBaseStyles: false } }),
     sitemap(), 
     svelte(),
-    compress()
+    compress({svg:false})
   ]
 });

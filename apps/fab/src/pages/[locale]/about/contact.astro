@@ -1,0 +1,12 @@
+---
+import Layout from '~/layouts/AboutLayout.astro'
+import { SITE } from '~/config.js';
+
+export function getStaticPaths () {
+	return Object.keys(SITE.locales).map((locale) => ({
+		params: { locale }
+	})
+)}
+---
+
+<Layout />

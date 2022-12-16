@@ -10,7 +10,7 @@ const scope = import.meta.env.COUNTRY_SCOPE;
 
 ---
 
-<Layout meta={{ title: t.audio }}>
+<Layout meta={{ title: t?.audio ?? 'Audio' }}>
 
 	<AudioBiblePlayer 
 		key={import.meta.env.DBP_APIKEY} 

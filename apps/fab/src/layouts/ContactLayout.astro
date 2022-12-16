@@ -8,7 +8,7 @@ const t = i18n[locale]
 
 const { content } = Astro.props;
 ---
-<Layout meta={{ title: t.contact }}>
+<Layout meta={{ title: t?.contact ?? 'Contact' }}>
 
 <div class="prose mx-auto max-w-prose">
 

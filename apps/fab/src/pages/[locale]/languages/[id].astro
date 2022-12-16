@@ -1,0 +1,10 @@
+---
+import Layout from '~/layouts/Wiki/LanguageShowLayout.astro'
+import { NestedResourcePath } from "~/utils/StaticPathHelper";
+
+export async function getStaticPaths() {
+  return NestedResourcePath('languages')
+}
+---
+
+<Layout />

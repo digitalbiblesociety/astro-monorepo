@@ -1,9 +1,9 @@
 <script>
 import { scope } from '~/utils/env'
 
- export let path;
- export let item;
- export let icon;
+export let path;
+export let item;
+export let icon;
 </script>
 
 <li class="flow-root">

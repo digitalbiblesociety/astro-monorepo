@@ -10,10 +10,10 @@ const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
 ---
 
-<Layout meta={{ title: t.alphabets }}>
+<Layout meta={{ title: t?.alphabets ?? 'Alphabets' }}>
   <Banner
     backgroundImage="/img/banner/banner_languages.jpg"
-    title={t.alphabets}
+    title={t?.alphabets ?? 'Alphabets'}
   />
 
   <Datatable inputData={alphabets} locale={locale} tableType="alphabets" client:visible />

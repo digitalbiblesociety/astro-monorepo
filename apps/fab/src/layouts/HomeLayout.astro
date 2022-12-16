@@ -2,7 +2,7 @@
 import Layout from "~/layouts/PageLayout.astro";
 import FabFrontPage from "./Pages/FabFrontPage.astro";
 import CSFrontPage from "./Pages/CSFrontPage.astro";
-import { getLanguageFromPath, SITE } from '~/config.js'
+import { getLanguageFromPath } from '~/config.js'
 import { scope } from '~/utils/env'
 import { i18n } from '@dbs/ui'
 const locale = getLanguageFromPath(Astro.url)
@@ -11,7 +11,7 @@ const {content} = Astro.props;
 
 ---
 
-<Layout meta={{title:t?.home ?? "Home",description: t.cs_tagline }}>
+<Layout meta={{title:t?.home ?? "Home",description: t?.cs_tagline ?? '' }}>
 
 { scope === 'all' ? 
 	<FabFrontPage content={content} /> : 

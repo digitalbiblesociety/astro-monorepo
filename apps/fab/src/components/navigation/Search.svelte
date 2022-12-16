@@ -93,15 +93,14 @@
 			}
 		})
 	}
-	</script>
-	
-	
-		<div class="w-full mt-1 mx-4">
-			<div class="relative">
+</script>
+
+		<div class="block w-3/4 mx-auto lg:w-full max-w-lg mt-1 md:py-4 lg:py-0">
+			<div class="relative mx-4">
 				<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-stone-400">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-					  </svg>					  
+					</svg>
 				</div>
 				<input
 					type="search"
@@ -111,9 +110,8 @@
 					on:input="{instantSearch}"
 					aria-label="Search"
 					autocomplete="off"
-					class="block w-full rounded-md border border-stone-200 py-2 pl-10 pr-3 text-sm text-stone-700 shadow
+					class="block w-full rounded-md border border-stone-200 py-2 pl-10 text-sm text-stone-700 shadow
 							placeholder-stone-700 dark:border-stone-700 dark:bg-stone-700 dark:text-stone-100 dark:placeholder-stone-100" />
 			</div>
 		</div>
-	
 	<SearchResults {t} {locale} {results} {result_ordered} />

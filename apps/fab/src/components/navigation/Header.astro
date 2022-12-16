@@ -10,22 +10,14 @@ const t = i18n[locale]
 ---
 
 <header class="sticky top-0 z-40 flex-none mx-auto w-full bg-white/90 dark:bg-stone-900/90 backdrop-blur-sm border-b dark:border-b-0">
-  <div class="py-4 px-3 mx-auto w-full md:flex md:justify-between max-w-6xl md:px-4">
-    <div class="flex justify-between">
+  <div class="py-4 px-3 mx-auto w-full lg:flex lg:justify-between max-w-6xl md:px-4">
+    <div class="flex justify-between md:justify-center">
       <a class="flex items-center" href={`/${locale}/`}>
         <Logo />
       </a>
       <div class="flex items-center md:hidden">
         <button
-          type="button"
-          class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center"
-          aria-label="Toggle between Dark and Light mode"
-          data-aw-toggle-color-scheme
-        >
-          <IconSun class="w-6 h-6" />
-        </button>
-        <button
-          class="ml-1.5 text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 inline-flex items-center transition"
+          class="ml-1.5 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-800 focus:outline-none focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 rounded-lg text-sm p-2.5 inline-flex items-center transition"
           aria-label="Toggle Menu"
           data-aw-toggle-menu
         >
@@ -35,54 +27,60 @@ const t = i18n[locale]
     </div>
     <Search t={t} locale={locale} client:visible />
     <nav
-      class="items-center w-full md:w-auto hidden md:flex text-gray-600 dark:text-stone-200"
+      class="items-center w-full md:w-auto hidden md:flex text-stone-600 dark:text-stone-200"
       aria-label="Main navigation"
       id="menu"
     >
-      <ul
-        class="flex flex-col pt-8 md:pt-0 md:flex-row md:self-center w-full md:w-auto text-xl md:text-base"
-      >
-        <li>
+      <ul class="flex flex-col pt-8 md:pt-0 md:flex-row self-center w-full md:w-auto text-xl md:text-base mx-auto">
+        <li class="flex justify-center items-center">
+          <button
+            type="button"
+            class="text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-700 focus:outline-none focus:ring-4 focus:ring-stone-200 dark:focus:ring-stone-700 rounded-lg text-sm p-2.5 inline-flex items-center"
+            aria-label="Toggle between Dark and Light mode"
+            data-aw-toggle-color-scheme
+          >
+          <IconSun class="w-6 h-6" />
+        </button>
           <LanguageSwitcher url={Astro.url.pathname.substring(4)} locales={SITE.locales} client:visible />
         </li>
         <li>
           <a
-            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            class="font-medium hover:text-stone-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
             href={`/${locale}/bibles`}
-            >{t['bibles']}
+            >{t?.bibles ?? ''}
           </a>
         </li>
 
         <li>
           <a
-            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            class="font-medium hover:text-stone-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
             href={`/${locale}/languages`}
-            >{t['languages']}</a>
+            >{t?.languages ?? ''}</a>
         </li>
         {scope == 'all' ? <li>
           <a
-            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            class="font-medium hover:text-stone-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
             href={`/${locale}/countries`}
-            >{t['countries']}</a>
+            >{t?.countries ?? ''}</a>
         </li>
         <li>
           <a
-            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            class="font-medium hover:text-stone-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
             href={`/${locale}/organizations`}>{t?.organizations ?? 'Organizations'}</a>
         </li>
         <li>
           <a
-            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-            href={`/${locale}/about`}>{t['about']}</a>
+            class="font-medium hover:text-stone-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href={`/${locale}/about`}>{t?.about ?? 'About'}</a>
         </li> : <li>
           <a
-            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-            href={`/${locale}/films`}>{t.films}</a>
+            class="font-medium hover:text-stone-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href={`/${locale}/films`}>{t?.films ?? 'Films'}</a>
         </li>
         <li>
           <a
-            class="font-medium hover:text-gray-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
-            href={`/${locale}/bibles/audio`}>{t.audio}</a>
+            class="font-medium hover:text-stone-900 dark:hover:text-white px-4 py-3 flex items-center transition duration-150 ease-in-out"
+            href={`/${locale}/bibles/audio`}>{t?.audio ?? 'Audio'}</a>
         </li> }
       </ul>
     </nav>

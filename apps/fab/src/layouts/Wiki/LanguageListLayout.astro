@@ -21,7 +21,7 @@ if(scope !== 'all') {
 }
 ---
 
-<Layout meta={{ title: t.languages }}>
+<Layout meta={{ title: t?.languages ?? 'Languages' }}>
   <Banner backgroundImage="/img/banner/banner_languages.jpg" title={t.languages} tabs={tabs} />
 
   <Datatable inputData={languages} locale={locale} t={t} tableType="languages" 

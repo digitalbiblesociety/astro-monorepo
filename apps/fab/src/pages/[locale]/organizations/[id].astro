@@ -1,0 +1,9 @@
+---
+import Layout from '~/layouts/Wiki/OrganizationShowLayout.astro'
+import { NestedResourcePath } from "~/utils/StaticPathHelper"
+
+export async function getStaticPaths() {
+  return NestedResourcePath('organizations')
+}
+---
+<Layout />
