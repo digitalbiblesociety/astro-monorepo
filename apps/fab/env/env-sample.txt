@@ -1,0 +1,5 @@
+APP_URL=find.bible
+REPO=digitalbibles/fab
+COUNTRY_SCOPE=all
+COLOR_PRIMARY=emerald
+COLOR_SECONDARY=blue
