@@ -14,13 +14,27 @@ const {breadcrumbs} = Astro.props;
 			  </a>
 			</div>
 		  </li>
-		{breadcrumbs.map(breadcrumb => (
-		<li>
-			<div class="flex items-center">
-				<span class="text-stone-100 font-mono font-bold">/</span>
-			  <a href={breadcrumb.url} class="ml-2 text-lg font-bold text-stone-200 hover:text-stone-700">{breadcrumb.title}</a>
-			</div>
-		</li>
-		))}
+		{breadcrumbs.map(breadcrumb => {
+			
+			return (breadcrumb.url ? 
+				
+			<li>
+				<div class="flex items-center">
+					<span class="text-stone-100 font-mono font-bold">/</span>
+					<a href={breadcrumb.url} class="ml-2 text-lg font-bold text-stone-200 hover:text-stone-700">{breadcrumb.title}</a>
+				</div>
+			</li>
+				
+				: 
+				
+			<li>
+				<div class="flex items-center">
+					<span class="text-stone-100 font-mono font-bold">/</span>
+					<span class="ml-2 text-lg font-bold text-stone-400">{breadcrumb.title}</span>
+				</div>
+			</li>
+				
+				)
+		})}
 	</ol>
   </nav>

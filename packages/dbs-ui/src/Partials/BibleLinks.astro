@@ -53,26 +53,26 @@ function fileSize(size) {
 
 ---
 
-<section class="text-gray-600 flex flex-row px-4">
+<section class="text-stone-600 flex flex-row px-4">
 
 	{bible.description ? <div class="hidden sm:block lg:w-1/4 prose mx-auto dark:prose-invert" set:html={bible.description}></div> : ''}
 	<div class={`container mx-auto px-5` + (bible.description ? ' lg:w-3/4' : '')}>
 		<div class="col-span-2">
 			{Object.keys(groupBy(bible.links,'type')).map(type => (
-					<div class="bg-gray-50 dark:bg-stone-800 my-4 rounded shadow-md">
+					<div class="bg-stone-50 dark:bg-stone-800 my-4 rounded shadow-md">
 						{(translations['link_sections'][type]) ? 
-						<div class="px-4 py-5 border-b border-gray-200 dark:border-stone-600 sm:px-6">
-							<h3 class="text-lg leading-6 font-medium text-gray-900 dark:text-stone-200" set:html={ translations['link_sections'][type]['title'] }></h3>
-							<p class="mt-1 text-sm text-gray-500" set:html={ translations['link_sections'][type]['description'] }></p>
+						<div class="px-4 py-5 border-b border-stone-200 dark:border-stone-600 sm:px-6">
+							<h3 class="text-lg leading-6 font-medium text-stone-900 dark:text-stone-200" set:html={ translations['link_sections'][type]['title'] }></h3>
+							<p class="mt-1 text-sm text-stone-500" set:html={ translations['link_sections'][type]['description'] }></p>
 						</div> : '' }
 					<div>
 					{Object.keys(groupBy(bible.links.filter(link => link.type == type),'provider')).map(provider => (
-					<div class="bg-gray-100 dark:bg-stone-800 flex flex-row justify-between p-4">
+					<div class="bg-stone-100 dark:bg-stone-800 flex flex-row justify-between p-4">
 						<div class="flex w-1/5 dark:text-stone-200 text-center justify-center place-items-center">{provider}</div>
 						<div class="w-4/5 grid grid-cols-2">
 							{bible.links.map(bible_link => (
 								<div class="empty:hidden">{(bible_link.type == type && bible_link.provider == provider ?
-								<a class="p-2 bg-gray-200 dark:bg-stone-900 hover:bg-gray-300 dark:text-stone-200 m-2 rounded flex flex-row justify-between" href={bible_link.url}>
+								<a class="p-2 bg-stone-200 dark:bg-stone-900 hover:bg-stone-300 dark:text-stone-200 m-2 rounded flex flex-row justify-between" href={bible_link.url}>
 									<span class="px-2 flex-grow truncate">{bible_link.title}</span>
 									{bible_link.filesize ? <span class="text-xs justify-center place-self-center">{fileSize(bible_link.filesize)}</span> : ''}
 									{

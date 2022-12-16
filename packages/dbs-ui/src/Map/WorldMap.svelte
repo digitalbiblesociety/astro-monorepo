@@ -45,7 +45,6 @@
 		    countryWrap.attr('transform', `translate(${x}, ${y}) scale(${k})`);
 		}
 
-	
 	const countries = {
 		BD: "#e3ece3",
 		BE: "#75a375",
@@ -623,7 +622,7 @@
 			{#each map_data as data, i}
 				<path
 					id="{data.properties.country_id}"
-					class="cursor-pointer"
+					class="cursor-pointer opacity-75 hover:opacity-100"
 					center="{data.properties.center}"
 					d="{path(data)}"
 					on:click="{() => window.location.href = `/${locale}/countries/${data.properties.country_id}`}"

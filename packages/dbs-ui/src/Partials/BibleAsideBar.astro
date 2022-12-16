@@ -6,26 +6,26 @@ const {bible, locale} = Astro.props
 	<div class="flex flex-row justify-center py-2">
 	{bible.iso ? 
 		<div class="flex flex-col dark:border-stone-700 px-6 py-2 text-center">
-			<span class="mt-2 leading-6 text-gray-500">Language</span>
+			<span class="mt-2 leading-6 text-stone-500">Language</span>
 			<a class="text-lg font-extrabold text-primary-600" href={`/${locale}/languages/${bible.iso}`}>{bible.language.name} {bible.language.autonym ?? ''}</a>
 		</div> : '' }
 
 	{bible.alphabet ? 
 		<div class="flex flex-col px-6 py-2 text-center">
-			<span class="mt-2 leading-6 text-gray-500">Alphabet</span>
+			<span class="mt-2 leading-6 text-stone-500">Alphabet</span>
 			<span class="text-lg font-extrabold text-stone-600">
 				{bible.alphabet.name ?? bible.script}
 			</span>
 		</div> : ''}
 	{bible.date ? 
 		<div class="flex flex-col px-6 py-2 text-center">
-			<span class="mt-2 leading-6 text-gray-500">Date</span>
+			<span class="mt-2 leading-6 text-stone-500">Date</span>
 			<span class="text-lg font-extrabold text-stone-600">{bible.date}</span>
 		</div> : ''}
 
 	{bible.country ? 
 		<div class="flex flex-col dark:border-stone-700 px-6 py-2 text-center">
-			<span class="mt-2 leading-6 text-gray-500">Country</span>
+			<span class="mt-2 leading-6 text-stone-500">Country</span>
 			<a class="text-lg font-extrabold text-primary-600" href={`/${locale}/countries/${bible.country_id}`}>
 				{bible.country.name}
 			</a>
