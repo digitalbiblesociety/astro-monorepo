@@ -1,60 +1,60 @@
 ---
 import Logo from './Logo.astro'
 import { Icon } from 'astro-icon'
-import { getLanguageFromPath } from "~/config.mjs";
+import { getLanguageFromPath } from "~/config.js";
 import {i18n} from "~/translations/i18n.mjs";
 const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
 const link_groups = [
 	{
 		type: "project",
-		name: t["Projects"],
+		name: t?.Projects ?? 'Projects',
 		links: [
 			{
-				title: t["Downloads"],
+				title: t?.Downloads ?? 'Downloads',
 				href: `/bibles`,
 				type: `_self`,
 				rel: `none`,
 			},
 			{
-				title: t["Libraries"],
+				title: t?.Libraries ?? 'Libraries',
 				href: `/libraries`,
 			},
 			{
-				title: t["Audio Bibles"],
+				title: t?.Audio_Bibles ?? 'Audio Bibles',
 				href: `/about/work/audio-bibles`,
 			},
 			{
-				title: t["Print Bibles"],
+				title: t?.Print_Bibles ?? 'Print Bibles',
 				href: `/about/work/print`,
 			},
 		],
 	},
 	{
 		type: "about",
-		name: t["About"],
+		name: t?.About ?? 'About',
 		links: [
 			{
-				title: t["Ministry"],
+				title: t?.Ministry ?? 'Ministry',
 				href: `/about/overview`,
 			},
 			{
-				title: t["Projects"],
+				title: t?.Projects ?? 'Projects',
 				href: `/about/projects`,
 			},
 			{
-				title: t["Stories"],
+				title: t?.Stories ?? 'Stories',
 				href: `/about/projects/stories`,
 			},
 			{
-				title: t["Contact"],
+				title: t?.Contact ?? 'Contact',
 				href: `/about/contact`,
 			},
 		],
 	},
 	{
 		type: "links",
-		name: t["Links"],
+		name: t?.Links ?? 'Links',
 		links: [
 			{
 				title: "find.bible",
@@ -83,16 +83,15 @@ const link_groups = [
 
 <footer class="">
 	<div
-		class="border-t-none mx-auto max-w-7xl border border-gray-300 bg-gray-50
-			pt-5 pb-3 dark:border-gray-500 dark:bg-gray-800 xl:rounded-b-2xl">
+		class="border-t-none mx-auto max-w-7xl border border-stone-300 bg-stone-50
+			pt-5 pb-3 dark:border-stone-500 dark:bg-stone-800 xl:rounded-b-2xl">
 		<section class="block justify-around sm:flex">
 			<div class="flex-col items-center justify-around px-8 sm:w-6/12">
 
 				<Logo />
 
-
 				<div
-					class=" mt-2 flex justify-center text-gray-700 dark:text-gray-200 dark:hover:text-gray-300">
+					class=" mt-2 flex justify-center text-stone-700 dark:text-stone-200 dark:hover:text-stone-300">
 					
 					<a
 						href="https://vimeo.com/digitalbiblesociety"
@@ -128,7 +127,7 @@ const link_groups = [
 				</div>
 
 				<div
-					class="my-3 flex justify-center space-x-6 text-2xl text-gray-400 hover:text-gray-500 dark:text-gray-200 dark:hover:text-gray-300">
+					class="my-3 flex justify-center space-x-6 text-2xl text-stone-400 hover:text-stone-500 dark:text-stone-200 dark:hover:text-stone-300">
 					<a
 						href={`/${locale}/about/donate#endorsement`}
 						class="opacity-80 hover:underline hover:opacity-100">
@@ -172,14 +171,14 @@ const link_groups = [
 
 						<h3
 							class="mb-2 text-center font-semibold uppercase tracking-wider
-								text-gray-600 underline dark:text-gray-200">
+								text-stone-600 underline dark:text-stone-200">
 							{link_group.name}
 						</h3>
 
 
 						<ul class="mt-2">
 							{link_group.links.map(link => 
-								<li class="mb-1 text-gray-600 hover:text-primary-600 dark:text-gray-200 dark:hover:text-gray-200">
+								<li class="mb-1 text-stone-600 hover:text-primary-600 dark:text-stone-200 dark:hover:text-stone-200">
 									<a
 										href={link.href}
 										target={link.external ? '_blank' : ''}
@@ -197,14 +196,14 @@ const link_groups = [
 	</div>
 
 	<div
-		class="mx-auto flex w-10/12  max-w-7xl p-2 text-sm text-gray-600 dark:text-gray-300 mb-2">
+		class="mx-auto flex w-10/12  max-w-7xl p-2 text-sm text-stone-600 dark:text-stone-300 mb-2">
 		<span class="m-auto w-full text-center md:w-7/12 md:text-right">
 			<a
 				href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
 				target="_blank"
 				rel="noopener noreferrer"
-				class="ml-16 inline-flex items-center text-right  hover:text-primary-600  hover:underline hover:dark:text-gray-100">
-				{t["org_title"]}
+				class="ml-16 inline-flex items-center text-right  hover:text-primary-600  hover:underline hover:dark:text-stone-100">
+				{t?.org_title ?? 'org_title'}
 				<img
 					class="mx-2 h-5 w-5"
 					alt="Creative Commons"
@@ -215,8 +214,8 @@ const link_groups = [
 		<span class="mr-2 hidden text-right md:block md:w-5/12 ">
 			<a
 				href={`/${locale}/about/overview/privacy`}
-				class="ml-4 hover:text-primary-500 hover:underline hover:dark:text-gray-100">
-				{t["Privacy"]}
+				class="ml-4 hover:text-primary-500 hover:underline hover:dark:text-stone-100">
+				{t?.Privacy ?? 'Privacy'}
 			</a>
 		</span>
 	</div>

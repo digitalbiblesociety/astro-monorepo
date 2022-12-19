@@ -4,7 +4,7 @@ const posts = await Astro.glob('./posts/*.md'); // returns an array of posts tha
 import Banner from '~/components/partials/Banner.astro'
 
 import {i18n} from "~/translations/i18n.mjs";
-import { getLanguageFromPath } from "~/config.mjs";
+import { getLanguageFromPath } from "~/config.js";
 const locale = getLanguageFromPath(Astro.url)
 const t = i18n[locale]
 ---
@@ -12,18 +12,18 @@ const t = i18n[locale]
 <Layout>
 
 	<Banner 
-		title={t["projects_title"]}
+		title={t?.projects_title ?? 'Projects'}
 		subtitle="" 
-		caption={t["projects_tagline"]}
+		caption={t?.projects_tagline ?? ''}
 		breadcrumbs={[
-			{ link: `/about/`, title: t['About'] },
-			{ link: `/about/projects`, title: t['Projects'] },
-			{ link: '#', title: t['about.projects_title'] },
+			{ link: `/about/`, title: t?.about ?? 'About' },
+			{ link: `/about/projects`, title: t?.projects ?? 'Projects' },
+			{ link: '#', title: t?.about.projects_title ?? '' },
 		]}
 		subnav={[
-			{title:t["Overview"],url:'/about/projects/'},
-			{title:t["Stories"],url:'/about/projects/stories',selected:true},
-			{title:t["Project"],url:'/about/projects/proposals'}
+			{title:t?.Overview ?? 'Overview',url:'/about/projects/'},
+			{title:t?.Stories ?? 'Stories',url:'/about/projects/stories',selected:true},
+			{title:t?.Project ?? 'Project',url:'/about/projects/proposals'}
 		]} />
 
 <div class="prose mx-auto">

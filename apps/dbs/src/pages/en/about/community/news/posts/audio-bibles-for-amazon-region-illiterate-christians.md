@@ -5,6 +5,7 @@ permalink: /2022/08/23/audio-bibles-for-amazon-region-illiterate-christians
 author: 'Bere Cowpersmith'
 excerpt: ''
 thumbnail: /img/posts/Untitled-Facebook-Cover-7.png
+country: EC
 category:
     - 'Bible Distribution'
     - 'Scripture Distribution Projects'
@@ -26,4 +27,4 @@ Please email projects@dbs.org and reference Project ID: 5-1-002 to help us fund 
 
 We invite you to watch the video below to see the impact of previous distributions among indigenous Colombian tribes in the Amazon.
 
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="360" loading="lazy" src="https://www.youtube.com/embed/nXSKinUeLIE?feature=oembed" title="“The House Started to Sink!”- T.J. Wainerdi’s Account of His Trip to the Amazon" width="640"></iframe></div></figure>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="360" loading="lazy" src="https://www.youtube.com/embed/nXSKinUeLIE?feature=oembed" title="“The House Started to Sink!”- T.J. Wainerdi’s Account of His Trip to the Amazon" width="640"></iframe>

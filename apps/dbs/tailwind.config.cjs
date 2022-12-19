@@ -2,7 +2,7 @@ const colors = require("tailwindcss/colors")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx}','../../packages/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx}'],
 	theme: {
 		extend: {
 			colors: {
@@ -23,9 +23,7 @@ module.exports = {
 	},
 	plugins: [
 		require("@tailwindcss/forms"),
-		require("@tailwindcss/aspect-ratio"),
 		require("@tailwindcss/typography"),
-		require("@tailwindcss/line-clamp"),
-		require("daisyui")
+		require("@tailwindcss/line-clamp")
 	],
 }

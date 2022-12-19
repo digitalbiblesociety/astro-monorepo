@@ -1,0 +1,25 @@
+---
+import path from "node:path";
+
+const { author } = Astro.props;
+
+const avatar = author.avatar_urls["24"].replace("s=24", "s=192");
+---
+
+<span class="block mx-auto max-w-xs">
+  <div class="flex justify-center items-center">
+    <div>
+      <img
+        loading="lazy"
+        width="64"
+        height="64"
+        class="rounded-full p-4"
+        src={avatar}
+        alt={`${author.name} | Digital bible Society`} />
+    </div>
+    <div class="ml-3">
+      <p class="text-sm text-stone-700 dark:text-stone-300">{author.name}</p>
+      <p class="text-xs text-stone-500 dark:text-stone-400">{author.description}</p>
+    </div>
+  </div>
+</span>

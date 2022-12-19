@@ -1,0 +1,45 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { Banner, i18n } from "@dbs/ui";
+import { SITE, getLanguageFromPath } from "~/config.js";
+import MapBlock from "~/components/partials/MapBlock.astro";
+
+const { id } = Astro.params;
+const countryResponse = await fetch(`${SITE.apiUrl}/countries/${id}.json`);
+const country = await countryResponse.json();
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+
+const maps = country.maps.map(map => {
+	return 	{
+		type: map.type,
+		name: map.name,
+		filename: map.url.replace('https://images.bible.cloud/maps/', ''),
+		filename_thumb: map.url_thumb.replace('https://images.bible.cloud/maps/', '')
+	}
+})
+---
+
+<Layout meta={{ title: country.name }}>
+
+<Banner
+  background={`https://images.bible.cloud/fab/banners/satellite/${country.id}.jpg`}
+  title={country.name}
+  subtitle={country.region_name}
+  tabs={[
+    {title: t?.languages ?? 'Languages', url: `/${locale}/countries/${country.id}`},
+    {title: t?.maps ?? 'Maps', url: `/${locale}/countries/${country.id}/maps`},
+	{title: 'Languages Maps', url: `/${locale}/countries/${country.id}/languages`},
+  ]}
+/>
+<div class="flex flex-row">
+<div class="w-full sm:w-3/5 p-4">
+	<MapBlock maps={maps} />
+</div>
+<div class="w-2/5 hidden sm:block">
+
+
+</div>
+</div>
+</Layout>
+

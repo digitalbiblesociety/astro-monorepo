@@ -5,6 +5,7 @@ permalink: /2021/11/01/1-5k-bibles-to-chiapas-mexico
 author: 'Bere Cowpersmith'
 excerpt: 'Ministerios Salem is connected to 25 churches that reach out to the Tojolabal, Tzeltal and Tzotzil communities in the area. They are actively evangelizing and offering support to the persecuted church. There are many indigenous people who are coming to Christ in Chiapas, however, they face extreme persecution and need God’s Word to be strengthened.'
 thumbnail: /img/posts/Chiapas-Community-Print-Bibles-Blog-2021.png
+country: MX
 category:
     - 'Bible Distribution'
 ---
@@ -12,8 +13,6 @@ category:
 ![](/img/posts/Chiapas-men-print-Bibles-2021.jpg)
 
 **Date:** Completed 10/2021
-
-**Countries Involved:** Mexico
 
 **Field Partner:** Ministerios Salem (Salem Ministries)
 

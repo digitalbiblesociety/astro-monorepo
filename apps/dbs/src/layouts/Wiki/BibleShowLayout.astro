@@ -1,0 +1,16 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { getLanguageFromPath, SITE } from "~/config.js";
+import { Banner, BibleLinks, BibleAsideBar } from "@dbs/ui";
+
+const { id } = Astro.params;
+const bibleResponse = await fetch(`${SITE.apiUrl}/bibles/${id}.json`);
+const bible = await bibleResponse.json();
+const locale = getLanguageFromPath(Astro.url)
+---
+
+<Layout meta={{ title: bible.title }}>
+	<Banner title={bible.title} subtitle={bible.title_vernacular} />
+	<BibleAsideBar bible={bible} locale={locale} />
+	<BibleLinks bible={bible} />
+</Layout>

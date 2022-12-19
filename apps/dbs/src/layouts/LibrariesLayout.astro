@@ -5,7 +5,7 @@
 
 	// Language Block
 	import {i18n} from "~/translations/i18n.mjs";
-	import { getLanguageFromPath } from "~/config.mjs";
+	import { getLanguageFromPath } from "~/config.js";
 	const locale = getLanguageFromPath(Astro.url)
 	const t = i18n[locale]
 
@@ -17,15 +17,15 @@
 <section id="container" class="mx-auto max-w-5xl">
 
 	<Banner
-		title={t["Libraries"]}
+		title={t?.libraries ?? 'Libraries'}
 		subtitle=""
-		caption={t["libraries_about_caption"]}
+		caption={t?.libraries_about_caption}
 		subnav={[
-			{title:t["Overview"],url:`/${locale}/libraries/`},
-			{title:t["Treasures Libraries"],url:`/${locale}/libraries/treasures`},
-			// {title:t["Bible Libraries"],url:`/${locale}/libraries/bible`},
+			{title:t?.Overview ?? 'Overview', url:`/${locale}/libraries/`},
+			{title:t?.libraries ?? 'libraries', url:`/${locale}/libraries/treasures`},
+			// {title:t?.Bible Libraries"],url:`/${locale}/libraries/bible`},
 			// TODO: Restore Bible Libraries Pages once they're downloadable
-			{title:t["FAQs"],url:`/${locale}/libraries/faq`}
+			{title:t?.faq ?? 'faq', url:`/${locale}/libraries/faq`}
 		]} />
 
 	<div class="max-w-4xl px-6 md:px-12 pt-4 md:pt-6 italic mx-auto text-sm text-center sm:hide md:block mb-2">
@@ -35,7 +35,7 @@
 	<ul class="mx-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
 		{libraries.map(library => 
 			<li
-				class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow dark:divide-gray-500 dark:bg-gray-800">
+				class="col-span-1 divide-y divide-stone-200 dark:divide-stone-700 rounded-lg bg-white shadow dark:divide-stone-500 dark:bg-stone-800">
 				<a href="/libraries/treasures/{library.id}">
 					<div
 						class="flex w-full items-center justify-between space-x-6 drop-shadow-xl">
@@ -43,21 +43,21 @@
 							class="flex-1 truncate rounded-t-lg p-6"
 							style={`background-image:url(https://images.bible.cloud/treasures/banners/${library.id}.jpg);background-size:cover;`}>
 							<div class="flex items-center space-x-3">
-								<h3 class="text-shadow block w-full truncate text-center text-xl text-gray-100">{library.title_vernacular}</h3>
+								<h3 class="text-shadow block w-full truncate text-center text-xl text-stone-100">{library.title_vernacular}</h3>
 							</div>
-							<p class="text-shadow mt-1 block w-full truncate text-center text-xl text-gray-200">{library.title}</p>
+							<p class="text-shadow mt-1 block w-full truncate text-center text-xl text-stone-200">{library.title}</p>
 						</div>
 					</div>
 					<div>
 						<div
-							class="-mt-px flex divide-x divide-gray-200 dark:divide-gray-500">
+							class="-mt-px flex divide-x divide-stone-200 dark:divide-stone-900">
 							<div class="flex w-0 flex-1">
 								<a
 									target="_blank"
-									href={`http://downloads.dbs.org/treasures/${library.iso.toUpperCase()}/index.html`}
-									class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-white">
+									href={`http://downloads.dbs.org.s3.amazonaws.com/treasures/${library.iso.toUpperCase()}/index.html`}
+									class="relative -mr-px inline-flex w-0 flex-1 items-center justify-center rounded-bl-lg border border-transparent py-4 text-sm font-medium text-stone-700 hover:text-primary-500 dark:text-stone-200 dark:hover:text-white">
 									<svg
-										class="h-5 w-5 text-gray-400"
+										class="h-5 w-5 text-stone-400"
 										xmlns="http://www.w3.org/2000/svg"
 										fill="none"
 										viewBox="0 0 24 24"
@@ -69,15 +69,15 @@
 											d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
 										</path>
 									</svg>
-									<span class="ml-1">{t["Demo"]}</span>
+									<span class="ml-1">{t?.Demo"]}</span>
 								</a>
 							</div>
 							<div class="-ml-px flex w-0 flex-1">
 								<a
 									href={`https://dbs-web.s3.us-west-2.amazonaws.com/downloads/treasureslibraries/${library.iso.toUpperCase()}.zip`}
-									class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-white">
+									class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-stone-700 hover:text-primary-500 dark:text-stone-200 dark:hover:text-white">
 									<svg
-										class="h-5 w-5 text-gray-400"
+										class="h-5 w-5 text-stone-400"
 										xmlns="http://www.w3.org/2000/svg"
 										fill="none"
 										viewBox="0 0 24 24"
@@ -89,16 +89,16 @@
 											d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
 										</path>
 									</svg>
-									<span class="ml-1">{t["Download"]}</span>
+									<span class="ml-1">{t?.Download"]}</span>
 								</a>
 							</div>
 							<div class="-ml-px flex w-0 flex-1">
 								<a
 									href={`/${locale}/libraries/treasures/${library.id}`}
-									class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-white">
+									class="relative inline-flex w-0 flex-1 items-center justify-center rounded-br-lg border border-transparent py-4 text-sm font-medium text-stone-700 hover:text-primary-500 dark:text-stone-200 dark:hover:text-white">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
-										class="h-5 w-5 text-gray-400"
+										class="h-5 w-5 text-stone-400"
 										fill="none"
 										viewBox="0 0 24 24"
 										stroke="currentColor">
@@ -109,7 +109,7 @@
 											d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
 										</path>
 									</svg>
-									<span class="ml-1">{t["Overview"]}</span>
+									<span class="ml-1">{t?.Overview"]}</span>
 								</a>
 							</div>
 						</div>

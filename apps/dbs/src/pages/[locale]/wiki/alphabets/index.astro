@@ -1,0 +1,21 @@
+---
+import Layout from '~/layouts/BaseLayout.astro'
+import { SITE } from "~/config.js";
+import { Banner, i18n, LocalePath } from "@dbs/ui";
+import { getLanguageFromPath } from "~/config.js";
+import Datatable from "@dbs/datatables"
+
+const alphabets = await fetch(`${SITE.apiUrl}/alphabets.json`).then(response => response.json())
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+
+export const getStaticPaths = () => {
+	return LocalePath(SITE.locales)
+}
+
+---
+
+<Layout>
+	<Banner />
+	<Datatable inputData={alphabets} locale={locale} tableType="alphabets" client:visible />
+</Layout>

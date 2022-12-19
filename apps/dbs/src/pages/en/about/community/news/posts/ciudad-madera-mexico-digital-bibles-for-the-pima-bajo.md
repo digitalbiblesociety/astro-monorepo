@@ -5,19 +5,17 @@ permalink: /2022/02/21/ciudad-madera-mexico-digital-bibles-for-the-pima-bajo
 author: 'Bere Cowpersmith'
 excerpt: ''
 type: post
-id: 150
 thumbnail: /img/posts/Mexico-4.jpg
+country: MX
 category:
     - 'Bible Distribution'
-banner:
-    - '283'
 ---
 
 ![](/img/posts/Mexico-2.jpg)
 
 **Date:** November 2021
 
-**Place &amp; Countries Involved:** Ciudad Madera, Chihuahua, Mexico
+**Place:** Ciudad Madera, Chihuahua, Mexico
 
 **Details:** Pima Bajo, unreached, indigenous people in Northern Mexico
 
@@ -39,7 +37,9 @@ The following morning, the team woke early to meet Benito at his house, fully ex
 
 Once at the village, the team saw firsthand how the audio Bibles are an incredible tool. The missionaries would play portions of scripture for the Pima Bajo people who would respond with amazement. Since this people group is usually mistreated, even by government officials, they have a great distrust of outsiders. As one of the lesser known indigenous groups from Chihuahua, they are often competing with the Tarahumara Indians, who the government endorses due to their touristic appeal. The Pima Bajo, on the other hand, do not receive the same help nor protection from the government. Even so, the audio Bibles created an entry point for this team to begin sharing the Gospel of Jesus Christ.
 
-![](/img/posts/Mexico-4.jpg)One of the elders of the village, Don Paulino, was 90 years old and had never learned to read. The team played him the Gospel of John and asked him what he heard. The man responded by saying, “I heard that Jesus loves me and forgives me”. A missionary told DBS staff that this man’s eyes were filled with conviction and peace. Don Paulino heard the words of Jesus in his heart language and believed. Two months after their trip, the team received news that Don Paulino had passed away.
+![](/img/posts/Mexico-4.jpg)
+
+One of the elders of the village, Don Paulino, was 90 years old and had never learned to read. The team played him the Gospel of John and asked him what he heard. The man responded by saying, “I heard that Jesus loves me and forgives me”. A missionary told DBS staff that this man’s eyes were filled with conviction and peace. Don Paulino heard the words of Jesus in his heart language and believed. Two months after their trip, the team received news that Don Paulino had passed away.
 
 Towards the end of their trip, one of the missionaries was sitting around a fire with Benito late into the night. They were telling stories and listening to the Bible together. Benito began to tell stories of the Pima Bajo mythology and their beliefs about creation. He told the missionary that no white man had ever heard these stories because they are sacred. Benito chose to open up and share these stories because they had brought them God’s Word in their language. They thanked Benito and in turn shared with him a full explanation of the Gospel.
 

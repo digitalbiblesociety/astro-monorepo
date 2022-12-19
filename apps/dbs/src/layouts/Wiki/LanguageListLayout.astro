@@ -1,0 +1,29 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE, getLanguageFromPath } from "~/config.js";
+import Datatable from "@dbs/datatables";
+import { i18n, Banner } from "@dbs/ui";
+
+const languagesResponse = await fetch(`${SITE.apiUrl}/languages.json`);
+let languages = await languagesResponse.json();
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+
+let tabs = [
+    {title: t?.languages ?? 'Languages', url: `/${locale}/languages`},
+    {title: t?.maps ?? 'Maps', url: `/${locale}/languages/maps`},
+  ]
+
+const scope = import.meta.env.COUNTRY_SCOPE
+if(scope !== 'all') {
+  languages = languages.filter(language => {return language.ci == scope})
+  tabs = []
+}
+---
+
+<Layout meta={{ title: t?.languages ?? 'Languages' }}>
+  <Banner backgroundImage="/img/banner/banner_languages.jpg" title={t.languages} tabs={tabs} />
+
+  <Datatable inputData={languages} locale={locale} t={t} tableType="languages" 
+    defaultSort={{initialSortKeys: [{"id": "po", "order": "desc"}]}} client:visible />
+</Layout>

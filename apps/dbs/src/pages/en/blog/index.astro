@@ -1,7 +1,33 @@
 ---
-//import { marked } from 'marked';
-//const response = await fetch('https://raw.githubusercontent.com/wiki/adam-p/markdown-here/Markdown-Cheatsheet.md');
-//const markdown = await response.text();
-//const content = marked.parse(markdown);
+import Layout from "~/layouts/BaseLayout.astro";
+import {Banner, i18n} from "@dbs/ui";
+import { getLanguageFromPath } from "~/config.js";
+const locale = getLanguageFromPath(Astro.url);
+let t = i18n[locale]
 ---
 
+<Layout title="Stories and News">
+
+<Banner 
+	title={t?.news ?? 'News'}
+	subtitle="" 
+	caption={t.work_proposals_description}
+	breadcrumbs={[
+		{ link: `/${locale}/`, title: t?.about ?? 'About' },
+		{ link: `/${locale}/blog`, title: t?.projects ?? 'Projects' },
+		{ link: '#', title: t?.proposals ?? 'Proposals' },
+	]}
+	tabs={[
+		{title:t?.overview ?? 'Overview', url:`/${locale}/blog/`},
+		{title:t?.stories ?? 'Stories', url:`/${locale}/blog/stories/1`},
+		{title:t?.project ?? 'Project', url:`/${locale}/blog/proposals/1`},
+	]} />
+
+<div class="prose dark:prose-invert mt-6 mx-auto">
+	<p>Many Bible distribution projects remain undone for either lack of funds, distributors or some logistic challenge. Meanwhile, many people want to get involved but don't know how. Digital Bible Society project proposals is changing that - one project at a time.</p>
+	<p>Since 2001, the Digital Bible Society has made friends with Christian workers serving in a wide variety of contexts. Many of whom, long to supply those whom they serve with Bible and discipleship resources, yet are simply lacking funding.</p>
+	<p>At the same time, many donors who have a heart to see God's Word reach the nations, simply don't know where to give. Meanwhile, a number of Bible distribution projects remain undone due to either lack of funds, or, from lack of distributors.</p>
+	<p>Consequently, the Digital Bible Society is seeking to join distributors and donors together to champion the cause of delivering God's Word where most needed. Toward that end, we are now providing "Project Proposals" which are either projects in need of funding sponsorship, or in need of reliable distribution.</p>
+	<p>We invite you to review our current projects in need of support as well as to review reports of completed projects. A number of projects are too sensitive to post online but if you desire to work in such regions, please contact us. We would love to get to know you!</p>
+</div>
+</Layout>

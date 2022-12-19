@@ -15,10 +15,10 @@
 
 	const table_row = (row, locale) =>  `
 	<tr class="py-4 text-sm">
-		<td class="whitespace-nowrap px-6 text-gray-900 dark:text-gray-200">
+		<td class="whitespace-nowrap px-6 text-stone-900 dark:text-stone-200">
 			<a href=/${locale}/languages/${row.iso}>
 				<div>${row.name}</div>
-				<div class="text-xs italic text-gray-500 dark:text-gray-300">${row.autonym ?? ''}</div>
+				<div class="text-xs italic text-stone-500 dark:text-stone-300">${row.autonym ?? ''}</div>
 			</a>
 		</td>
 		<td class="hidden whitespace-nowrap px-6 sm:table-cell">${row.iso}</td>
@@ -64,7 +64,7 @@
 						</dd>
 					</div>
 					{#if country.persecution}
-						<div class="mt-2 border-t border-b border-gray-200">
+						<div class="mt-2 border-t border-b border-stone-200">
 							<div class="flex justify-between py-1 text-sm">
 								<dt>{translations.world_watch_list}</dt>
 								<dd>

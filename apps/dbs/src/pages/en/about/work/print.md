@@ -1,6 +1,6 @@
 ---
 
-layout: ../../../../layouts/AboutWorkLayout.astro
+layout: ~/layouts/About/AboutWorkLayout.astro
 title: 'Print'
 description: ''
 

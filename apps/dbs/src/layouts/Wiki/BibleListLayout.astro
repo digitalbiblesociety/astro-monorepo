@@ -1,34 +1,19 @@
 ---
 import Layout from "~/layouts/BaseLayout.astro";
-import { SITE, getLanguageFromPath } from "~/config.mjs";
-import Banner from "~/components/partials/Banner.astro";
-import Datatable from  "@dbs/datatables";
-
-const locale = getLanguageFromPath(Astro.url);
+import { SITE, getLanguageFromPath } from "~/config.js";
+import Datatable from "@dbs/datatables";
+import { Banner,i18n } from "@dbs/ui";
 
 const biblesResponse = await fetch(`${SITE.apiUrl}/bibles_dbs.json`);
 let bibles = await biblesResponse.json();
-
-bibles = bibles.filter(bible => (
-  bible.ci == import.meta.env.COUNTRY_ID
-))
-
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
 ---
 
-<Layout>
+<Layout meta={{ title: t?.bibles ?? 'Bibles' }}>
   <Banner
     backgroundImage="/img/banner/banner_bibles.jpg"
-    translations={{
-      title: 'Bibles',
-      subtitle: "",
-      breadcrumbs: [
-        {
-          title: "Home",
-          link: `/`,
-        },
-      ],
-    }}
-  />
+    title={t?.bibles ?? 'Bibles'} />
 
-  <Datatable inputData={bibles} locale={locale} tableType="bibles" client:only />
+  <Datatable inputData={bibles} locale={locale} t={t} tableType="bibles" client:visible />
 </Layout>

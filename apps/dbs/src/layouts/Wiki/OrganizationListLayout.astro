@@ -1,38 +1,16 @@
 ---
-import Layout from "~/layouts/BaseLayout.astro";
-import { SITE, getLanguageFromPath } from "~/config.mjs";
-import {i18n} from "~/translations/i18n.mjs";
-
-import Banner from "~/components/partials/Banner.astro";
-import Datatable from  "@dbs/datatables";
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE, getLanguageFromPath } from "~/config.js";
+import Datatable from "@dbs/datatables";
+import { Banner, i18n } from "@dbs/ui";
 
 const organizationsResponse = await fetch(`${SITE.apiUrl}/organizations.json`);
-let organizations = await organizationsResponse.json();
-
-
-const locale = getLanguageFromPath(Astro.url)
+const organizations = await organizationsResponse.json();
+const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
-
-const { meta } = Astro.props;
 ---
 
-<Layout {meta}>
-  <Banner
-    backgroundImage="/img/banner/banner_organizations.jpg"
-    translations={{
-      title: t['Organizations'],
-      subtitle: "",
-      breadcrumbs: [
-        {
-          title: "Home",
-          link: `/`,
-        },
-      ],
-    }}
-  />
-
-  <slot />
-	<div class="max-w-5xl mx-auto">
-		<Datatable inputData={organizations} locale={locale} tableType="organizations"  client:visible />
-	</div>
+<Layout meta={{ title: t?.organizations ?? 'Organizations' }}>
+  <Banner backgroundImage="/img/banner/banner_organizations.jpg" title="Organizations" />
+  <Datatable inputData={organizations} locale={locale} t={t} tableType="organizations" client:visible />
 </Layout>

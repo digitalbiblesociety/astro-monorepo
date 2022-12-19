@@ -1,0 +1,77 @@
+---
+import { JSDOM } from "jsdom";
+import Layout from "~/layouts/BaseLayout.astro";
+import Time from "~/components/blog/Time.astro";
+import Taxonomy from "~/components/blog/Taxonomy.astro";
+import PrevNext from "~/layouts/Blog/Partials/PrevNext.astro";
+import Author from "~/layouts/Blog/Partials/Author.astro";
+import CommentForm from "~/layouts/Blog/Partials/CommentForm.astro";
+import Comments from "~/layouts/Blog/Partials/Comments.astro";
+import { Breadcrumbs } from "@dbs/ui";
+import { getLanguageFromPath } from "~/config.js";
+const locale = getLanguageFromPath(Astro.url);
+
+const { title, post, prevNext, description } = Astro.props;
+const {
+  source_url: image,
+  alt_text: alt,
+  media_details,
+} = post._embedded["wp:featuredmedia"][0];
+
+const { width, height } = media_details;
+
+const { document } = new JSDOM(post.content.rendered).window;
+[...document.images].forEach((img) => (img.loading = "lazy"));
+---
+
+<Layout
+  {title}
+  {description}
+  {image}
+  {width}
+  {height}
+  {alt}
+  link={[{ rel: "preload", href: image, as: "image" }]}
+  article={{
+    publishedTime: post.date,
+    modifiedTime: post.modified,
+    authors: ["https://www.facebook.com/digitalbiblesociety"],
+    section: "Technology",
+    tags: post._embedded["wp:term"][1].map(({ name }) => name),
+  }}
+>
+
+  <div 
+    class="relative flex h-48 md:h-56 xl:h-64 flex-col xl:rounded-t-lg bg-cover overflow-hidden -mt-2 -ml-1.5 -mr-1.5 border-2 border-stone-500 dark:border-stone-900 border-b-0" 
+    style={`background-image:url(${image})`}>
+		<div class="absolute inset-0 z-0 bg-stone-900 bg-opacity-60"></div>
+    <div class="mt-4 ml-4">
+    <Breadcrumbs breadcrumbs={[
+      {title:'Stories',url:`/${locale}/blog`},
+      {title:title}
+    ]} />
+    </div>
+    <h1 class="z-10 mt-2 md:mt-4 xl:mt-8 block max-w-prose p-4 text-center text-2xl md:text-3xl font-bold text-stone-100">
+      <span class="text-sm block text-center font-semibold uppercase tracking-wide">{new Date(post.date).toDateString()}</span>
+      <span set:html={title}></span>
+    </h1>
+  </div>
+  
+  <div class="flex md:flex-col-reverse">
+    <section class="content flex flex-col max-w-4xl prose mx-auto dark:prose-invert p-8 pb-0 md:pt-0">
+
+        <article set:html={document.body.innerHTML} />
+        <div class="flex flex-wrap justify-between items-center italic gap-4 py-4 text-stone-200 dark:text-stone-600">
+          <Time time={post.date} />
+          <Time time={post.modified} modified />
+          <Taxonomy term="topic" array={post._embedded["wp:term"][0]} />
+          <Taxonomy term="tag" array={post._embedded["wp:term"][1]} />
+        </div>
+
+      <PrevNext data={prevNext} />
+    </section>
+  </div>
+
+    <Author author={post._embedded.author[0]} />
+
+</Layout>

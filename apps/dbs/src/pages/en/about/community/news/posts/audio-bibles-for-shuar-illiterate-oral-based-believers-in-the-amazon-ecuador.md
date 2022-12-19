@@ -7,12 +7,10 @@ excerpt: ''
 type: post
 id: 350
 thumbnail: /img/posts/Untitled-Facebook-Cover-2.png
+country: EC
 category:
     - 'Bible Distribution'
     - 'Scripture Distribution Projects'
-
-banner:
-    - ''
 ---
 The Shuar people are an indigenous tribe living in the tropical rainforests,  
 lowlands, and savannas of Ecuador. Climate change and multinational  
@@ -42,4 +40,4 @@ Please email projects@dbs.org and reference Project ID: 2106-Shua-01 to help us 
 
 We invite you to watch the video below to learn more about our partners and the work being done among the Shuar.
 
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="360" loading="lazy" src="https://www.youtube.com/embed/sGjYwyUO7a8?feature=oembed" title="Bibles for Ecuador: Our Impact in Latin America through Alianza Bíblica Evangélica Latinoamericana" width="640"></iframe></div></figure><div class="wp-block-file"><object aria-label="Embed of 2106-Shua-01-Shuar-Audio-Bibles-11.18.21.docx." class="wp-block-file__embed" data="https://blog.dbs.org/wp-content/uploads/2022/08/2106-Shua-01-Shuar-Audio-Bibles-11.18.21.docx.pdf" style="width:100%;height:600px" type="application/pdf"></object>[2106-Shua-01-Shuar-Audio-Bibles-11.18.21.docx](https://blog.dbs.org/wp-content/uploads/2022/08/2106-Shua-01-Shuar-Audio-Bibles-11.18.21.docx.pdf)[Download](https://blog.dbs.org/wp-content/uploads/2022/08/2106-Shua-01-Shuar-Audio-Bibles-11.18.21.docx.pdf)</div>- - - - - -
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="360" loading="lazy" src="https://www.youtube.com/embed/sGjYwyUO7a8?feature=oembed" title="Bibles for Ecuador: Our Impact in Latin America through Alianza Bíblica Evangélica Latinoamericana" width="640"></iframe>

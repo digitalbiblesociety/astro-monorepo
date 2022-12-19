@@ -1,0 +1,19 @@
+---
+import TaxonomyLayout from "~/layouts/TaxonomyLayout.astro";
+export async function getStaticPaths() {
+  global.tags =
+    global.tags ||
+    (await (
+      await fetch("//https://blog.dbs.org/wp-json/wp/v2/tags")
+    ).json());
+  return global.tags.map(({ name, slug }) => {
+    return {
+      params: { slug },
+      props: { name, slug },
+    };
+  });
+}
+const { name, slug } = Astro.props;
+---
+
+<TaxonomyLayout slug={slug} name={name} tag />

@@ -1,0 +1,32 @@
+---
+import Layout from "../BaseLayout.astro";
+import Banner from '~/components/partials/Banner.astro'
+import {i18n} from "~/translations/i18n.mjs";
+import { getLanguageFromPath } from "~/config.js";
+const locale = getLanguageFromPath(Astro.url)
+const t = i18n[locale]
+const { meta } = Astro.props;
+---
+
+<Layout meta={meta}>
+
+  <Banner 
+	title={t?.work ?? 'Work'}
+	subtitle=""
+	breadcrumbs={[
+		{ link: `/about/`, title: t?.about ?? 'About' },
+		{ link: '#', title: t?.overview ?? '' },
+	]}
+	subnav={[
+    	{title:t?.bibles ?? 'Bibles',url:`/${locale}/about/work/biblecloud`},
+		{title:t?.libraries ?? 'Libraries',url:`/${locale}/about/work/libraries`},
+		{title:t?.audio ?? 'Audio',url:`/${locale}/about/work/audio-bibles`},
+		{title:t?.print ?? 'Print',url:`/${locale}/about/work/print`},
+		{title:t?.study_bible ?? 'Study Bible',url:`/${locale}/about/work/sophia`},
+	]} />
+
+  <main class="prose max-w-prose mx-auto">
+    <slot />
+  </main>
+
+</Layout>

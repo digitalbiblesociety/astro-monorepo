@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/AboutOverviewLayout.astro'
+layout: '~/layouts/About/AboutOverviewLayout.astro'
 ---
 
 ## La revolución digital

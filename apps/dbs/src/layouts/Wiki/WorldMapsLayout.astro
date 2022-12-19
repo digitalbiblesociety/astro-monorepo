@@ -1,0 +1,65 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { getLanguageFromPath } from "~/config.js";
+import { i18n, Banner } from "@dbs/ui";
+import MapBlock from "~/components/partials/MapBlock.astro";
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+
+let maps = [
+	{ name: "World Gov", type: "world", filename: "world/world-gov.jpg", filename_thumb: "world/world-gov-thumb.jpg" },
+	{ name: "World Land", type: "world", filename: "world/world-land.jpg", filename_thumb: "world/world-land-thumb.jpg" },
+	{ name: "World Oceans", type: "world", filename: "world/world-oceans.jpg", filename_thumb: "world/world-oceans-thumb.jpg" },
+	{ name: "Africa Gov", type: "world", filename: "world/africa-gov.jpg", filename_thumb: "world/africa-gov-thumb.jpg" },
+	{ name: "Africa Land", type: "world", filename: "world/africa-land.jpg", filename_thumb: "world/africa-land-thumb.jpg" },
+	{ name: "Middle East Gov", type: "world", filename: "world/middle-east-gov.jpg", filename_thumb: "world/middle-east-gov-thumb.jpg" },
+	{ name: "Middle East Land", type: "world", filename: "world/middle-east-land.jpg", filename_thumb: "world/middle-east-land-thumb.jpg" },
+	{ name: "Europe Gov", type: "world", filename: "world/europe-gov.jpg", filename_thumb: "world/europe-gov-thumb.jpg" },
+	{ name: "Europe Land", type: "world", filename: "world/europe-land.jpg", filename_thumb: "world/europe-land-thumb.jpg" },
+	{ name: "Asia Gov", type: "world", filename: "world/asia-gov.jpg", filename_thumb: "world/asia-gov-thumb.jpg" },
+	{ name: "Asia Land", type: "world", filename: "world/asia-land.jpg", filename_thumb: "world/asia-land-thumb.jpg" },
+	{ name: "Southeast Asia Gov", type: "world", filename: "world/southeast-asia-gov.jpg", filename_thumb: "world/southeast-asia-gov-thumb.jpg" },
+	{ name: "Southeast Asia Land", type: "world", filename: "world/southeast-asia-land.jpg", filename_thumb: "world/southeast-asia-land-thumb.jpg" },
+	{ name: "North America Gov", type: "world", filename: "world/north-america-gov.jpg", filename_thumb: "world/north-america-gov-thumb.jpg" },
+	{ name: "North America Land", type: "world", filename: "world/north-america-land.jpg", filename_thumb: "world/north-america-land-thumb.jpg" },
+	{ name: "Central America Gov", type: "world", filename: "world/central-america-gov.jpg", filename_thumb: "world/central-america-gov-thumb.jpg" },
+	{ name: "Central America Land", type: "world", filename: "world/central-america-land.jpg", filename_thumb: "world/central-america-land-thumb.jpg" },
+	{ name: "South America Gov", type: "world", filename: "world/south-america-gov.jpg", filename_thumb: "world/south-america-gov-thumb.jpg" },
+	{ name: "South America Land", type: "world", filename: "world/south-america-land.jpg", filename_thumb: "world/south-america-land-thumb.jpg" },
+	{ name: "Oceania Gov", type: "world", filename: "world/oceania-gov.jpg", filename_thumb: "world/oceania-gov-thumb.jpg" },
+	{ name: "Oceania Land", type: "world", filename: "world/oceania-land.jpg", filename_thumb: "world/oceania-land-thumb.jpg" },
+	{ name: "World Gov", type: "world", filename: "world/world-gov.jpg", filename_thumb: "world/world-gov-thumb.jpg" },
+	{ name: "World Land", type: "world", filename: "world/world-land.jpg", filename_thumb: "world/world-land-thumb.jpg" },
+	{ name: "World Oceans", type: "world", filename: "world/world-oceans.jpg", filename_thumb: "world/world-oceans-thumb.jpg" },
+	{ name: "World Time Zones", type: "world", filename: "world/world-time-zones.jpg", filename_thumb: "world/world-time-zones-thumb.jpg" },
+	{ name: "Africa Gov", type: "world", filename: "world/africa-gov.jpg", filename_thumb: "world/africa-gov-thumb.jpg" },
+	{ name: "Africa Land", type: "world", filename: "world/africa-land.jpg", filename_thumb: "world/africa-land-thumb.jpg" },
+	{ name: "Middle East Gov", type: "world", filename: "world/middle-east-gov.jpg", filename_thumb: "world/middle-east-gov-thumb.jpg" },
+	{ name: "Middle East Land", type: "world", filename: "world/middle-east-land.jpg", filename_thumb: "world/middle-east-land-thumb.jpg" },
+	{ name: "Europe Gov", type: "world", filename: "world/europe-gov.jpg", filename_thumb: "world/europe-gov-thumb.jpg" },
+	{ name: "Europe Land", type: "world", filename: "world/europe-land.jpg", filename_thumb: "world/europe-land-thumb.jpg" },
+	{ name: "Asia Gov", type: "world", filename: "world/asia-gov.jpg", filename_thumb: "world/asia-gov-thumb.jpg" },
+	{ name: "Asia Land", type: "world", filename: "world/asia-land.jpg", filename_thumb: "world/asia-land-thumb.jpg" },
+	{ name: "Southeast Asia Gov", type: "world", filename: "world/southeast-asia-gov.jpg", filename_thumb: "world/southeast-asia-gov-thumb.jpg" },
+	{ name: "Southeast Asia Land", type: "world", filename: "world/southeast-asia-land.jpg", filename_thumb: "world/southeast-asia-land-thumb.jpg" },
+	{ name: "North America Gov", type: "world", filename: "world/north-america-gov.jpg", filename_thumb: "world/north-america-gov-thumb.jpg" },
+	{ name: "North America Land", type: "world", filename: "world/north-america-land.jpg", filename_thumb: "world/north-america-land-thumb.jpg" },
+	{ name: "Central America Gov", type: "world", filename: "world/central-america-gov.jpg", filename_thumb: "world/central-america-gov-thumb.jpg" },
+	{ name: "Central America Land", type: "world", filename: "world/central-america-land.jpg", filename_thumb: "world/central-america-land-thumb.jpg" },
+	{ name: "South America Gov", type: "world", filename: "world/south-america-gov.jpg", filename_thumb: "world/south-america-gov-thumb.jpg" },
+	{ name: "South America Land", type: "world", filename: "world/south-america-land.jpg", filename_thumb: "world/south-america-land-thumb.jpg" },
+	{ name: "Oceania Gov", type: "world", filename: "world/oceania-gov.jpg", filename_thumb: "world/oceania-gov-thumb.jpg" },
+	{ name: "Oceania Land", type: "world", filename: "world/oceania-land.jpg", filename_thumb: "world/oceania-land-thumb.jpg" },
+]
+
+---
+
+<Layout meta={{ title: t?.countries ?? 'Countries' }}>
+  <Banner 
+  backgroundImage="/img/banner/banner_languages.jpg"
+  title={t.countries} tabs={[
+    {title: 'Countries', url: `/${locale}/countries`},
+    {title: 'Maps', url: `/${locale}/countries/maps`},
+  ]} />
+  <MapBlock maps={maps} />
+</Layout>

@@ -1,0 +1,20 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE, getLanguageFromPath } from "~/config.js";
+
+import Datatable from "@dbs/datatables";
+import { Banner, i18n } from "@dbs/ui";
+
+const countriesResponse = await fetch(`${SITE.apiUrl}/countries.json`);
+const countries = await countriesResponse.json();
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+---
+
+<Layout meta={{ title: t?.countries ?? 'Countries' }}>
+  <Banner backgroundImage="/img/banner/banner_countries.jpg" title={t.countries} tabs={[
+    {title: t?.countries ?? 'countries', url: `/${locale}/countries`},
+    {title: t?.maps ?? 'maps', url: `/${locale}/countries/maps`},
+  ]} />
+  <Datatable inputData={countries} locale={locale} t={t} tableType="countries" client:visible />
+</Layout>

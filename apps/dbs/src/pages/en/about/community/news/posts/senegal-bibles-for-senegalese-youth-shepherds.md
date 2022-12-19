@@ -7,13 +7,9 @@ excerpt: ''
 type: post
 id: 156
 thumbnail: /img/posts/magdalena-senegal.jpeg
+country: SN
 category:
     - 'Bible Distribution'
-
-'banner Image':
-    - '268'
-banner:
-    - '268'
 ---
 ![](/img/posts/Senegal-2.jpg)**Date:** September 2021
 

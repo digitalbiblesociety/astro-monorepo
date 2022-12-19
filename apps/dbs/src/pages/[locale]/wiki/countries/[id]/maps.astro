@@ -1,0 +1,10 @@
+---
+import Layout from '~/layouts/Wiki/CountryMapShowLayout.astro'
+import {NestedResourcePath} from "~/utils/StaticPathHelper";
+
+export function getStaticPaths() {
+  return NestedResourcePath('countries', 'ci');
+}
+---
+
+<Layout />

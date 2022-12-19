@@ -1,0 +1,31 @@
+---
+import Layout from '~/layouts/Media/FilmShowLayout.astro'
+import { SITE } from '~/config';
+
+export async function getStaticPaths() {
+	const scope = import.meta.env.COUNTRY_SCOPE
+	const filmsResponse = await fetch(`https://api.arclight.org/v2/media-countries/${scope}?apiKey=52b06248a3c6e8.12980089&expand=mediaLanguages&metadataLanguageTags=en`);
+	const data = await filmsResponse.json();
+	let films = data['_embedded']['mediaLanguages'];
+	let returns = []
+
+	if(scope !== 'all') {
+		films = films.filter(item => {
+			return item.primaryCountryId == scope
+		})
+	}
+
+	const locales = Object.keys(SITE.locales)
+	for (let i = 0; i < locales.length; i++) {
+		const locale = locales[i];
+		returns.push(films.map((film) => {
+			return { params: { id: film.iso3 + '-' + film.languageId, locale: locale } }
+		}))
+	}
+
+	return [].concat.apply([], returns);
+}
+
+---
+
+<Layout />

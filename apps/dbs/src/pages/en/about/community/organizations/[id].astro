@@ -1,6 +1,6 @@
 ---
 import Layout from "~/layouts/BaseLayout.astro";
-import { SITE, getLanguageFromPath } from "~/config.mjs";
+import { SITE, getLanguageFromPath } from "~/config.js";
 import OrganizationShow from "~/components/partials/pages/OrganizationShow.svelte";
 
 const locale = getLanguageFromPath(Astro.url)

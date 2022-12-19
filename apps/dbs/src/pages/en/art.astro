@@ -1,0 +1,13 @@
+---
+import {ArtViewer} from '@dbs/ui';
+import Layout from '~/layouts/BaseLayout.astro'
+import { getLanguageFromPath } from "~/config.js";
+import {i18n} from "~/translations/i18n.mjs";
+
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+
+---
+<Layout>
+	<ArtViewer {t} client:only="svelte" />
+</Layout>

@@ -12,12 +12,7 @@
 	let title
 	
 	let current_page = $page.url.searchParams.get("page") || 1
-	
-	function timeToRead(content) {
-		var totalWords = content.trim().split(/\s+/).length
-		var timeToRead = totalWords / 200
-		return Math.ceil(timeToRead)
-	}
+
 	
 	onMount(async () => {
 		let response = await fetch(`${wp_url}posts?per_page=${articles_per_page}&page=${current_page}&categories_exclude=5`)
@@ -43,8 +38,8 @@
 			{#if articles.length !== 0}
 				{#each articles as article}
 					<a
-						class="flex flex-col overflow-hidden rounded-lg border border-gray-300 shadow-lg
-								dark:border-gray-800 dark:bg-stone-600"
+						class="flex flex-col overflow-hidden rounded-lg border border-stone-300 shadow-lg
+								dark:border-stone-800 dark:bg-stone-600"
 						href="{`/about/projects/${article.slug}`}">
 						{#if article.featured_media_src_url}
 							<div class="flex-shrink-0">
@@ -58,10 +53,10 @@
 							<div class="flex-1">
 								<div class="mt-2">
 									<p
-										class="text-xl font-semibold text-gray-900 dark:text-gray-200">
+										class="text-xl font-semibold text-stone-900 dark:text-stone-200">
 										{@html article.title.rendered}
 									</p>
-									<p class="mt-3 text-base text-gray-500 dark:text-gray-300">
+									<p class="mt-3 text-base text-stone-500 dark:text-stone-300">
 										{@html article.excerpt.rendered}
 									</p>
 								</div>
@@ -79,21 +74,21 @@
 								<div class="ml-3">
 									{#if article.author_full_name}
 										<div
-											class="text-sm font-medium text-gray-900 dark:text-gray-300">
+											class="text-sm font-medium text-stone-900 dark:text-stone-300">
 											{article.author_full_name}
 										</div>
 									{/if}
 									<div
-										class="flex space-x-1 text-sm text-gray-500 dark:text-gray-400">
+										class="flex space-x-1 text-sm text-stone-500 dark:text-stone-400">
 										<p
-											class="text-sm font-medium text-blue-400 dark:text-gray-200">
+											class="text-sm font-medium text-blue-400 dark:text-stone-200">
 											<span class="hover:underline">
 												{new Date(article.date).toDateString()}
 											</span>
 										</p>
 										<span aria-hidden="true">&middot;</span>
 										<span class="info">
-											{timeToRead(article.content.rendered)} min read
+											min read
 										</span>
 									</div>
 								</div>
@@ -106,10 +101,10 @@
 	</div>
 	
 	<nav
-		class="mb-12 flex items-center justify-between border-b border-gray-200 px-4 py-3 sm:px-6"
+		class="mb-12 flex items-center justify-between border-b border-stone-200 px-4 py-3 sm:px-6"
 		aria-label="current_page">
 		<div class="hidden sm:block">
-			<p class="text-sm text-gray-700 dark:text-gray-200">
+			<p class="text-sm text-stone-700 dark:text-stone-200">
 				{$t("common.Showing")}
 				<span class="font-medium">
 					{current_page !== 1
@@ -133,7 +128,7 @@
 				<div
 					on:click="{loadPosts}"
 					data-page="{Number(current_page) - 1}"
-					class="cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 hover:bg-gray-50 dark:bg-stone-700 dark:text-gray-200">
+					class="cursor-pointer rounded-md border border-stone-300 bg-white px-4 py-2 text-stone-700 hover:bg-stone-50 dark:bg-stone-700 dark:text-stone-200">
 					{$t("common.Previous")}
 				</div>
 			{/if}
@@ -141,7 +136,7 @@
 				<div
 					on:click="{loadPosts}"
 					data-page="{Number(current_page) + 1}"
-					class="ml-3 cursor-pointer rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-700 hover:bg-gray-50 dark:bg-stone-700 dark:text-gray-200">
+					class="ml-3 cursor-pointer rounded-md border border-stone-300 bg-white px-4 py-2 text-stone-700 hover:bg-stone-50 dark:bg-stone-700 dark:text-stone-200">
 					{$t("common.Next")}
 				</div>
 			{/if}

@@ -7,11 +7,9 @@ excerpt: ''
 type: post
 id: 307
 thumbnail: /img/posts/Rio-Grande-Valley-2.png
+country: US
 category:
     - 'Bible Distribution'
-
-banner:
-    - '339'
 ---
 **Date:** February 2022
 

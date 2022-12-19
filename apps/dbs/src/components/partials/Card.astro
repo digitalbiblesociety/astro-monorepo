@@ -11,12 +11,12 @@ import {Icon} from 'astro-icon'
 const { title, description, url, action, picture, iconName, className } = Astro.props;
 ---
 
-<a href={url} class="hover:text-sky-670 text-base font-medium text-primary-500 dark:text-gray-200 dark:hover:text-white">
-<div class="flex flex-col rounded-xl rounded-bl-xl rounded-br-xl relative border border-gray-400 bg-gray-300 dark:border-gray-500 dark:bg-gray-500 dark:hover:border-gray-300">
+<a href={url} class="hover:text-sky-670 text-base font-medium text-primary-500 dark:text-stone-200 dark:hover:text-white">
+<div class="flex flex-col rounded-xl rounded-bl-xl rounded-br-xl relative border border-stone-400 bg-stone-300 dark:border-stone-500 dark:bg-stone-500 dark:hover:border-stone-300">
 	<div class={className + "relative flex items-center rounded-lg px-4  pt-1 pb-1 md:px-8 lg:rounded-none lg:rounded-tl-xl lg:rounded-tr-xl"}>
 		<div
-			class="dark:text-invert absolute top-3 right-4 flex -translate-y-1/2 transform rounded-lg border border-gray-500
-				bg-gray-600 p-1.5 dark:bg-gray-800 sm:p-2.5 md:rounded-xl">
+			class="dark:text-invert absolute top-3 right-4 flex -translate-y-1/2 transform rounded-lg border border-stone-500
+				bg-stone-600 p-1.5 dark:bg-stone-800 sm:p-2.5 md:rounded-xl">
 			<Icon name={'heroicons-outline:'+ iconName} class="inline-block h-4 w-4 text-white sm:h-6 sm:w-6" />
 		</div>
 
@@ -25,15 +25,14 @@ const { title, description, url, action, picture, iconName, className } = Astro.
 		</div>
 
 		<div class="w-2/3 p-1 pl-4">
-			<h2 class="text-base font-medium text-white dark:text-gray-200 md:text-lg">{title}</h2>
-			<p class="mt-2 mb-1 text-xs xl:text-sm leading-tight text-white dark:text-gray-200 ">{description}</p>
+			<h2 class="text-base font-medium text-white dark:text-stone-200 md:text-lg">{title}</h2>
+			<p class="mt-2 mb-1 text-xs xl:text-sm leading-tight text-white dark:text-stone-200 ">{description}</p>
 		</div>
 	</div>
 
 	<div>
 		<div
-			class="hidden rounded-bl-xl rounded-br-xl bg-gray-100 p-3 text-right font-normal hover:bg-white  dark:bg-gray-500 md:px-8
-			bg-[url('/img/bg-linen.png')] bg-blend-screen lg:block ">
+			class="hidden rounded-bl-xl rounded-br-xl bg-stone-100 p-3 text-right font-normal hover:bg-white dark:hover:bg-black dark:bg-stone-500 md:px-8 lg:block ">
 			{action}
 			<span aria-hidden="true">&rarr;</span>
 		</div>

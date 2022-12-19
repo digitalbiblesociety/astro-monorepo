@@ -2,9 +2,10 @@
 title: 'Amazon Basin Ecuador Bibles for Minority People Groups'
 date: '2021-09-08T21:43:23+00:00'
 permalink: /2021/09/08/amazon-basin-ecuador-bibles-for-minority-people-groups
-author: 'Christopher Weiss'
+author: 'Bere Cowpersmith'
 excerpt: 'People groups in the Amazon river basin of Ecuador are receiving the Word of God in their own language. Digital Bible Society is partnering with ABEL (Latin American Evangelical Biblical Alliance) to reach out to the minority people groups in that region. This effort is called the Latin America People Groups Project.'
 thumbnail: /img/posts/Amazon-Basin-Blog-Banner.png
+country: EC
 ---
 
 People groups in the Amazon river basin of Ecuador are receiving the Word of God in their own language. Digital Bible Society is partnering with ABEL (Latin American Evangelical Biblical Alliance) to reach out to the minority people groups in that region. This effort is called the Latin America People Groups Project.

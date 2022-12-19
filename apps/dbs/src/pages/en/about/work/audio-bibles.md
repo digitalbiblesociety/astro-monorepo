@@ -1,6 +1,6 @@
 ---
-layout: ../../../../layouts/AboutWorkLayout.astro
-title: 'Audio Bibles'
+layout: ~/layouts/About/AboutWorkLayout.astro
+title: Audio Bibles
 description: ''
 ---
 

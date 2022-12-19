@@ -1,7 +1,7 @@
 ---
 import {Menu,MenuButton,MenuItems,MenuItem } from "@rgossiaux/svelte-headlessui"
 import { Icon } from "astro-icon"
-import {SITE, getLanguageFromPath } from "../../../config.mjs";
+import {SITE, getLanguageFromPath } from "../../../config.js";
 import {i18n} from "~/translations/i18n.mjs";
 const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
@@ -10,13 +10,13 @@ const current_url = Astro.url.pathname.split("/").slice(2).join('/')
 ---
 
 <div class="dropdown">
-	<label tabindex="0" class="flex p-1 md:px-2.5 text-sm rounded-md border border-gray-100 bg-gray-200 text-gray-700 dark:bg-gray-600 dark:text-gray-200">
-		<Icon name="heroicons-outline:translate" class="h-5 w-5 dark:placeholder-gray-400 md:mr-2" />
-		{ t['translate_title'] }
+	<label tabindex="0" class="flex p-1 md:px-2.5 text-sm rounded-md border border-stone-100 bg-stone-200 text-stone-700 dark:bg-stone-600 dark:text-stone-200">
+		<Icon name="heroicons-outline:translate" class="h-5 w-5 dark:placeholder-stone-400 md:mr-2" />
+		{ t?.translate_title ?? '' }
 	</label>
 	<nav tabindex="0" class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
-	  <a class="block cursor-pointer py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700" href={"/en/" + current_url}>English</a>
-	  <a class="block cursor-pointer py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-200 dark:hover:bg-gray-700" href={"/es/" + current_url}>Spanish</a>
+	  <a class="block cursor-pointer py-2 px-4 text-sm text-stone-700 hover:bg-stone-100 dark:bg-stone-800 dark:text-stone-200 dark:hover:bg-stone-700" href={"/en/" + current_url}>English</a>
+	  <a class="block cursor-pointer py-2 px-4 text-sm text-stone-700 hover:bg-stone-100 dark:bg-stone-800 dark:text-stone-200 dark:hover:bg-stone-700" href={"/es/" + current_url}>Spanish</a>
 	</nav>
 </div>
 

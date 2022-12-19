@@ -5,6 +5,7 @@ permalink: /2022/08/22/audio-bibles-for-new-believers-in-india
 author: 'Bere Cowpersmith'
 excerpt: ''
 thumbnail: /img/posts/Untitled-Facebook-Cover.png
+country: IN
 category:
     - 'Bible Distribution'
     - 'Scripture Distribution Projects'
@@ -30,4 +31,4 @@ Please email projects@dbs.org and reference Project ID: 1-1-001 to help us fund 
 
 We invite you to watch the video below to learn more about our partners and the work being done in India.
 
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="360" loading="lazy" src="https://www.youtube.com/embed/ZFpcy3SbtcE?feature=oembed" title="Introduction to The Elijah Challenge Narrated Powerpoint Presentation" width="640"></iframe></div></figure>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="360" loading="lazy" src="https://www.youtube.com/embed/ZFpcy3SbtcE?feature=oembed" title="Introduction to The Elijah Challenge Narrated Powerpoint Presentation" width="640"></iframe>

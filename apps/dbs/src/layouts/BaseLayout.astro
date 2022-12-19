@@ -1,5 +1,5 @@
 ---
-
+import "~/assets/styles/base.css";
 import MetaTags from "~/components/core/MetaTags.astro"
 import BasicScripts from "~/components/core/BasicScripts.astro"
 import Header from '~/components/navigation/Header.astro'
@@ -10,16 +10,16 @@ const { meta = {} } = Astro.props;
 const apiUrl = import.meta.env.BASE_URL
 ---
 <!DOCTYPE html>
-<html>
+<html class="h-full">
 <head>
     <MetaTags {...meta} />
 </head>
 
-<body class="antialiased text-gray-900 dark:text-stone-300 tracking-tight bg-white dark:bg-stone-900">
+<body class="h-full antialiased text-stone-900 dark:text-stone-300 tracking-tight bg-white dark:bg-stone-900">
 	<Header />
 	
-	<main class="-mt-32 text-gray-800 dark:text-gray-200">
-		<div class="mx-auto max-w-7xl border border-t-0 border-b-0 border-gray-300 bg-white pt-2 px-2 lg:px-1 pb-8 dark:rounded-b-none dark:border-gray-500 dark:bg-gray-700 xl:rounded-t-lg">
+	<main class="-mt-32 text-stone-800 dark:text-stone-200">
+		<div class="mx-auto max-w-7xl border border-t-0 border-b-0 border-stone-300 bg-white pt-2 px-2 lg:px-1 pb-8 dark:rounded-b-none dark:border-stone-700 dark:bg-stone-800 xl:rounded-t-lg">
 			<slot />
 		</div>
 	</main>

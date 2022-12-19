@@ -18,7 +18,7 @@
 	
 {#if organization}
 
-<div class="relative flex flex-col -mb-9 pb-5 xl:rounded-tl-xl xl:rounded-tr-xl text-gray-100 text-2xl text-center h-32"
+<div class="relative flex flex-col -mb-9 pb-5 xl:rounded-tl-xl xl:rounded-tr-xl text-stone-100 text-2xl text-center h-32"
 	style="background-image: linear-gradient(to bottom right, {organization.colors.primary}, {organization.colors.secondary});">
 	<div class="start">
 	</div>

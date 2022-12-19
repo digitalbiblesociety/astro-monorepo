@@ -1,0 +1,11 @@
+---
+import Library from '~/layouts/LibraryShowLayout.astro';
+import { SITE } from "~/config.js";
+
+export async function getStaticPaths() {
+	const libraries = await fetch(`${SITE.apiUrl}/libraries.json`).then((response) => response.json())
+	return libraries.map((library) => { return { params: { id: library.id } } });
+}
+---
+
+<Library />

@@ -20,10 +20,10 @@
 	{#each collections as collection}
 		<Disclosure>
 			<div
-				class="mx-auto mb-6 max-w-2xl rounded-xl border bg-gray-100 p-4 dark:border-gray-700
-				   dark:bg-gray-500 md:px-8 lg:max-w-6xl ">
+				class="mx-auto mb-6 max-w-2xl rounded-xl border bg-stone-100 p-4 dark:border-stone-700
+				   dark:bg-stone-500 md:px-8 lg:max-w-6xl ">
 				<div class="md:flex md:items-center md:justify-between">
-					<div class="text-gray-800 dark:text-gray-100">
+					<div class="text-stone-800 dark:text-stone-100">
 						<h2
 							class="mb-2 text-base font-semibold tracking-tight md:text-lg lg:text-xl">
 							{collection?.title}
@@ -48,7 +48,7 @@
 						{#each collection.products as product}
 							<div class="group relative">
 								<div
-									class="overflow-hidden rounded-xl border bg-white dark:bg-gray-600 dark:border-gray-900 p-2 text-center group-hover:opacity-75 ">
+									class="overflow-hidden rounded-xl border bg-white dark:bg-stone-600 dark:border-stone-900 p-2 text-center group-hover:opacity-75 ">
 									<img
 										alt={product.variants[0].image.alt}
 										src={product.variants[0].image.src}

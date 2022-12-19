@@ -1,27 +1,42 @@
 ---
-import Layout from "~/layouts/BaseLayout.astro"
-import { SITE } from "~/config.mjs"
-import { LanguageShowPage } from "@dbs/astro-bible-wiki"
-import Banner from '~/components/partials/Banner.astro'
-
-export async function getStaticPaths() {
-  const languages = await fetch(`${SITE.apiUrl}/languages.json`).then((response) => response.json())
-  return languages.map((language) => { return { params: { id: language.iso } } });
-}
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE, getLanguageFromPath } from "~/config.js";
+import { Banner, i18n } from "@dbs/ui";
+import Datatable from "@dbs/datatables";
 
 const { id } = Astro.params;
 const languageResponse = await fetch(`${SITE.apiUrl}/languages/${id}.json`);
 const language = await languageResponse.json();
----
+const locale = getLanguageFromPath(Astro.url)
+const t = i18n[locale]
 
-<Layout>
-	<Banner 
-		backgroundImage="/img/banner/banner_languages.jpg"
-		title={language.title}
-		subtitle={language.title_vernacular}
-		breadcrumbs={[
-			{ title: "languages", link: `/languages` },
-			{ title: language.title, link: `#` },
-		]} />
-	<LanguageShowPage language={language} client:visible />
+const resources = language.bibles.map(bible => {
+	return {
+		tt: bible.title,
+		tv: bible.title_vernacular,
+		url: `/${locale}/bibles/${bible.id}`,
+    tp: 'bibles',
+		date: bible.date
+	}
+}).concat(language.films.map(film => {
+  return {
+    tt: film.title,
+    tv: film.title_vernacular,
+    tp: 'films',
+    url: film.url,
+    date: ''
+  }
+})).concat(language.resources.map(resource => {
+  return {
+    tt: resource.title,
+    tv: resource.title_vernacular,
+    tp: 'resources',
+    url: resource.url,
+    date: ''
+  }
+}))
+---
+<Layout meta={{ title: language.name }}>
+  <Banner title={language.name} />
+  <Datatable inputData={resources} tableType="resources" />
 </Layout>

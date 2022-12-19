@@ -1,0 +1,28 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import LanguageMap from "~/components/partials/LanguageMap/LanguageMap.svelte";
+import { SITE, getLanguageFromPath } from "~/config.js";
+import { Banner } from "@dbs/ui";
+
+const { id } = Astro.params;
+const countryResponse = await fetch(`${SITE.apiUrl}/countries/${id}.json`);
+const country = await countryResponse.json();
+const locale = getLanguageFromPath(Astro.url);
+
+---
+
+<Layout>
+
+	<Banner
+  backgroundImage="/img/banner/banner_countries.jpg"
+  title={country.name}
+  subtitle={country.region_name}
+  tabs={[
+    {title: 'Languages', url: `/${locale}/countries/${country.id}`},
+    {title: 'Maps', url: `/${locale}/countries/${country.id}/maps`},
+    {title: 'Language Maps', url: `/${locale}/countries/${country.id}/languages`},
+  ]}
+/>
+	<LanguageMap country={country} locale={locale} client:only />
+
+</Layout>

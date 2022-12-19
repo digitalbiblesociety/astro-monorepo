@@ -1,0 +1,32 @@
+---
+import PostLayout from "~/layouts/Blog/PostLayout.astro";
+import posts from "./data.js";
+
+
+export async function getStaticPaths({ rss }) {
+  return [...posts].map((post) => {
+    return {
+      params: { slug: post.slug },
+      props: {
+        isPost: posts.includes(post),
+        post,
+        prevNext: {
+          prev: posts[posts.indexOf(post) + 1],
+          next: posts[posts.indexOf(post) - 1],
+        },
+      },
+    };
+  });
+}
+
+const { isPost, post, prevNext } = Astro.props;
+const title = post.title.rendered;
+const content = post.content.rendered;
+
+---
+
+<PostLayout
+    title={title}
+    post={post}
+    prevNext={prevNext}
+  />

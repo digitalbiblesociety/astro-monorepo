@@ -1,0 +1,20 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE, getLanguageFromPath } from "~/config.js";
+import Datatable from "@dbs/datatables";
+import { Banner,i18n } from "@dbs/ui";
+
+const alphabetsResponse = await fetch(`${SITE.apiUrl}/alphabets.json`);
+const alphabets = await alphabetsResponse.json();
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+---
+
+<Layout meta={{ title: t?.alphabets ?? 'Alphabets' }}>
+  <Banner
+    backgroundImage="/img/banner/banner_languages.jpg"
+    title={t.alphabets}
+  />
+
+  <Datatable inputData={alphabets} locale={locale} tableType="alphabets" client:visible />
+</Layout>

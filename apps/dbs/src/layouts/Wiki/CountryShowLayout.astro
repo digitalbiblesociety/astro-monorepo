@@ -1,29 +1,111 @@
 ---
-import Layout from "~/layouts/BaseLayout.astro";
-import { SITE } from "~/config.mjs";
-import {CountryShowPage} from "@dbs/astro-bible-wiki";
-import Banner from '~/components/partials/Banner.astro'
-
-export async function getStaticPaths() {
-  const countries = await fetch(`${SITE.apiUrl}/countries.json`).then((response) => response.json())
-  return countries.map((country) => { return { params: { id: country.id } } });
-}
+import Layout from "~/layouts/PageLayout.astro";
+import { Banner, ScriptlessTable } from "@dbs/ui";
+import { SITE, getLanguageFromPath } from "~/config.js";
+import Datatable from "@dbs/datatables";
 
 const { id } = Astro.params;
 const countryResponse = await fetch(`${SITE.apiUrl}/countries/${id}.json`);
 const country = await countryResponse.json();
+const locale = getLanguageFromPath(Astro.url);
+
+let infobox
+
+let translations = {
+	'population': 'Population',
+	'languages': 'Languages',
+	'official_language': 'Official Language',
+	'religion_primary': 'Primary Religion',
+	'world_watch_list': 'World Watch List',
+	'persecution_type': 'Persecution Type',
+	'overview': 'Overview',
+}
+
+	const table_row = (row, locale) =>  `
+    <td class="whitespace-nowrap py-2 text-sm text-stone-900 dark:text-stone-200">
+			<a href="/${locale}/languages/${row.iso}" class="hover:underline">
+				<div>${row.name}</div>
+				<div class="text-xs italic text-stone-500 dark:text-stone-300">${row.autonym ?? ''}</div>
+			</a>
+		</td>
+		<td class="hidden whitespace-nowrap py-2 text-sm sm:table-cell text-center">${row.population.toLocaleString("en-US")}</td>`
+
+const country_languages = country.languages.map(language => {
+  return {
+    id: language.iso,
+    tt: language.name,
+    tv: language.autonym,
+    po: language.population
+  }
+})
+
 ---
 
-<Layout>
+<Layout meta={{ title: country.name }}>
 
-<Banner 
+<Banner
   backgroundImage="/img/banner/banner_countries.jpg"
-  title={country.title}
-  subtitle={country.title_vernacular}
-  breadcrumbs={[
-  { title: "countries", link: `/countries`, },
-  { title: country.title, link: `#`, },
-  ]} />
+  title={country.name}
+  subtitle={country.region_name}
+  tabs={[
+    {title: 'Languages', url: `/${locale}/countries/${country.id}`},
+    {title: 'Maps', url: `/${locale}/countries/${country.id}/maps`},
+    {title: 'Language Maps', url: `/${locale}/countries/${country.id}/languages`},
+  ]}
+/>
+<div class="flex flex-row">
+<div class="w-full sm:w-3/5 p-4">
+  <Datatable inputData={country_languages} locale={locale} tableType='country_languages' client:visible />
+  <ScriptlessTable inputData={country.languages} locale={locale} tableType='country_languages' />
+</div>
+<div class="w-2/5 hidden sm:block">
 
-  <CountryShowPage country={country} client:visible />
+  <div class="prose dark:prose-invert px-4 py-8">
+    {country.overview}
+    <a class="block mt-2 text-center" href={country.url_wiki}> Wikipedia </a>
+  </div>
+
+  <dl class="mx-4">
+    <div class="flex justify-between py-1 text-sm">
+      <dt>{translations.population}</dt>
+      <dd>
+        {(country.population) ? new Intl.NumberFormat(country.population, {
+          maximumSignificantDigits: 8
+        }).format(country.population) : ''}
+      </dd>
+    </div>
+    <div class="flex justify-between py-1 text-sm">
+      <dt>{translations.official_language}</dt>
+      <dd>
+        <a class="underline" href={`/${locale}/languages/${country.official_language_iso}`}>{country.official_language}</a>
+      </dd>
+    </div>
+    <div class="flex justify-between py-1 text-sm">
+      <dt>{translations.languages}</dt>
+      <dd>{country.languages.length}</dd>
+    </div>
+    <div class="flex justify-between py-1 text-sm">
+      <dt>{translations.religion_primary}</dt>
+      <dd>{country.religion_primary}</dd>
+    </div>
+
+    {(country.persecution) ? <div class="mt-2 border-t border-b border-stone-200">
+      <div class="flex justify-between py-1 text-sm">
+        <dt>{translations.world_watch_list}</dt>
+        <dd>{country.persecution.rank}
+          <small class="align-top text-xs">({country.persecution.score})</small>
+        </dd>
+      </div>
+      <div class="flex flex-col py-1 text-sm">
+        <dt>{translations.persecution_type}</dt>
+        <dd>{country.persecution.persecution_type}</dd>
+      </div>
+    </div> : ''}
+  </dl>
+  
+  {infobox ? <table class="infobox" set:html={infobox}></table> : '' }
+
+</div>
+</div>
 </Layout>
+

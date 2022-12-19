@@ -1,0 +1,11 @@
+---
+import Layout from "~/layouts/Wiki/CountryListLayout.astro";
+import { LocalePath } from "@dbs/ui";
+import { SITE } from '~/config.js';
+
+export const getStaticPaths = () => {
+	return LocalePath(SITE.locales)
+}
+---
+
+<Layout />

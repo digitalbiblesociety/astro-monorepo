@@ -3,7 +3,7 @@
   import Banner from '~/components/partials/Banner.astro'
   // Language Block
   import {i18n} from "~/translations/i18n.mjs";
-  import { getLanguageFromPath } from "~/config.mjs";
+  import { getLanguageFromPath } from "~/config.js";
   const locale = getLanguageFromPath(Astro.url)
   const t = i18n[locale]
 ---
@@ -11,15 +11,15 @@
 <Layout>
 
 	<Banner
-		title={t["Libraries"]}
+		title={t?.libraries}
 		subtitle=""
-		caption={t["libraries_about_caption"]}
+		caption={t?.libraries_about_caption ?? ''}
 		subnav={[
-			{title:t["Overview"],url:`/${locale}/libraries/`},
-			{title:t["Treasures Libraries"],url:`/${locale}/libraries/treasures`},
-			// {title:t["Bible Libraries"],url:`/${locale}/libraries/bible`},
+			{title:t?.Overview ?? 'Overview', url:`/${locale}/libraries/`},
+			{title:t?.libraries ?? 'Libraries', url:`/${locale}/libraries/treasures`},
+			// {title:t?.Bible Libraries"],url:`/${locale}/libraries/bible`},
 			// TODO: Restore Bible Libraries Pages once they're downloadable
-			{title:t["FAQs"],url:`/${locale}/libraries/faq`}
+			{title:t?.faq ?? 'FAQ', url:`/${locale}/libraries/faq`}
 		]} />
 
 <div class="prose mx-auto">

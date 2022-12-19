@@ -1,7 +1,9 @@
-import { getLanguageFromPath } from "~/config.mjs";
+import { getLanguageFromPath } from "~/config.js";
 import {i18n} from "~/translations/i18n.mjs";
 
 export const pluck = (key) => (array) => Array.from(new Set(array.map((obj) => obj[key])))
+
+export const basename = (path) => path.split('/').reverse()[0];
 
 export const shortcut = (node, params) => {
 	let handler

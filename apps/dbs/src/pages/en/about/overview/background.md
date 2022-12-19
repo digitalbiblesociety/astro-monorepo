@@ -1,5 +1,5 @@
 ---
-layout: '~/layouts/AboutOverviewLayout.astro'
+layout: '~/layouts/About/AboutOverviewLayout.astro'
 ---
 
 _The Digital Bible Society is a non-profit 501(c)3 ministry working with the Body of Christ to produce and distribute digital Bibles and Christian resources that promote discipleship, evangelism, and church planting around the world._

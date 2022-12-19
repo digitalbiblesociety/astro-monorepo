@@ -5,13 +5,10 @@ permalink: /2022/01/21/mali-digital-bibles-for-malian-communities
 author: 'Bere Cowpersmith'
 excerpt: ''
 type: post
-id: 144
 thumbnail: /img/posts/Mali-3.jpg
+country: ML
 category:
     - 'Bible Distribution'
-
-banner:
-    - '279'
 ---
 ![](/img/posts/Mali-1.jpg)**Date:** September 2021
 

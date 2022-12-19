@@ -1,6 +1,6 @@
 ---
 import Dropdown from './Dropdown.svelte'
-
+import { Icon } from 'astro-icon'
 export interface Props {
   page: {
 	title: string,
@@ -9,12 +9,10 @@ export interface Props {
   };
 }
 
-import { Icon } from 'astro-icon'
-
 let nav_class = `
 	inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium 
-	text-gray-200 dark:text-gray-300 hover:border-gray-900 hover:text-white dark:hover:text-white
-	active:bg-gray-50 active:text-black
+	text-stone-200 dark:text-stone-300 hover:border-stone-900 hover:text-white dark:hover:text-white
+	active:bg-stone-50 active:text-black
 `
 
 const { page } = Astro.props;
@@ -24,6 +22,6 @@ const menu_id = page.title.replaceAll(' ', '-')
 <div class={nav_class}>
 	{ (page.nested) ? 
 		<Dropdown page={page} nav_class={nav_class} client:visible /> : 
-		<a href={page.href} class={nav_class}>{ page.title }</a>
+		<a href={page.href}><span class="flex items-center px-2 pt-1 pb-1.5 text-sm md:text-base xl:text-lg">{ page.title }</span></a>
 	}
 </div>

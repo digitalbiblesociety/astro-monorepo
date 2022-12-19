@@ -5,8 +5,8 @@ import {mobileMenuOpen} from '~/components/store.js'
 </script>
 <button
 type="button"
-class="ml-2.5 inline-flex items-center justify-center rounded-md bg-primary-400 p-1 text-gray-100 hover:text-white focus:outline-none
-focus:ring-2 focus:ring-inset focus:ring-gray-600 dark:bg-gray-800 dark:focus:ring-black md:hidden"
+class="ml-2.5 inline-flex items-center justify-center rounded-md bg-primary-400 p-1 text-stone-100 hover:text-white focus:outline-none
+focus:ring-2 focus:ring-inset focus:ring-stone-600 dark:bg-stone-800 dark:focus:ring-black md:hidden"
 on:click="{() => mobileMenuOpen.set(!$mobileMenuOpen)}"
 aria-controls="mobile-menu"
 aria-label="Mobile Menu"

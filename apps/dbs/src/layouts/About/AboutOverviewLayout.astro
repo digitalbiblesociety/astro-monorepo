@@ -1,0 +1,32 @@
+---
+import Layout from "../BaseLayout.astro";
+import Banner from '~/components/partials/Banner.astro'
+import {i18n} from "~/translations/i18n.mjs";
+import { getLanguageFromPath } from "~/config.js";
+const locale = getLanguageFromPath(Astro.url)
+const t = i18n[locale]
+const { meta } = Astro.props;
+---
+
+<Layout meta={meta}>
+
+<Banner 
+	title={t?.Overview ?? 'Overview'}
+	subtitle=""
+	breadcrumbs={[
+		{ link: `/about/`, title: t?.about ?? 'About' },
+		{ link: '#', title: t?.overview ?? 'Overview' },
+	]}
+	subnav={[
+		{title:t?.background ?? 'Background', url:`/${locale}/about/overview/`},
+		{title:t?.mission ?? 'Mission', url:`/${locale}/about/overview/mission`},
+		{title:t?.history ?? 'History', url:`/${locale}/about/overview/history`},
+		{title:t?.values ?? 'Values', url:`/${locale}/about/overview/values`},
+		{title:t?.beliefs ?? 'Beliefs', url:`/${locale}/about/overview/beliefs`},
+	]} />
+
+  <main class="prose max-w-prose mx-auto">
+    <slot />
+  </main>
+
+</Layout>

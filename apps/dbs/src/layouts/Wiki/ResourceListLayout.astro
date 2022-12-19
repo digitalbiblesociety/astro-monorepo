@@ -1,0 +1,26 @@
+---
+import Layout from "~/layouts/PageLayout.astro";
+import { SITE, getLanguageFromPath } from "~/config.js";
+import Datatable from "@dbs/datatables";
+import { Banner, i18n } from "@dbs/ui";
+
+const biblesResponse = await fetch(`${SITE.apiUrl}/bibles.json`);
+let bibles = await biblesResponse.json();
+
+const resourcesResponse = await fetch(`${SITE.apiUrl}/resources.json`);
+const resources = await resourcesResponse.json();
+const locale = getLanguageFromPath(Astro.url);
+const t = i18n[locale]
+---
+
+<Layout meta={{ title: t?.resources ?? 'Resources' }}>
+	<Banner
+    backgroundImage="/img/banner/banner_languages.jpg"
+    title={t?.resources ?? 'Resources'} 
+    tabs={[
+      {title: t?.bibles ?? 'Bibles', url: `/${locale}/bibles/`, count: bibles.length},
+      {title: t?.resources ?? 'Resources', url: `/${locale}/resources/`, count: resources.length}
+    ]} />
+
+  <Datatable inputData={resources} locale={locale} t={t} tableType="resources" client:visible />
+</Layout>

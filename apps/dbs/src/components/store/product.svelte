@@ -54,14 +54,14 @@
 					<li>
 						<div class="flex items-center">
 							<span
-								class="mr-4 text-sm font-medium text-gray-900 dark:text-gray-400">
+								class="mr-4 text-sm font-medium text-stone-900 dark:text-stone-400">
 								{product.productType}
 							</span>
 							<svg
 								viewBox="0 0 6 20"
 								xmlns="http://www.w3.org/2000/svg"
 								aria-hidden="true"
-								class="h-5 w-auto text-gray-300">
+								class="h-5 w-auto text-stone-300">
 								<path
 									d="M4.878 4.34H3.551L.27 16.532h1.327l3.281-12.19z"
 									fill="currentColor">
@@ -73,7 +73,7 @@
 					<li class="text-sm">
 						<span
 							aria-current="page"
-							class="font-medium text-gray-500 hover:text-gray-600 dark:text-gray-200">
+							class="font-medium text-stone-500 hover:text-stone-600 dark:text-stone-200">
 							{product.title}
 						</span>
 					</li>
@@ -84,16 +84,16 @@
 				<div class="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
 					<div class="lg:col-span-5 lg:col-start-8">
 						<div class="flex justify-between">
-							<h1 class="text-xl font-medium text-gray-900 dark:text-gray-200">
+							<h1 class="text-xl font-medium text-stone-900 dark:text-stone-200">
 								{product.title}
 							</h1>
-							<p class="text-xl font-medium text-gray-900 dark:text-gray-200">
+							<p class="text-xl font-medium text-stone-900 dark:text-stone-200">
 								{current_price}
 							</p>
 						</div>
 						<div class="mt-10">
 							<div
-								class="prose prose-sm mt-4 text-center text-gray-500 dark:text-gray-300">
+								class="prose prose-sm mt-4 text-center text-stone-500 dark:text-stone-300">
 								<p>{@html product.description}</p>
 							</div>
 						</div>
@@ -116,7 +116,7 @@
 							<div class="mt-8">
 								<div class="flex items-center justify-between">
 									<h2
-										class="text-sm font-medium text-gray-900 dark:text-gray-200">
+										class="text-sm font-medium text-stone-900 dark:text-stone-200">
 										Medium
 									</h2>
 								</div>
@@ -140,7 +140,7 @@
 													}}"
 													class="{current_variation == variant.id
 														? 'bg-primary-600 text-white'
-														: 'text-gray-800 dark:text-gray-300'} mx-1 flex cursor-pointer flex-col items-center justify-center rounded-md p-3 text-sm font-medium uppercase focus:outline-none dark:bg-gray-800 sm:flex-1">
+														: 'text-stone-800 dark:text-stone-300'} mx-1 flex cursor-pointer flex-col items-center justify-center rounded-md p-3 text-sm font-medium uppercase focus:outline-none dark:bg-stone-800 sm:flex-1">
 													{variant.title}
 													<div class="text-sm">
 														{price(variant.priceV2.amount)}
@@ -155,10 +155,10 @@
 							</div>
 	
 							<label
-								class="mt-4 text-sm font-medium text-gray-900 dark:text-gray-200">
+								class="mt-4 text-sm font-medium text-stone-900 dark:text-stone-200">
 								Quantity
 								<input
-									class="mt-4 w-full rounded-md border dark:border-gray-700 dark:bg-gray-800"
+									class="mt-4 w-full rounded-md border dark:border-stone-700 dark:bg-stone-800"
 									type="number"
 									name="quantity"
 									min="0"

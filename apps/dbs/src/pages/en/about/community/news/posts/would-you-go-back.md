@@ -2,7 +2,7 @@
 title: 'Would you go back?'
 date: '2015-10-10T09:40:00+00:00'
 permalink: /2015/10/10/would-you-go-back
-author: 'Christopher Weiss'
+author: 'Nathan Bitgood'
 excerpt: ''
 type: post
 id: 17

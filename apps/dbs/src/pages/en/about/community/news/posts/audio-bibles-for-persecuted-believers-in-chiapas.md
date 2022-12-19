@@ -7,12 +7,10 @@ excerpt: ''
 type: post
 id: 367
 thumbnail: /img/posts/Untitled-Facebook-Cover-5.png
+country: MX
 category:
     - 'Bible Distribution'
     - 'Scripture Distribution Projects'
-
-banner:
-    - ''
 ---
 Christians from indigenous communities are severely persecuted in the Mexican state of Chiapas. This, combined with widespread illiteracy, has left the Tzotzil and Tzeltal churches in desperate need of Audio Bibles.
 
@@ -29,4 +27,4 @@ Please email projects@dbs.org and reference Project ID: 4-1-001 to help us fund 
 
 We invite you to watch the video below to see the impact of previous distributions among persecuted Christians in Chiapas, Mexico.
 
-<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper"><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="360" literally="" lives="" loading="lazy" our="" src="https://www.youtube.com/embed/uRiO12zziUE?feature=oembed" title="Audio Bibles for Persecuted Believers in Chiapas, Mexico | "Literally Transforming Our Lives"" transforming="" width="640"></iframe></div></figure>
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="360" literally="" lives="" loading="lazy" our="" src="https://www.youtube.com/embed/uRiO12zziUE?feature=oembed" title="Audio Bibles for Persecuted Believers in Chiapas, Mexico | Literally Transforming Our Lives" transforming="" width="640"></iframe>

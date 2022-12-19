@@ -51,7 +51,7 @@
 	
 	<div class="mx-auto max-w-2xl px-4 pt-16 pb-24 sm:px-6 lg:max-w-7xl lg:px-8">
 		<h1
-			class="flex items-center text-2xl font-bold text-gray-900 dark:text-gray-200 ">
+			class="flex items-center text-2xl font-bold text-stone-900 dark:text-stone-200 ">
 			shopping {JSON.stringify(cart,null, 4)}
 		</h1>
 		<div
@@ -60,7 +60,7 @@
 				<h2 id="cart-heading" class="sr-only">items</h2>
 	
 				<ul
-					class="divide-y divide-gray-200 border-t border-b border-gray-200 dark:divide-gray-800 dark:border-gray-800">
+					class="divide-y divide-stone-200 border-t border-b border-stone-200 dark:divide-stone-800 dark:border-stone-800">
 					{#if cart.lineItems}
 						{#each Object.keys(cart.lineItems) as key}
 							{#if key !== "type"}
@@ -79,19 +79,19 @@
 												<div class="flex justify-between">
 													<h3 class="text-sm">
 														<span
-															class="font-medium text-gray-700 hover:text-gray-800 dark:text-gray-300">
+															class="font-medium text-stone-700 hover:text-stone-800 dark:text-stone-300">
 															{cart.lineItems[key].title}
 														</span>
 													</h3>
 												</div>
 												<div class="mt-1 flex text-sm">
 													<p
-														class="ml-4 border-l border-gray-200 pl-4 text-gray-500 dark:border-gray-800">
+														class="ml-4 border-l border-stone-200 pl-4 text-stone-500 dark:border-stone-800">
 														<!-- -->
 													</p>
 												</div>
 												<p
-													class="mt-1 text-sm font-medium text-gray-900 dark:text-gray-200">
+													class="mt-1 text-sm font-medium text-stone-900 dark:text-stone-200">
 													${cart.lineItems[key]["variant"]?.price}
 												</p>
 											</div>
@@ -108,13 +108,13 @@
 															e.target.value
 														)}"
 													value="{cart.lineItems[key]['quantity']}"
-													class="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300 sm:text-sm" />
+													class="max-w-full rounded-md border border-stone-300 py-1.5 text-left text-base font-medium leading-5 text-stone-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 dark:border-stone-600 dark:bg-stone-700 dark:text-stone-300 sm:text-sm" />
 	
 												<div class="absolute top-0 right-0">
 													<button
 														type="button"
 														on:click="{() => removeItem(cart.lineItems[key].id)}"
-														class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500">
+														class="-m-2 inline-flex p-2 text-stone-400 hover:text-stone-500">
 														<span class="sr-only">
 															remove
 														</span>
@@ -125,7 +125,7 @@
 										</div>
 	
 										<p
-											class="mt-4 flex flex-col text-sm text-gray-700 dark:text-gray-300">
+											class="mt-4 flex flex-col text-sm text-stone-700 dark:text-stone-300">
 											{#if cart.lineItems[key].customAttributes}
 												{#each Object.keys(cart.lineItems[key].customAttributes) as attr}
 													{#if attr !== "type"}
@@ -133,7 +133,7 @@
 															{#each JSON.parse(cart.lineItems[key].customAttributes[attr].value) as bible}
 																<a href="/bibles/{bible.id}">
 																	<div
-																		class="mt-2 max-w-sm overflow-hidden text-ellipsis text-sm text-gray-900 dark:text-gray-300">
+																		class="mt-2 max-w-sm overflow-hidden text-ellipsis text-sm text-stone-900 dark:text-stone-300">
 																		{Object.values(bible)}
 																	</div>
 																</a>
@@ -154,26 +154,26 @@
 			<!-- Order summary -->
 			<section
 				aria-labelledby="summary-heading"
-				class="mt-16 rounded-lg bg-gray-50 px-4 py-6 dark:bg-gray-800 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
+				class="mt-16 rounded-lg bg-stone-50 px-4 py-6 dark:bg-stone-800 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
 				<h2
 					id="summary-heading"
-					class="text-lg font-medium text-gray-900 dark:text-gray-200">
+					class="text-lg font-medium text-stone-900 dark:text-stone-200">
 					order_summary
 				</h2>
 	
 				<dl class="mt-6 space-y-4">
 					<div class="flex items-center justify-between">
-						<dt class="text-sm text-gray-600">subtotal</dt>
-						<dd class="text-sm font-medium text-gray-900 dark:text-gray-200">
+						<dt class="text-sm text-stone-600">subtotal</dt>
+						<dd class="text-sm font-medium text-stone-900 dark:text-stone-200">
 							${cart.subtotalPrice}
 						</dd>
 					</div>
 					<div
-						class="flex items-center justify-between border-t border-gray-200 pt-4 dark:border-gray-800">
+						class="flex items-center justify-between border-t border-stone-200 pt-4 dark:border-stone-800">
 						<!--
-						<dt class="flex items-center text-sm text-gray-600">
+						<dt class="flex items-center text-sm text-stone-600">
 							<span>shipping_estimate</span>
-							<span class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500">
+							<span class="ml-2 flex-shrink-0 text-stone-400 hover:text-stone-500">
 								<span class="sr-only">
 									shipping_learn
 								</span>
@@ -181,7 +181,7 @@
 							</span>
 						</dt>
 						-->
-						<dd class="text-xs font-medium text-gray-800">
+						<dd class="text-xs font-medium text-stone-800">
 							shipping_checkout
 						</dd>
 					</div>
@@ -190,13 +190,13 @@
 				<div class="mt-8">
 					<button
 						on:click="{() => checkout()}"
-						class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-lg font-medium text-white drop-shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50">
+						class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 py-3 px-4 text-lg font-medium text-white drop-shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-stone-50">
 						
 						checkout
 					</button>
 				</div>
 				<button
-					class="mt-4 flex w-full items-center justify-center rounded-md border border-transparent bg-primary-400 py-1 px-3 text-sm font-medium text-white drop-shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+					class="mt-4 flex w-full items-center justify-center rounded-md border border-transparent bg-primary-400 py-1 px-3 text-sm font-medium text-white drop-shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-stone-50"
 					onclick="history.back()">
 					
 					shopping_continue

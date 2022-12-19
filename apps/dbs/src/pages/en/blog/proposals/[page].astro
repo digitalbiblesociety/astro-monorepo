@@ -1,0 +1,38 @@
+---
+import Layout from "~/layouts/BaseLayout.astro";
+import posts from "../data.js";
+import Posts from "~/components/blog/Posts.astro";
+import {Banner, i18n} from "@dbs/ui";
+import { getLanguageFromPath } from "~/config.js";
+const locale = getLanguageFromPath(Astro.url);
+let t = i18n[locale]
+
+export async function getStaticPaths({ paginate }) {
+	
+  // Generate pages from our array of astronauts, with 2 to a page
+  return paginate(posts.filter(post => post.categories.includes(5)), { pageSize: 6 });
+}
+// All paginated data is passed on the "page" prop
+const { page } = Astro.props;
+---
+
+<Layout title="Stories and News">
+
+	<Banner 
+		title={t?.news ?? 'News'}
+		subtitle="" 
+		caption={t.work_proposals_description}
+		breadcrumbs={[
+			{ link: `/about/`, title: t?.about ?? 'About' },
+			{ link: `/about/projects`, title: t?.projects ?? 'Projects' },
+			{ link: '#', title: t?.proposals ?? 'Proposals' },
+		]}
+		tabs={[
+			{title:t?.overview ?? 'Overview', url:`/${locale}/blog/`},
+			{title:t?.stories ?? 'Stories', url:`/${locale}/blog/stories/1`},
+			{title:t?.project ?? 'Project', url:`/${locale}/blog/proposals/1`},
+		]} />
+
+	<Posts page={page} />
+
+</Layout>

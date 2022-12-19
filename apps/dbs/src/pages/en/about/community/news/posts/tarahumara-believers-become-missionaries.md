@@ -2,22 +2,19 @@
 title: 'Tarahumara Believers become Missionaries'
 date: '2020-05-09T20:40:00+00:00'
 permalink: /2020/05/09/tarahumara-believers-become-missionaries
-author: 'Christopher Weiss'
+author: 'Bere Cowpersmith'
 excerpt: 'Located on a small plateau at over 8,000 feet, Centro Cristiano Tarahumara is a missionary training base located in the Sierra Madre Mountains in the State of Chihuahua, Mexico. Overlooking the small town of Creel, the center was founded in 1994 with the vision of serving the Tarahumara communities by evangelism, training and mercy ministries. The founder’s dream was to raise Tarahumara missionaries to go to new places to take the message of the Gospel. After almost 30 years of faithful work, this dream is becoming a reality...'
 type: post
-id: 39
+country: MX
 thumbnail: /img/posts/Tarhumara-Missionaries-Blog-Banner.png
 category:
     - 'Bible Distribution'
-
-banner:
-    - '284'
 ---
-<meta charset="utf-8"></meta>Located on a small plateau at over 8,000 feet, Centro Cristiano Tarahumara is a missionary training base located in the Sierra Madre Mountains in the State of Chihuahua, Mexico. Overlooking the small town of Creel, the center was founded in 1994 with the vision of serving the Tarahumara communities by evangelism, training and mercy ministries.
+Located on a small plateau at over 8,000 feet, Centro Cristiano Tarahumara is a missionary training base located in the Sierra Madre Mountains in the State of Chihuahua, Mexico. Overlooking the small town of Creel, the center was founded in 1994 with the vision of serving the Tarahumara communities by evangelism, training and mercy ministries.
 
-<meta charset="utf-8"></meta>The founder’s dream was to raise Tarahumara missionaries to go to new places to take the message of the Gospel. After almost 30 years of faithful work, this dream is becoming a reality. Digital Bible Society is blessed to partner with the the center in sending Tarahumara missionaries to new uncharted territories in the mountains.
+The founder’s dream was to raise Tarahumara missionaries to go to new places to take the message of the Gospel. After almost 30 years of faithful work, this dream is becoming a reality. Digital Bible Society is blessed to partner with the the center in sending Tarahumara missionaries to new uncharted territories in the mountains.
 
-<figure class="wp-block-image size-full is-style-default">![](/img/posts/Tarahumara-woman.png)<figcaption>A Tarahumara woman</figcaption></figure><meta charset="utf-8"></meta>In September of 2019, Digital Bible Society and Centro Cristiano Tarahumara signed an agreement to have a copying and distribution center to serve the need for Bible access in that part of the Tarahumara mountains.
+<figure class="wp-block-image size-full is-style-default">![](/img/posts/Tarahumara-woman.png)<figcaption>A Tarahumara woman</figcaption></figure>In September of 2019, Digital Bible Society and Centro Cristiano Tarahumara signed an agreement to have a copying and distribution center to serve the need for Bible access in that part of the Tarahumara mountains.
 
 Interest in Digital Bibles is increasing in this part of Mexico, as many people have access to mobile smart phones. A Digital Bible Seminar was conducted for pastors and leaders from the area, and since that time, the center has been copying and distributing digital Bibles to towns and communities in that region.
 

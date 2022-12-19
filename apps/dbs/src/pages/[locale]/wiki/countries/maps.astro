@@ -1,0 +1,12 @@
+---
+import Layout from '~/layouts/Wiki/WorldMapsLayout.astro'
+import { LocalePath } from '~/utils/StaticPathHelper'
+import { SITE } from '~/config.js';
+export function getStaticPaths () {
+	return Object.keys(SITE.locales).map((locale) => ({
+		params: { locale }
+	})
+)}
+---
+
+<Layout />

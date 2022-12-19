@@ -2,16 +2,12 @@
 title: 'Megan’s World Race – 11 Nations in 11 Months'
 date: '2018-12-20T20:41:00+00:00'
 permalink: /2018/12/20/megans-world-race-11-nations-in-11-months
-author: 'Christopher Weiss'
+author: 'Bere Cowpersmith'
 excerpt: 'In the Fall of 2018, Megan Gabrielse completed her World Race. DBS partnered with her by sending Audio Bible Players and USB thumb drives in all of the languages of the countries she would be traveling to during this 11-month missionary journey. The nations were Columbia, Bolivia, Argentina, Ecuador, Peru, India, Nepal, Armenia, Georgia, Romania, and Spain. In Colombia, Megan was able to see the impact first-hand of the gift of an Audio Bible Player...'
 type: post
-id: 35
 thumbnail: /img/posts/World-Map-Blue-Banner-Blog-SMALL.png
 category:
     - 'Bible Distribution'
-
-banner:
-    - '281'
 ---
 In the Fall of 2018, Megan Gabrielse completed her World Race. DBS partnered with her by sending Audio Bible Players and USB thumb drives in all of the languages of the countries she would be traveling to during this 11-month missionary journey. The nations were Columbia, Bolivia, Argentina, Ecuador, Peru, India, Nepal, Armenia, Georgia, Romania, and Spain.
 
