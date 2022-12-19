@@ -5,14 +5,14 @@
 </script>
 
 
-<thead class="bg-gray-50 dark:bg-stone-900">
+<thead class="bg-stone-50 dark:bg-stone-900">
 	{#each headerRows as headerRow (headerRow.id)}
 	  <Subscribe attrs={headerRow.attrs()} let:attrs>
 		<tr {...attrs}>
 		  {#each headerRow.cells as cell (cell.id)}
 			<Subscribe attrs={cell.attrs()} let:attrs props={cell.props()} let:props>
 			  <th
-				class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900 dark:text-stone-200"
+				class="px-3 py-3.5 text-left text-sm font-semibold text-stone-900 dark:text-stone-200"
 				{...attrs}
 				on:click={props.sort.toggle}
 				class:sorted={props.sort.order !== undefined}

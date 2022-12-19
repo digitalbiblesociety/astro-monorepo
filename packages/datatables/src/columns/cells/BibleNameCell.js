@@ -3,7 +3,7 @@ import Cell from "../../partials/Cell.svelte";
 
 export default function (locale, t) {
 	return {
-		header: t.title ?? 'Title',
+		header: t?.title ?? 'Title',
 		id: "bible-title-block",
 		accessor: (item) => item,
 		cell: ({ value }) =>

@@ -33,9 +33,9 @@
 <div class="dt-table">
 <DtSearch t={t} pluginStates={pluginStates} />
 
-<table class="w-full mx-auto divide-y divide-gray-300 dark:divide-gray-900 rounded-t-lg" {...$tableAttrs}>
+<table class="w-full mx-auto divide-y divide-stone-300 dark:divide-stone-900 rounded-t-lg" {...$tableAttrs}>
 	<DtHeader headerRows={$headerRows} />
-	  <tbody class="divide-y divide-gray-200 dark:divide-gray-900 bg-white dark:bg-stone-700" {...$tableBodyAttrs}>
+	  <tbody class="divide-y divide-stone-200 dark:divide-stone-900 bg-white dark:bg-stone-700" {...$tableBodyAttrs}>
 		{#each $pageRows as row (row.id)}
 		  <Subscribe attrs={row.attrs()} let:attrs rowProps={row.props()} let:rowProps>
 			<tr {...attrs} class:selected={rowProps.select.selected}>
