@@ -1,0 +1,19 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import AudioPlayer from '~/components/AudioPlayer/App.svelte';
+import { fetchLibrary } from '~/components/utils.js';
+
+let library
+await fetchLibrary().then((libraryCollection) => {
+	library = libraryCollection
+})
+
+
+
+---
+
+<Layout title="" bodyClass="audio dark" depth={2} sidebarType="audio">
+	<div id="Audio">
+		<AudioPlayer client:only="svelte" />
+	</div>
+</Layout>

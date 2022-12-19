@@ -1,0 +1,4 @@
+[autorun]
+icon=_\images\favicon.ico
+action=Launch Disc
+shellexecute=""index.html""

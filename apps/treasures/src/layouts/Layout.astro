@@ -1,0 +1,56 @@
+---
+import {fetchLibrary} from '~/components/utils.js';
+
+export interface Props {
+	title: string;
+	bodyClass: string;
+	sidebarType: string;
+	depth: number;
+}
+
+const { title, bodyClass, sidebarType, depth } = Astro.props;
+const depthPath = '../'.repeat(depth)
+
+let library
+await fetchLibrary().then((libraryCollection) => {
+	library = libraryCollection
+})
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="shortcut icon" href={`${depthPath}_/images/favicon.ico`}>
+		<link rel="stylesheet" href={`${depthPath}_/css/index-${import.meta.env.DIRECTION}.css`} />
+		<!--[if lte IE 8]>
+			<link rel="shortcut icon" href="_/images/favicon.ico">
+			<link rel="stylesheet" href="_/css/index-ie.css">
+		<![endif]-->
+		<title>{ title }</title>
+		<slot name="head_additions" />
+	</head>
+	<body class={bodyClass}>
+
+		<input type="checkbox" id="navigation" />
+		<label for="navigation"> ☰ </label>
+
+		<nav class="drawer">
+			<div class="index-header-tabs">
+				<h1>{ library.title }</h1>
+				{ library.header.map(nav => <a class={`index-icon-${nav.type}`} href={depthPath + nav.href}>{nav.title}</a>) }
+			</div>
+			<div class="index-sidebar-tabs">
+				{ (sidebarType == 'image') ? library.sidebar_image.map(nav => <a href={nav.type + '.html'}>{nav.title}</a>) : '' }
+				{ (sidebarType == 'index') ? library.sidebar_index.map(nav => <a href={'#' + nav.type}>{nav.title}</a>) : '' }
+				{ (sidebarType == 'about') ? library.sidebar_about.map(nav => <a href={'#' + nav.type}>{nav.title}</a>) : '' }
+			</div>
+		</nav>
+		<div class="index-content">
+			<slot />
+		</div>
+	</body>
+</html>

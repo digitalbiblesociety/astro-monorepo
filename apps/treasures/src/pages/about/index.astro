@@ -1,0 +1,13 @@
+---
+import Layout from "~/layouts/Layout.astro";
+
+const indexes = await Astro.glob('../../data/*/*.md');
+const pages = indexes.filter(index => index.file.includes('/' + import.meta.env.PUBLIC_LIBRARY + '/'))
+
+---
+
+<Layout title="" bodyClass="about" depth={2} sidebarType="about">
+	{ pages.map(page => <div id={page.frontmatter.tabId}>
+		<div class="index-tab chapter"><page.default /></div>
+	</div>) }
+</Layout>

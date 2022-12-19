@@ -1,0 +1,51 @@
+---
+import Layout from "~/layouts/Layout.astro";
+import {fetchLibrary} from '~/components/utils.js';
+import collect from 'collect.js'
+
+export async function getStaticPaths() {
+	let library
+	let sections
+
+	await fetchLibrary().then((libraryCollection) => {
+		library = libraryCollection
+		sections = collect(library.resources.filter(resource => resource.type == 'videos'))
+			.pluck('filePath').transform((filepath) => filepath.split('/')[2]).unique().all()
+	})
+
+	return sections.map(section => {
+		return { params: { section_id: section } }
+	})
+}
+
+---
+
+<Layout title="" bodyClass="video dark" depth={3} sidebarType="video">
+	<link slot="head_additions" rel="stylesheet" href="../../../_/css/video.css">
+	<script slot="head_additions" type='text/javascript' src='../../../_/js/video/jquery.min.js'></script>
+	<script slot="head_additions" type='text/javascript' src="../../../_/js/video/projekktor.js"></script>
+	<script slot="head_additions" type='text/javascript' src="../../../_/js/video/jquery.anythingslider.js"></script>
+	<script slot="head_additions" type='text/javascript' src="../../../_/js/video/jquery.easing.1.2.js"></script>
+	<script slot="head_additions" type='text/javascript' src="../../../_/js/video/swfobject.js"></script>
+	<script slot="head_additions" type='text/javascript' src="../../../_/js/video/tooltip.js"></script>
+	
+	<div id="Movies" slot="default">
+			<div id="wrap">
+				<ul id="slider"></ul>
+			</div>
+			<form class="iform" id="iform">Jump to: <input id='input1' name='input1' value='1'> of <div id="totalVid"></div></form>
+<script type='text/javascript'>
+dir = 'rtl';
+thumbs = [
+		['001_CCC_Jesus_Film_67x100', 'فيلم المسيح', 'Jesus Film'],
+		['002_God_Man_67x100', 'الله الانسان', 'God Man'],
+		['003_Hope_67x100', 'الرجاء', 'The Hope Video'],
+		['004_CCC_Magdalena_67x100', 'مريم المجدلية', 'Magdalena'],
+		['005_CCC_Jesus_Story_67x100', 'فيلم المسيح للأطفال', 'The Story of Jesus for Children'],
+		['006_ARA_He_Lived_Among_Us_67x100', 'عاش بيننا', 'He Lived Among US'],
+		['013_PIO_End_or_Beginning_67x100', 'نهاية أم بداية', 'Is it the End or the Beginning?']
+	];
+</script>
+<script type='text/javascript' src="../../../_/js/video/playlist.js"></script>
+</div>
+</Layout>

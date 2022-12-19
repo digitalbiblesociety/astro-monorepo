@@ -1,0 +1,33 @@
+---
+
+import Layout from '~/layouts/Layout.astro';
+import {fetchLibrary} from '~/components/utils.js';
+import art from '../../../data/common/art.json'
+
+let library
+await fetchLibrary().then((libraryCollection) => {
+	library = libraryCollection
+})
+
+export async function getStaticPaths() {
+	let books = ['01-gen','02-exo','03-jos','04-1sa','05-1ki','06-est','07-mat','08-mar','09-luk','10-joh','11-act']
+	return books.map(book => {
+		return { params: { book_id: book} }
+	})
+}
+
+const { book_id = '01-gen' } = Astro.params;
+---
+
+<Layout title="Welcome to Astro." bodyClass="image dark" sidebarType="image" depth={2}>
+	<script slot="head_additions" type="text/javascript" src="../../_/galleria/jquery.js"></script>
+	<link slot="head_additions" rel="stylesheet" href="../../_/galleria/galleria.twelve.css" />
+	
+		<div slot="default">
+			<div class="index-tab">
+				<div class="galleria">
+					{art[book_id].map(image => <a href={`./${image}.jpg`}><img src={`../../_/galleria/thumbs/${image}.jpg`} alt={image} title={image}></a>)}
+				</div>
+			</div>
+		</div>
+</Layout>

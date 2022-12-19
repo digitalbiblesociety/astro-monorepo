@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.0" xml:space="preserve" width="150" height="75"><style>
+rect,ellipse{fill:#666}
+.a{fill:#CDE}
+.b{fill:#ACD;opacity:.7}
+.c{fill:#48B;opacity:.8}
+.d{fill:#26B}
+.e{fill:#7AD}
+.f{fill:#9BD}
+.g{fill:#999}
+.h{fill:#26B}
+</style>
+<g transform="translate(-10,-19)">
+<path class="a" d="M 131.5 42 q -10.5 -15 -35 -23.5 q 23 34 -8 64.5 q 30 -10 43 -41"/>
+<path class="b" d="M 148.5 53 q -10 -20 -27.5 -31 q 0 44 -32.8 61 q 39 -2.5 60.2 -30"/>
+<path class="c" d="M 157 59 q -4 -14 -15 -29 q -8.5 47 -53 53 q 52 -2 68 -24"/>
+<path class="d" d="M 160 78 q 0 -5.8 -1.5 -10.5 q -22 15 -70.2 15.5 q 30 0.5 71.8 -5"/>
+<path class="e" d="M 10 79 q 0 -5 1.5 -12 q 19 15.5 64.5 16 q -25 1 -66 -4"/>
+<path class="f" d="M 13 59 q 0 -2 4 -15 q 17 35 59 39 q -45 -1 -63 -24"/>
+<rect width="69" height="3.2" x="10" y="84"/>
+<rect width="69" height="3.2" x="91" y="84"/>
+<rect width="125" height="4.8" x="23" y="86.5"/>
+<ellipse cx="150.5" cy="87" rx="9.5" ry="3"/>
+<ellipse cx="19.5" cy="87" rx="9.5" ry="3"/>
+<rect width="12" height="7" x="73" y="84" rx="20" ry="20"/>
+<rect width="12" height="7" x="85" y="84" rx="20" ry="20"/>
+<circle class="g" width="2.5" height="2" cx="144.8" cy="87.5" r="1.5"/>
+<rect class="g" width="19.5" height="2" x="120.8" y="86.8"/>
+</g>
+</svg>

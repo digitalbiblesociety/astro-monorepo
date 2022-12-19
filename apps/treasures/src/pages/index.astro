@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+import {groupBy, fetchLibrary} from '~/components/utils.js';
+import collect from 'collect.js'
+
+
+let resources
+let categories
+let library
+let groups
+
+await fetchLibrary().then((libraryCollection) => {
+	library = libraryCollection
+	resources = groupBy(library.resources, 'engGroup')
+	categories = Object.keys(groupBy(library.resources, 'categoryId'))
+	// Move Bibles and Commentaries to end of array (Which will show first)
+	categories.push(categories.splice(0, 1))
+	groups = Object.keys(resources)
+})
+
+---
+
+<Layout title="Welcome to Astro." bodyClass="index" depth={0} sidebarType="index">
+	<link slot="head_additions" rel="stylesheet" href={`_/css/index-specific.css`} />
+
+		{ categories.map((category) => (
+			<div id={category}>
+				<div class="index-tab">
+					<h1>{ library.sidebar_index.filter(sidebar => sidebar.type == category)[0].title }</h1>
+					<h2>{library.sidebar_index.filter(sidebar => sidebar.type == category)[0].title_english}</h2>
+					{groups.map(group => 
+						(<div>
+							{library.resources.filter(resource => resource.categoryId == category && group == resource.engGroup).length ? <h3></h3><h4>{group}</h4> : '' }
+							{library.resources.filter(resource => resource.categoryId == category && group == resource.engGroup).map(resource => 
+								(<a class="item" href={resource.filePath}><p>{resource.vernTitle}</p><span>{resource.engTitle}</span></a>)
+							)}
+						</div>)
+					)}
+				</div>
+			</div>
+		  ))}
+</Layout>
+
