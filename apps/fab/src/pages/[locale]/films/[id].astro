@@ -4,16 +4,21 @@ import { SITE } from '~/config';
 
 export async function getStaticPaths() {
 	const scope = import.meta.env.COUNTRY_SCOPE
+
+	if(scope == 'all') {
+		return []
+	}
+
 	const filmsResponse = await fetch(`https://api.arclight.org/v2/media-countries/${scope}?apiKey=52b06248a3c6e8.12980089&expand=mediaLanguages&metadataLanguageTags=en`);
 	const data = await filmsResponse.json();
 	let films = data['_embedded']['mediaLanguages'];
 	let returns = []
 
-//	if(scope !== 'all') {
-//		films = films.filter(item => {
-//			return item.primaryCountryId == scope
-//		})
-//	}
+
+	films = films.filter(item => {
+		return item.primaryCountryId == scope
+	})
+
 
 	const locales = Object.keys(SITE.locales)
 	for (let i = 0; i < locales.length; i++) {

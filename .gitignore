@@ -1,6 +1,19 @@
 .DS_Store
+.vscode
 .env
 .history
 
 # Dependency directory
 **/node_modules/**
+
+# Article Images 
+apps/dbs/public/images
+
+# Images Specific to current Library
+apps/treasures/public/_/images/backgrounds/
+apps/treasures/public/_/images/icons/
+apps/treasures/public/_/images/covers/
+apps/treasures/public/_/galleria/thumbs/
+apps/treasures/public/bible/images/
+apps/treasures/public/books/
+apps/treasures/public/video/

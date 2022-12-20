@@ -6,12 +6,14 @@ import Films from "~/components/partials/Films.svelte";
 
 const locale = getLanguageFromPath(Astro.url);
 const t = i18n[locale]
+let films = []
 
 const scope = import.meta.env.COUNTRY_SCOPE;
-
-const filmsResponse = await fetch(`https://api.arclight.org/v2/media-countries/${scope}?apiKey=52b06248a3c6e8.12980089&expand=mediaLanguages&metadataLanguageTags=en`);
-const data = await filmsResponse.json();
-const films = data['_embedded']['mediaLanguages'];
+if(scope !== 'all') {
+	const filmsResponse = await fetch(`https://api.arclight.org/v2/media-countries/${scope}?apiKey=52b06248a3c6e8.12980089&expand=mediaLanguages&metadataLanguageTags=en`);
+	const data = await filmsResponse.json();
+	films = data['_embedded']['mediaLanguages'];
+}
 ---
 
 <Layout meta={{ title: t?.languages ?? 'Languages' }}>

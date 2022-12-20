@@ -9,7 +9,7 @@
     "start": "astro dev",
     "build": "astro build",
     "build-test": "node publish.js",
-    "build-fab-dev": "cp ./env/.env-fab .env && astro build && cd ./dist && echo dev.find.bible >| CNAME && git init && git add . && git commit -m \"auto-push\" && git branch -M main && git remote add origin git@github.com:digitalbiblesociety/fab-dev.git && git push -f -u origin main",
+    "build-fab-dev": "cp ./env/.env-fab-dev .env && astro build && cd ./dist && echo dev.find.bible >| CNAME && git init && git add . && git commit -m \"auto-push\" && git branch -M main && git remote add origin git@github.com:digitalbiblesociety/fab-dev.git && git push -f -u origin main",
     "build-fab-mx": "cp ./env/.env-mx .env && astro build && cd ./dist && echo mx.bible.cloud >| CNAME && git init && git add . && git commit -m \"auto-push\" && git branch -M main && git remote add origin git@github.com:digitalbiblesociety/shin-mx.git && git push -f -u origin main",
     "build-fab-in": "cp ./env/.env-in .env && astro build && cd ./dist && echo in.bible.cloud >| CNAME && git init && git add . && git commit -m \"auto-push\" && git branch -M main && git remote add origin git@github.com:digitalbiblesociety/shin-in.git && git push -f -u origin main",
     "build-fab-et": "cp ./env/.env-et .env && astro build && cd ./dist && echo et.bible.cloud >| CNAME && git init && git add . && git commit -m \"auto-push\" && git branch -M main && git remote add origin git@github.com:digitalbibles/fab-et.git && git push -f -u origin main",
